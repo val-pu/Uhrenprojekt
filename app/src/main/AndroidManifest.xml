@@ -38,6 +38,11 @@
         <activity
             android:name=".connection.BluetoothActivity"
             android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".intro.IntroActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,6 +1,5 @@
-package leko.valmx.uhrenprojekt.connection
+package leko.valmx.uhrenprojekt.intro
 
-import android.bluetooth.BluetoothAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,7 @@ class BluetoothDiscoveryAdapter(val inflater: LayoutInflater, val devices: Linke
 
     class VH(item: View) : RecyclerView.ViewHolder(item) {
         fun bind(device: BLEDevice) {
-            itemView.name.text = device.device?.name
+            itemView.name.text = device.device.name
             itemView.uid.text = device.device.address
         }
     }

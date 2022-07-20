@@ -1,7 +1,6 @@
 package leko.valmx.uhrenprojekt.connection
 
 import android.Manifest
-import android.bluetooth.BluetoothClass
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +14,7 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import leko.valmx.uhrenprojekt.R
+import leko.valmx.uhrenprojekt.intro.BluetoothDiscoveryAdapter
 import quevedo.soares.leandro.blemadeeasy.BLE
 import quevedo.soares.leandro.blemadeeasy.models.BLEDevice
 import java.util.*
@@ -110,7 +110,7 @@ class BluetoothActivity : AppCompatActivity() {
 
     }
 
-    fun initBLE() {
+    private fun initBLE() {
         ble = BLE(this).apply {
             verbose = true
         }

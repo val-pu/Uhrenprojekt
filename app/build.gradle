@@ -47,6 +47,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
+    implementation 'com.github.AppIntro:AppIntro:6.2.0'
     implementation 'com.github.LeandroSQ:android-ble-made-easy:1.6.0'
     // Bibliothek für das Bluetooth Zeug -> Vereinfacht diesen Workflow extremst
 }

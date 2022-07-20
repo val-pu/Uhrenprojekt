@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/devices_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/rectangle_w_slight_stroke"
+        android:padding="@dimen/default_padding"
+        android:layout_margin="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_margin="@dimen/default_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wähle die Uhr aus den gelisteten Geräten aus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Refresh"
+        app:layout_constraintEnd_toEndOf="@+id/devices_recycler"
+        app:layout_constraintTop_toBottomOf="@+id/devices_recycler" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
