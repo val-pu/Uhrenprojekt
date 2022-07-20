@@ -38,7 +38,7 @@
         android:theme="@style/Theme.Uhrenprojekt"
         tools:targetApi="31">
         <activity
-            android:name=".CustomizerActivity"
+            android:name=".customizer.CustomizerActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
