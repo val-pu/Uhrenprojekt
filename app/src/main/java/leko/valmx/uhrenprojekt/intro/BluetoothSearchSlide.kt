@@ -47,7 +47,7 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = false) : Fr
 
     fun scanForDevices() {
         Blue.ble.scanAsync(
-            duration = 100000,
+            duration = 100_000,
             onDiscover = { device ->
                 Log.i(TAG, "Found ${device.name} + ${device.device.bluetoothClass}")
 
