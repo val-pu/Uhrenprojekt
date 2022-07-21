@@ -6,10 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".customizer.CustomizerActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/Card"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/gimmick_recycler"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_erscheinung"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Erscheinung"
+            android:textColor="@color/white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

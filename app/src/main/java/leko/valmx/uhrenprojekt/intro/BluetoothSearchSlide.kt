@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.appintro.SlidePolicy
-import kotlinx.android.synthetic.main.activity_main.devices_recycler
+import kotlinx.android.synthetic.main.intro_bluetooth.*
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.connection.Blue
 import quevedo.soares.leandro.blemadeeasy.models.BLEDevice
@@ -47,7 +47,7 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = false) : Fr
 
     fun scanForDevices() {
         Blue.ble.scanAsync(
-            duration = 100_000,
+            duration = 100000,
             onDiscover = { device ->
                 Log.i(TAG, "Found ${device.name} + ${device.device.bluetoothClass}")
 

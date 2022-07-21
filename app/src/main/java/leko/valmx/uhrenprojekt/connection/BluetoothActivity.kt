@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.intro_bluetooth.*
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -27,11 +27,13 @@ class BluetoothActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initBLE()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_appearan)
         initViews()
     }
 
     fun initViews() {
+
+
         devices_recycler.layoutManager = LinearLayoutManager(this)
         devices_recycler.adapter = BluetoothDiscoveryAdapter(layoutInflater, devices)
     }
