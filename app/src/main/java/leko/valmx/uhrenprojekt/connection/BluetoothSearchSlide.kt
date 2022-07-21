@@ -1,4 +1,4 @@
-package leko.valmx.uhrenprojekt.intro
+package leko.valmx.uhrenprojekt.connection
 
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.appintro.SlidePolicy
 import kotlinx.android.synthetic.main.intro_bluetooth.*
 import leko.valmx.uhrenprojekt.R
-import leko.valmx.uhrenprojekt.connection.Blue
 import quevedo.soares.leandro.blemadeeasy.models.BLEDevice
 import java.util.*
 

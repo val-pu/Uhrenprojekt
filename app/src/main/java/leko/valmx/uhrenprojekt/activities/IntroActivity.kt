@@ -1,4 +1,4 @@
-package leko.valmx.uhrenprojekt.intro
+package leko.valmx.uhrenprojekt.activities
 
 import android.Manifest
 import android.os.Bundle
@@ -7,6 +7,7 @@ import com.github.appintro.AppIntro2
 import com.github.appintro.AppIntroFragment
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.connection.Blue
+import leko.valmx.uhrenprojekt.connection.BluetoothSearchSlide
 import quevedo.soares.leandro.blemadeeasy.BLE
 
 class IntroActivity : AppIntro2() {

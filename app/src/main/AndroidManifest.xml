@@ -38,10 +38,13 @@
         android:theme="@style/Theme.Uhrenprojekt"
         tools:targetApi="31">
         <activity
-            android:name=".customizer.AppearanceActivity"
+            android:name=".activities.GimmickActivity"
             android:exported="false" />
         <activity
-            android:name=".customizer.CustomizerActivity"
+            android:name=".activities.AppearanceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.CustomizerActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,10 +53,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".connection.BluetoothActivity"
+            android:name=".activities.BluetoothActivity"
             android:exported="true" />
         <activity
-            android:name=".intro.IntroActivity"
+            android:name=".activities.IntroActivity"
             android:exported="true" />
     </application>
 

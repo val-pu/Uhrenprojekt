@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <leko.valmx.uhrenprojekt.customizer.views.ColorPickHintView
+        <leko.valmx.uhrenprojekt.customizer.colorPick.ColorPickHintView
             android:id="@+id/colorPickHintView"
             android:layout_width="60dp"
             android:layout_height="wrap_content"

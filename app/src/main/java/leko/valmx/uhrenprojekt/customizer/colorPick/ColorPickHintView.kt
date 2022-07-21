@@ -1,11 +1,11 @@
-package leko.valmx.uhrenprojekt.customizer.views
+package leko.valmx.uhrenprojekt.customizer.colorPick
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.graphics.toRectF
-import leko.valmx.uhrenprojekt.Util
+import leko.valmx.uhrenprojekt.utilities.Util
 
 class ColorPickHintView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
 

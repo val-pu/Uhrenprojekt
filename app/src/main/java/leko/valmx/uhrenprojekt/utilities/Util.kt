@@ -1,14 +1,12 @@
-package leko.valmx.uhrenprojekt
+package leko.valmx.uhrenprojekt.utilities
 
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.RectF
-import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Vibrator
-import android.util.Log
-import android.view.ViewGroup
+import leko.valmx.uhrenprojekt.R
 
 object Util {
     fun vibrate(ms: Int, context: Context) {

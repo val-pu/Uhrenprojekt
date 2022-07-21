@@ -1,4 +1,4 @@
-package leko.valmx.uhrenprojekt.intro
+package leko.valmx.uhrenprojekt.connection
 
 import android.view.LayoutInflater
 import android.view.View

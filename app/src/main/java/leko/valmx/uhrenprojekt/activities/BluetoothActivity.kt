@@ -1,4 +1,4 @@
-package leko.valmx.uhrenprojekt.connection
+package leko.valmx.uhrenprojekt.activities
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -14,7 +14,7 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import leko.valmx.uhrenprojekt.R
-import leko.valmx.uhrenprojekt.intro.BluetoothDiscoveryAdapter
+import leko.valmx.uhrenprojekt.connection.BluetoothDiscoveryAdapter
 import quevedo.soares.leandro.blemadeeasy.BLE
 import quevedo.soares.leandro.blemadeeasy.models.BLEDevice
 import java.util.*

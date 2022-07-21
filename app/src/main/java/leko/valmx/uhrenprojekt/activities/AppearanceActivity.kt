@@ -1,4 +1,4 @@
-package leko.valmx.uhrenprojekt.customizer
+package leko.valmx.uhrenprojekt.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
