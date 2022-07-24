@@ -1,14 +1,15 @@
 package leko.valmx.uhrenprojekt.activities
 
+import android.R.attr.data
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_customizer.*
 import leko.valmx.uhrenprojekt.R
-import leko.valmx.uhrenprojekt.customizer.gimmickExec.GimmickAdapter
+
 
 class CustomizerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,5 +31,16 @@ class CustomizerActivity : AppCompatActivity() {
         btn_gimmicks.setOnClickListener {
             startActivity(Intent(this, GimmickActivity::class.java))
         }
+
+        btn_calendar.setOnClickListener {
+            startActivity(Intent(this, CalendarActivity::class.java))
+        }
+    }
+
+    /**
+     * activated when power_btn is clicked
+     */
+    fun turnOffClock(view: View){
+        //TODO turn off clock
     }
 }

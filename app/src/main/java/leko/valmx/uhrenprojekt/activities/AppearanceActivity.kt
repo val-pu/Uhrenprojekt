@@ -2,6 +2,7 @@ package leko.valmx.uhrenprojekt.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Window
 import leko.valmx.uhrenprojekt.R
 
 class AppearanceActivity : AppCompatActivity() {
