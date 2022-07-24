@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000"
-    tools:context=".activities.CustomizerActivity">
+    tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btn_erscheinung"
+        android:id="@+id/btn_appearance"
         style="@style/Card"
         android:layout_width="match_parent"
         android:layout_height="70dp"
@@ -21,9 +21,8 @@
 
         <TextView
             android:id="@+id/textView8"
-            android:layout_width="125dp"
-            android:layout_height="51dp"
-            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Erscheinung"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -48,22 +47,17 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btn_gimmicks"
+        android:id="@+id/btn_specials"
         style="@style/Card"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.277">
+        app:layout_constraintTop_toBottomOf="@+id/btn_appearance">
 
         <TextView
-            android:layout_width="125dp"
-            android:layout_height="51dp"
-            android:gravity="center_vertical"
-            android:text="Gimmicks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Specials"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -89,18 +83,13 @@
         style="@style/Card"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.399">
+        app:layout_constraintTop_toBottomOf="@+id/btn_specials"
+        tools:layout_editor_absoluteX="10dp">
 
         <TextView
             android:id="@+id/textView7"
-            android:layout_width="125dp"
-            android:layout_height="51dp"
-            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Kalender"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -144,10 +133,9 @@
         android:id="@+id/btn_power_on_off"
         android:layout_width="41dp"
         android:layout_height="39dp"
-        android:onClick="turnOffClock"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
+        app:layout_constraintHorizontal_bias="0.932"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.063"

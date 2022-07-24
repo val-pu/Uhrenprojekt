@@ -1,4 +1,4 @@
-package leko.valmx.uhrenprojekt.activities;
+package leko.valmx.uhrenprojekt.calender;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import leko.valmx.uhrenprojekt.R;
 
-public class CalendarActivity extends AppCompatActivity {
+public class CalenderActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

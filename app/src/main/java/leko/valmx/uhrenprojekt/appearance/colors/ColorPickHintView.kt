@@ -1,16 +1,16 @@
-package leko.valmx.uhrenprojekt.customizer.colorPick
+package leko.valmx.uhrenprojekt.appearance.colors
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.graphics.toRectF
-import leko.valmx.uhrenprojekt.utilities.Util
+import leko.valmx.uhrenprojekt.util.Util
 
 class ColorPickHintView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
 
     var textColor: Color = Color.valueOf(255F, 255F, 255F, 255F)
-    var bgColor: Color = Color.valueOf(0F, 100F, 255F, 255F)
+    var bgColor: Color = Color.valueOf(0F, 100F, 0F, 255F)
 
     fun setColor(textColor: Color, bgColor: Color) {
 
@@ -36,9 +36,9 @@ class ColorPickHintView(context: Context?, attrs: AttributeSet?) : View(context,
         val rect = Rect(0, 0, width, height).toRectF()
         val wallPaint = Paint().apply {
             color = bgColor.toArgb()
-            alpha = 90
+            alpha = 160
         }
-        canvas!!.drawRoundRect(rect, radius / 2F, radius / 2F, wallPaint)
+        canvas!!.drawRoundRect(rect, radius, radius, wallPaint)
         rect.inset(insetAmount, insetAmount)
 
         super.onDraw(canvas)

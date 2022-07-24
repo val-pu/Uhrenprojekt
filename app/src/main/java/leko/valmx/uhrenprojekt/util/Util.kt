@@ -1,4 +1,4 @@
-package leko.valmx.uhrenprojekt.utilities
+package leko.valmx.uhrenprojekt.util
 
 import android.content.Context
 import android.graphics.Canvas

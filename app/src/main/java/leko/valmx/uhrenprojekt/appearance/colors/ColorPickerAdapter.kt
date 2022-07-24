@@ -1,4 +1,4 @@
-package leko.valmx.uhrenprojekt.customizer.colorPick
+package leko.valmx.uhrenprojekt.appearance.colors
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.item_color.view.*
 import leko.valmx.uhrenprojekt.R
 import java.util.*
 
-class ColorPickerAdapter(private val inflater: LayoutInflater) :
+class ColorPickerAdapter() :
     RecyclerView.Adapter<ColorPickerAdapter.VH>() {
 
     private val data = LinkedList<ColorItem>()
@@ -56,7 +56,7 @@ class ColorPickerAdapter(private val inflater: LayoutInflater) :
     class VH(item: View) : RecyclerView.ViewHolder(item)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH =
-        VH(inflater.inflate(R.layout.item_color, parent, false))
+        VH(LayoutInflater.from(parent.context).inflate(R.layout.item_color, parent, false))
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val dataSet = data[position]

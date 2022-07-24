@@ -1,4 +1,4 @@
-package leko.valmx.uhrenprojekt.connection
+package leko.valmx.uhrenprojekt.intro.bluetooth
 
 import android.os.Bundle
 import android.util.Log
@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.appintro.SlidePolicy
-import kotlinx.android.synthetic.main.intro_bluetooth.*
+import kotlinx.android.synthetic.main.fragment_bleutooth.*
 import leko.valmx.uhrenprojekt.R
+import leko.valmx.uhrenprojekt.bluetooth.Blue
 import quevedo.soares.leandro.blemadeeasy.models.BLEDevice
 import java.util.*
 
@@ -26,7 +27,7 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = false) : Fr
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.intro_bluetooth, container, false)
+        return inflater.inflate(R.layout.fragment_bluetooth, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,6 +46,7 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = false) : Fr
      */
 
     fun scanForDevices() {
+        devices.clear()
         Blue.ble.scanAsync(
             duration = 100000,
             onDiscover = { device ->
@@ -54,6 +56,7 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = false) : Fr
                 if (devices.contains(device)) return@scanAsync
 
                 devices.add(device)
+                if(devices_recycler != null)
                 devices_recycler.post {
                     devices_recycler.adapter?.notifyDataSetChanged()
                 }

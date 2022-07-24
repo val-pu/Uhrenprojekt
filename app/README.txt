@@ -1,4 +1,5 @@
-Bitte hier die letzten Aenderungen eintragen!
+Bitte hier die letzten Änderungen eintragen!
+-> Umlaut Ä hinzugefügt
 
 Datum/Uhrzeit: 24.07.2022 14:36
 

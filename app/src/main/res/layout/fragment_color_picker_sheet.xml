@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="@+id/button" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/designs_recycler"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,5 +38,5 @@
         android:text="Suche eigene Farben aus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/designs_recycler" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,16 +37,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".activities.CalendarActivity"
+            android:name=".calender.CalenderActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.GimmickActivity"
+            android:name=".specials.SpecialsActivity"
+            android:exported="true">
+
+
+        </activity>
+        <activity
+            android:name=".appearance.AppearanceActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.AppearanceActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.CustomizerActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,11 +58,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.BluetoothActivity"
-            android:exported="true" />
-        <activity
-            android:name=".activities.IntroActivity"
-            android:exported="true" />
+            android:name=".intro.IntroActivity"
+            android:exported="true">
+
+
+        </activity>
     </application>
 
 </manifest>

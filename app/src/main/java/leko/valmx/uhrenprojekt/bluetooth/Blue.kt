@@ -1,4 +1,4 @@
-package leko.valmx.uhrenprojekt.connection
+package leko.valmx.uhrenprojekt.bluetooth
 
 import quevedo.soares.leandro.blemadeeasy.BLE
 
