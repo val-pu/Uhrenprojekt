@@ -6,11 +6,13 @@
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/background_gradient.xml" value="0.1" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/card.xml" value="0.1" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_add_birthday.xml" value="0.1" />
+        <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_alarm.xml" value="0.1" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_architecture.xml" value="0.1" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_cake.xml" value="0.1" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_calendar.xml" value="0.1" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_child.xml" value="0.1" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_icon.xml" value="0.1" />
+        <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_nightmode.xml" value="0.1" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_play_circle.xml" value="0.1465" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_power_on_off.xml" value="0.1" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_remove.xml" value="0.1" />
@@ -18,6 +20,7 @@
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_sun.xml" value="0.1525" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/rectangle_w_slight_stroke.xml" value="0.1" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/rectangle_w_slight_stroke_top_non_rounded.xml" value="0.1" />
+        <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_alarm.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_appearan.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_appearance.xml" value="0.25" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_birthday.xml" value="0.22" />
