@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/calendar_recycler_content"
+        android:id="@+id/birthday_recycler_content"
         style="@style/Card"
         android:layout_width="match_parent"
         android:layout_height="70dp"
@@ -18,33 +18,48 @@
         app:layout_constraintVertical_bias="0.152">
 
         <TextView
-            android:id="@+id/calendar_recycler_content_date"
-            android:layout_width="202dp"
-            android:layout_height="78dp"
-            android:textColor="@color/white"
+            android:id="@+id/birthday_recycler_content_date"
+            android:layout_width="261dp"
+            android:layout_height="27dp"
+            android:gravity="center_vertical"
             android:paddingRight="5dp"
+            android:text="date"
+            android:paddingLeft="5dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.977"
+            app:layout_constraintHorizontal_bias="0.305"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="date"
-            android:gravity="center"
-            android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
-            android:id="@+id/calendar_recycler_content_person"
-            android:layout_width="195dp"
-            android:layout_height="81dp"
-            android:textColor="@color/white"
+            android:id="@+id/birthday_recycler_content_person"
+            android:layout_width="259dp"
+            android:layout_height="23dp"
+            android:gravity="center_vertical"
             android:text="person"
-            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/calendar_recycler_content_date"
-            app:layout_constraintHorizontal_bias="0.571"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.278"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/birthday_content_remove"
+            android:layout_width="43dp"
+            android:layout_height="44dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.954"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_remove" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

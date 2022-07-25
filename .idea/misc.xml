@@ -13,17 +13,22 @@
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_icon.xml" value="0.1" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_play_circle.xml" value="0.1465" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_power_on_off.xml" value="0.1" />
+        <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_remove.xml" value="0.1" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_start.xml" value="0.1" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_sun.xml" value="0.1525" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/rectangle_w_slight_stroke.xml" value="0.1" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/rectangle_w_slight_stroke_top_non_rounded.xml" value="0.1" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_appearan.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_appearance.xml" value="0.25" />
+        <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_birthday.xml" value="0.22" />
+        <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_birthday_add.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_calendar.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_customizer.xml" value="0.25" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_gimmick.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_specials.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/birthday_input_popup.xml" value="0.203125" />
+        <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/birthday_row_content.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/calendar_view.xml" value="0.203125" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/fragment_color_picker_sheet.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/gimmick_row.xml" value="0.17291666666666666" />

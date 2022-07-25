@@ -30,4 +30,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, BirthdayActivity::class.java))
         }
     }
+
+    override fun onBackPressed() {
+        finishAffinity()
+    }
 }

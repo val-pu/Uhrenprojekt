@@ -36,15 +36,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
         <activity
             android:name=".birthday.BirthdayActivity"
             android:exported="false" />
         <activity
+            android:name=".birthday.BirthdayAddActivity"
+            android:exported="false" />
+        <activity
             android:name=".specials.SpecialsActivity"
-            android:exported="true">
-
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".appearance.AppearanceActivity"
             android:exported="false" />
@@ -59,10 +60,7 @@
         </activity>
         <activity
             android:name=".intro.IntroActivity"
-            android:exported="true">
-
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>
