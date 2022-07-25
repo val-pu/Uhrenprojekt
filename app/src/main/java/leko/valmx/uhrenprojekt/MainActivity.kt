@@ -7,6 +7,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import leko.valmx.uhrenprojekt.appearance.AppearanceActivity
 import leko.valmx.uhrenprojekt.birthday.BirthdayActivity
 import leko.valmx.uhrenprojekt.calendar.CalendarActivity
+import leko.valmx.uhrenprojekt.developertools.DeveloperActivity
 import leko.valmx.uhrenprojekt.specials.SpecialsActivity
 
 class MainActivity : AppCompatActivity() {
@@ -33,6 +34,10 @@ class MainActivity : AppCompatActivity() {
 
         btn_calendar.setOnClickListener{
             startActivity(Intent(this, CalendarActivity::class.java))
+        }
+
+        btn_developer_tools.setOnClickListener{
+            startActivity(Intent(this, DeveloperActivity::class.java))
         }
     }
 

@@ -37,8 +37,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".developertools.DeveloperActivity"
+            android:exported="false" />
+        <activity
             android:name=".alarm.AlarmActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".calendar.CalendarActivity"
             android:exported="false" />

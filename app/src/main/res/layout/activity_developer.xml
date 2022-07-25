@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#000"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".developertools.DeveloperActivity">
+
+    <EditText
+        style="@style/Card"
+        android:id="@+id/developertools_field_send_msg"
+        android:layout_width="208dp"
+        android:layout_height="55dp"
+        android:gravity="center"
+        android:hint="message"
+        android:textColor="@color/white"
+        android:textColorHint="#9A9999"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <Button
+        android:id="@+id/developertools_btn_send_msg"
+        style="@style/Card"
+        android:layout_width="74dp"
+        android:layout_height="32dp"
+        android:backgroundTint="#F65959"
+        android:text="send"
+        android:onClick="sendExecutionCommand"
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.035" />
+
+    <Button
+        android:id="@+id/developertools_reply_btn_clear"
+        style="@style/Card"
+        android:layout_width="74dp"
+        android:layout_height="32dp"
+        android:backgroundTint="#F65959"
+        android:onClick="clearConsole"
+        android:text="clear"
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.729" />
+
+    <TextView
+        android:id="@+id/developertools_reply"
+        style="@style/Card"
+        android:layout_width="336dp"
+        android:layout_height="400dp"
+        android:hint="Reply"
+        android:textColor="#FF2929"
+        android:textColorHint="#9A9999"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.268" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
