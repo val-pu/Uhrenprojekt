@@ -58,20 +58,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.729" />
 
-    <TextView
-        android:id="@+id/developertools_reply"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/console_recycler"
         style="@style/Card"
-        android:layout_width="336dp"
-        android:layout_height="400dp"
-        android:hint="Reply"
-        android:textColor="#FF2929"
-        android:textColorHint="#9A9999"
-        android:textSize="15sp"
+        android:layout_width="343dp"
+        android:layout_height="387dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintHorizontal_bias="0.397"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.268" />
+        app:layout_constraintVertical_bias="0.258" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
