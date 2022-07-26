@@ -5,11 +5,15 @@
       <map>
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.395" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/card.xml" value="0.399" />
+        <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/frgament_sheet_bluetooth_picker.xml" value="0.672" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_baseline_auto_awesome_24.xml" value="0.395" />
+        <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_bluetooth.xml" value="0.672" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_check.xml" value="0.399" />
+        <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_chevron_right.xml" value="0.1" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_chevrons_right.xml" value="0.3415" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_child.xml" value="0.399" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_heart.xml" value="0.399" />
+        <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_hint_top.xml" value="0.234" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_icon.xml" value="0.672" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_launcher_background.xml" value="0.395" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_minus.xml" value="0.395" />
@@ -27,8 +31,10 @@
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_gimmick.xml" value="0.3491847826086957" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_main.xml" value="0.33206686930091184" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_specials.xml" value="0.39947916666666666" />
+        <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/fragment_b_sheet.xml" value="0.5356576862123613" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/fragment_bleutooth.xml" value="0.3984375" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/fragment_bluetooth.xml" value="0.33156028368794327" />
+        <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/fragment_bluetooth_picker_sheet.xml" value="0.5848032564450475" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/fragment_color_change.xml" value="0.5516304347826086" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/fragment_color_picker_sheet.xml" value="0.39947916666666666" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/fragment_color_picker_sheet_list_dialog.xml" value="0.33206686930091184" />

@@ -1,5 +1,6 @@
 package leko.valmx.uhrenprojekt.intro.bluetooth
 
+import android.bluetooth.BluetoothClass
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -33,17 +34,21 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = false) : Fr
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Initiiere Recyclerview
-        devices_recycler.adapter = BluetoothDiscoveryAdapter(layoutInflater,devices)
-        devices_recycler.layoutManager = LinearLayoutManager(context)
-
         scanForDevices() // Erster Scan wird initiiert
+
+        pick_card.setOnClickListener {
+            BlueToothPickSheet(devices).show(parentFragmentManager, "")
+        }
+
     }
 
 
     /**
-        Sucht nach neuen Geräten & published diese im Recyclerview
+    Sucht nach neuen Geräten & published diese im Recyclerview
      */
+
+    val possibleClockNames =
+        arrayListOf<String>("HMSoft", "MLT-BT05", "BT05", "[TV] Samsung 5 Series (40)")
 
     fun scanForDevices() {
         devices.clear()
@@ -52,20 +57,24 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = false) : Fr
             onDiscover = { device ->
                 Log.i(TAG, "Found ${device.name} + ${device.device.bluetoothClass}")
 
-                // Wurde das Device schon gefunden wird returnt
-                if (devices.contains(device)) return@scanAsync
+                if (device.name == "") return@scanAsync
+
+                if (possibleClockNames.contains(device.name)) selectDevice(device)
 
                 devices.add(device)
-                if(devices_recycler != null)
-                devices_recycler.post {
-                    devices_recycler.adapter?.notifyDataSetChanged()
-                }
-
 
             },
             onFinish = { devices -> },
             onError = { errorCode -> }
         )
     }
+
+    var selectedDevice: BLEDevice? = null
+
+    fun selectDevice(device: BLEDevice) {
+        selected_device_name.text = device.name
+        selectedDevice = device
+    }
+
 
 }
