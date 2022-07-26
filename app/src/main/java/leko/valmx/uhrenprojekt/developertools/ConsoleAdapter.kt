@@ -21,8 +21,8 @@ class ConsoleAdapter(val consoleContent: ArrayList<Array<String>>):
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val content = consoleContent.get(position)[0]
-        val type = consoleContent.get(position)[1]
+        val content = consoleContent[position][0]
+        val type = consoleContent[position][1]
         holder.itemView.console_line.text = content
         if(type == "SUCCESS"){
             holder.itemView.console_line.setTextColor(Color.WHITE)

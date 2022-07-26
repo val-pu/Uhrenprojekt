@@ -29,24 +29,23 @@ class DeveloperActivity : AppCompatActivity() {
         val prefs = getSharedPreferences("Wort-Uhr", MODE_PRIVATE)
         val firstOpen = prefs.getBoolean("developertools_first_open", true)
 
-        if(firstOpen){
+        if (firstOpen) {
             console = ArrayList<Array<String>>()
             saveArrayList(console, "console")
             prefs.edit().putBoolean("developertools_first_open", false).apply()
-        }
-        else{
+        } else {
             console = getArrayList("console")
         }
         console_recycler.adapter = ConsoleAdapter(console)
         console_recycler.layoutManager = LinearLayoutManager(this)
     }
 
-    fun sendMessage(msg: String){
+    fun sendMessage(msg: String) {
         //TODO send message 'msg' to clock
     }
 
-    fun receiveMessage(msg: String){
-        if(msg == "SUCCESSFUL_EXECUTED"){
+    fun receiveMessage(msg: String) {
+        if (msg == "SUCCESSFUL_EXECUTED") {
             showReply("msg successfully executed", SUCCESS)
         }
 
@@ -54,35 +53,34 @@ class DeveloperActivity : AppCompatActivity() {
     }
 
 
-    fun sendExecutionCommand(view: View){
+    fun sendExecutionCommand(view: View) {
         val msg = developertools_field_send_msg.text.toString()
-        if(msg != "") {
+        if (msg != "") {
             showReply("send message: \'$msg\'", SUCCESS)
             showReply("waiting for response", SUCCESS)
             sendMessage(msg)
-        }
-        else{
+        } else {
             showReply("No message to send", INFORMATION)
         }
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun showReply(pMsg: String, type: String){
+    fun showReply(pMsg: String, type: String) {
         var msg = pMsg
-        if(type == INFORMATION){
+        if (type == INFORMATION) {
             msg = "INFO: $msg"
         }
-        if(type == ERROR){
+        if (type == ERROR) {
             msg = "ERROR: $msg"
         }
         console.add(arrayOf(msg, type))
         console_recycler.adapter?.notifyDataSetChanged()
         saveArrayList(console, "console")
-        console_recycler.smoothScrollToPosition(console.size-1)
+        console_recycler.smoothScrollToPosition(console.size - 1)
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun clearConsole(view: View){
+    fun clearConsole(view: View) {
         console.clear()
         console_recycler.adapter?.notifyDataSetChanged()
         saveArrayList(console, "console")
