@@ -51,14 +51,13 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = false) : Fr
     fun scanForDevices() {
         devices.clear()
         Blue.ble.scanAsync(
-            duration = 100000,
+            duration = 10000,
             onDiscover = { device ->
                 Log.i(TAG, "Found ${device.name} + ${device.device.bluetoothClass}")
 
                 if (device.name == "") return@scanAsync
 
                 if (possibleClockNames.contains(device.name)) selectDevice(device)
-
                 devices.add(device)
 
             },
@@ -70,8 +69,8 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = false) : Fr
     var selectedDevice: BLEDevice? = null
 
     fun selectDevice(device: BLEDevice) {
-        selected_device_name.text = device.name
         selectedDevice = device
+
     }
 
 
