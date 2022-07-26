@@ -40,7 +40,7 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fra
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        scanForDevices() // Erster Scan wird initiiert
+//        scanForDevices() // Erster Scan wird initiiert
 
         pick_card.setOnClickListener {
             BlueToothPickSheet(devices).show(parentFragmentManager, "")
