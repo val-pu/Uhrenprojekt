@@ -38,6 +38,7 @@ class DeveloperActivity : AppCompatActivity() {
         }
         console_recycler.adapter = ConsoleAdapter(console)
         console_recycler.layoutManager = LinearLayoutManager(this)
+        if(console.size > 0) console_recycler.smoothScrollToPosition(console.size-1)
     }
 
     fun sendMessage(msg: String) {
