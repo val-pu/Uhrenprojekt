@@ -43,8 +43,8 @@
             android:textColor="@color/white" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/developertools_reply"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/console_recycler"
         style="@style/Card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
