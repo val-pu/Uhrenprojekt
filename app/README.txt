@@ -5,7 +5,7 @@ Datum/Uhrzeit: 24.07.2022 14:36
 
 Was:
 - Aenderung des app-namens von 'Uhrenprojekt' --> 'Wort-Uhr Einstellungen'
-    (für bessere Namen bin ich offen)
+    (für bessere Namen bin ich offen) --> Companion ist scheisse aber gut
 
 - App design --> gut so?
 

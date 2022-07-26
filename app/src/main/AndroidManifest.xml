@@ -35,34 +35,40 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Uhrenprojekt">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".calender.CalenderActivity"
+            android:name=".developertools.DeveloperActivity"
+            android:exported="false" />
+        <activity
+            android:name=".alarm.AlarmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".calendar.CalendarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".birthday.BirthdayActivity"
+            android:exported="false" />
+        <activity
+            android:name=".birthday.BirthdayAddActivity"
             android:exported="false" />
         <activity
             android:name=".specials.SpecialsActivity"
-            android:exported="true">
-
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".appearance.AppearanceActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
-        </activity>
-        <activity
-            android:name=".intro.IntroActivity"
-            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity
+            android:name=".intro.IntroActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
