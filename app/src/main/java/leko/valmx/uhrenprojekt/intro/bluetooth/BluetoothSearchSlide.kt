@@ -1,19 +1,27 @@
 package leko.valmx.uhrenprojekt.intro.bluetooth
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.github.appintro.SlidePolicy
 import kotlinx.android.synthetic.main.fragment_bluetooth.*
+import kotlinx.android.synthetic.main.item_bluetooth_device.*
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import quevedo.soares.leandro.blemadeeasy.models.BLEDevice
 import java.util.*
 
-class BluetoothSearchSlide(override var isPolicyRespected: Boolean = false) : Fragment(),
+@DelicateCoroutinesApi
+class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fragment(),
     SlidePolicy {
 
     override fun onUserIllegallyRequestedNextPage() {}
@@ -38,6 +46,24 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = false) : Fr
             BlueToothPickSheet(devices).show(parentFragmentManager, "")
         }
 
+    }
+
+    fun initViews() {
+        connect.setOnClickListener {
+            GlobalScope.launch {
+                val connection = Blue.ble.connect(selectedDevice!!)
+
+                if (connection != null) {
+                    connect.post {
+                        card_found_device.visibility = GONE
+                        pick_card.visibility = GONE
+                        card_success.visibility = VISIBLE
+                    }
+                }
+
+            }
+
+        }
     }
 
 
@@ -70,6 +96,14 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = false) : Fr
 
     fun selectDevice(device: BLEDevice) {
         selectedDevice = device
+        device_name.text = "${device.name} gefunden"
+
+        if (card_found_device.visibility == GONE) {
+            card_found_device.alpha = 0F
+            card_found_device.animate().apply {
+                alpha(1F)
+            }
+        }
 
     }
 

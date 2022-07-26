@@ -1,10 +1,12 @@
 package leko.valmx.uhrenprojekt.intro
 
 import android.Manifest
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.github.appintro.AppIntro2
 import com.github.appintro.AppIntroFragment
+import leko.valmx.uhrenprojekt.MainActivity
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.intro.bluetooth.BluetoothSearchSlide
@@ -39,24 +41,28 @@ class IntroActivity : AppIntro2() {
 
         // Nach dem ersten Slide wird gefragt, ob man Bluetooth & Standortinfos verwenden darf
 
-        askForPermissions(
+/*        askForPermissions(
             permissions = arrayOf(
                 Manifest.permission.BLUETOOTH,
                 Manifest.permission.ACCESS_FINE_LOCATION
             ),
             slideNumber = 1,
             required = true
-        )
+        )*/
+        isWizardMode = true
+
     }
 
     override fun onSkipPressed(currentFragment: Fragment?) {
         super.onSkipPressed(currentFragment)
-        finish()
+        startActivity(Intent(this,MainActivity::class.java))
     }
 
     override fun onDonePressed(currentFragment: Fragment?) {
         super.onDonePressed(currentFragment)
-        finish()
+
+        startActivity(Intent(this,MainActivity::class.java))
+
     }
 
     fun initBLE() {

@@ -71,6 +71,8 @@
         android:id="@+id/card_found_device"
         style="@style/Card"
         android:layout_width="match_parent"
+        android:visibility="gone"
+        tools:visibility="visible"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pick_card">
@@ -110,6 +112,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         style="@style/Card"
         android:id="@+id/card_success"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
