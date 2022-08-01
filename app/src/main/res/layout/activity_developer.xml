@@ -46,8 +46,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/console_recycler"
         style="@style/Card"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="394dp"
+        android:layout_height="587dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
         android:hint="Reply"
@@ -60,7 +60,6 @@
 
     <Button
         android:id="@+id/developertools_reply_btn_clear"
-        style="@style/Card"
         android:layout_width="74dp"
         android:layout_height="32dp"
         android:backgroundTint="#F65959"

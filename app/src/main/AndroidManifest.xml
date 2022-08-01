@@ -37,6 +37,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Uhrenprojekt">
         <activity
+            android:name=".nightmode.NightmodeActivity"
+            android:exported="false" />
+        <activity
             android:name=".developertools.DeveloperActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />

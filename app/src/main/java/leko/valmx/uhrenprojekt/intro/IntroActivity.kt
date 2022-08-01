@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.github.appintro.AppIntro
 import com.github.appintro.AppIntro2
 import com.github.appintro.AppIntroFragment
 import leko.valmx.uhrenprojekt.MainActivity
@@ -25,7 +26,7 @@ class IntroActivity : AppIntro2() {
         addSlide(
             AppIntroFragment.createInstance(
                 title = "Willkommen!",
-                titleColorRes = R.color.black,
+                titleColorRes = R.color.white,
                 description = "Erstmal braucht die App ein paar Berechtigungen, um gut zu funktionieren."
             )
         )
@@ -41,15 +42,15 @@ class IntroActivity : AppIntro2() {
 
         // Nach dem ersten Slide wird gefragt, ob man Bluetooth & Standortinfos verwenden darf
 
-/*        askForPermissions(
+        askForPermissions(
             permissions = arrayOf(
                 Manifest.permission.BLUETOOTH,
                 Manifest.permission.ACCESS_FINE_LOCATION
             ),
             slideNumber = 1,
             required = true
-        )*/
-        isWizardMode = true
+        )
+        //isWizardMode = true
 
     }
 
@@ -60,14 +61,12 @@ class IntroActivity : AppIntro2() {
 
     override fun onDonePressed(currentFragment: Fragment?) {
         super.onDonePressed(currentFragment)
-
         startActivity(Intent(this,MainActivity::class.java))
 
     }
 
     fun initBLE() {
         Blue.ble = BLE(this).apply {
-            verbose = true
         }
     }
 }

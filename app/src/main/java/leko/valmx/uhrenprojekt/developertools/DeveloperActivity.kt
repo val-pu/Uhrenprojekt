@@ -20,6 +20,7 @@ class DeveloperActivity : AppCompatActivity() {
     private val ERROR: String = "ERROR"
     private val SUCCESS: String = "SUCCESS"
     private val INFORMATION: String = "INFO"
+
     lateinit var console: ArrayList<Array<String>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +53,10 @@ class DeveloperActivity : AppCompatActivity() {
 
         //TODO handle other received messages
     }
+
+
+
+
 
 
     fun sendExecutionCommand(view: View) {

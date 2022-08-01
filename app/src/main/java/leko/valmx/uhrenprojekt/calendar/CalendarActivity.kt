@@ -10,6 +10,7 @@ import leko.valmx.uhrenprojekt.MainActivity
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.alarm.AlarmActivity
 import leko.valmx.uhrenprojekt.appearance.AppearanceActivity
+import leko.valmx.uhrenprojekt.nightmode.NightmodeActivity
 
 class CalendarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +26,7 @@ class CalendarActivity : AppCompatActivity() {
         }
 
         btn_to_nightmode.setOnClickListener {
-            startActivity(Intent(this, AppearanceActivity::class.java))
+            startActivity(Intent(this, NightmodeActivity::class.java))
         }
     }
 
