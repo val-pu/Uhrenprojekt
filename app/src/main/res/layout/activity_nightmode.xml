@@ -47,7 +47,7 @@
         app:srcCompat="@drawable/ic_back_arrow" />
 
     <LinearLayout
-        android:id="@+id/linearLayout4"
+        android:id="@+id/nightmode_brightness"
         style="@style/Card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+        app:layout_constraintTop_toBottomOf="@+id/nightmode_endtime"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
@@ -68,6 +68,8 @@
             android:textSize="20sp" />
 
         <EditText
+            android:id="@+id/nightmode_brightness_field"
+            android:inputType="number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -82,7 +84,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout5"
+        android:id="@+id/nightmode_endtime"
         style="@style/Card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -90,7 +92,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/nightmode_begintime"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
@@ -102,6 +104,8 @@
             android:textSize="20sp" />
 
         <EditText
+            android:id="@+id/nightmode_endtime_hour"
+            android:inputType="number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -123,6 +127,8 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/nightmode_endtime_minute"
+            android:inputType="number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -146,7 +152,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/nightmode_begintime"
         style="@style/Card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -167,6 +173,8 @@
             android:textSize="20sp" />
 
         <EditText
+            android:id="@+id/nightmode_begintime_hour"
+            android:inputType="number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -188,12 +196,14 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/nightmode_begintime_minute"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:cursorVisible="false"
             android:gravity="center"
             android:hint="Minute"
+            android:inputType="number"
             android:textColor="@color/white"
             android:textColorHint="#9A9999"
             android:textSize="20sp" />
@@ -223,12 +233,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-        app:layout_constraintVertical_bias="0.061"
+        app:layout_constraintTop_toBottomOf="@+id/nightmode_brightness"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Button
         android:id="@+id/button3"
+        android:onClick="changeNightmodeSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="47dp"

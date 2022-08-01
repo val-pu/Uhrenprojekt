@@ -37,18 +37,27 @@ class AlarmActivity : AppCompatActivity() {
         if(alarm_hour_field.text.toString() != "" && alarm_minute_field.text.toString() != "") {
             var hourStr = alarm_hour_field.text.toString()
             var minStr = alarm_minute_field.text.toString()
+            var durationTime = alarm_duration_time.text.toString()
             if(hourStr.length == 1) hourStr = "0$hourStr"
             if(minStr.length == 1) minStr = "0$minStr"
+            if(hourStr.length > 2) hourStr = hourStr[hourStr.length-2].toString() +
+                    hourStr[hourStr.length-1].toString()
+            if(minStr.length > 2) minStr = minStr[minStr.length-2].toString() +
+                    minStr[minStr.length-1].toString()
+            while(durationTime.startsWith('0')) durationTime = durationTime.substring(1, durationTime.length)
+
+
             val hour = alarm_hour_field.text.toString().toInt()
             val minute = alarm_minute_field.text.toString().toInt()
             if (hour in 0..23 && minute in 0..59) {
                 prefs.edit().putString("alarm_hour", hourStr).apply()
                 prefs.edit().putString("alarm_minute", minStr).apply()
-                prefs.edit().putString("alarm_duration", alarm_duration_time.text.toString()).apply()
+                prefs.edit().putString("alarm_duration", durationTime).apply()
                 alarm_hour_field.setText(hourStr)
                 alarm_minute_field.setText(minStr)
+                alarm_duration_time.setText(durationTime)
                 Toast.makeText(this, "Alarm auf $hourStr:$minStr Uhr eingestellt (Dauer: " +
-                        alarm_duration_time.text.toString() + " Sekunden)", Toast.LENGTH_SHORT).show()
+                        durationTime + " Sekunden)", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Du Scherzkeks :)", Toast.LENGTH_SHORT).show()
             }
