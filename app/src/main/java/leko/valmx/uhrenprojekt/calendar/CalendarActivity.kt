@@ -20,7 +20,7 @@ class CalendarActivity : AppCompatActivity() {
         init()
     }
 
-    fun init(){
+    private fun init(){
         btn_to_alarm.setOnClickListener {
             startActivity(Intent(this, AlarmActivity::class.java))
         }

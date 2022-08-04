@@ -7,12 +7,31 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_icon.view.*
+import kotlinx.android.synthetic.main.widget_item_command.view.*
 import leko.valmx.uhrenprojekt.R
+import leko.valmx.uhrenprojekt.specials.SpecialsActivity
+import java.util.*
+import kotlin.collections.ArrayList
 
-class IconAdapter(private val data: ArrayList<Int>, val context: Context)
-    : RecyclerView.Adapter<IconAdapter.VH>() {
+class IconAdapter() : RecyclerView.Adapter<IconAdapter.VH>() {
 
-    class VH(view: View): RecyclerView.ViewHolder(view)
+    val data = LinkedList<SpecialsActivity.IconInfo>()
+
+    init {
+        val contentList: LinkedList<SpecialsActivity.IconInfo> = LinkedList()
+        contentList.add(SpecialsActivity.IconInfo("Herz", R.drawable.ic_heart, "heart"))
+        contentList.add(SpecialsActivity.IconInfo("Smiley", R.drawable.ic_smile, "smiley"))
+        contentList.add(SpecialsActivity.IconInfo("Haken", R.drawable.ic_check, "check"))
+        contentList.add(SpecialsActivity.IconInfo("Kreuz", R.drawable.ic_smile, "cross"))
+        contentList.add(SpecialsActivity.IconInfo("Plus", R.drawable.ic_plus, "plus"))
+        contentList.add(SpecialsActivity.IconInfo("Mond", R.drawable.ic_moon, "moon"))
+        contentList.add(SpecialsActivity.IconInfo("Doppelpfeil", R.drawable.ic_chevrons_right, "arrow"))
+        data.addAll(contentList)
+
+
+    }
+
+    class VH(view: View) : RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val view = LayoutInflater.from(parent.context)
@@ -22,8 +41,10 @@ class IconAdapter(private val data: ArrayList<Int>, val context: Context)
 
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onBindViewHolder(holder: VH, position: Int) {
-        val content = data[position]
-        holder.itemView.icon.background = context.resources.getDrawable(content)
+        val iconInfo = data[position]
+        val view = holder.itemView
+        view.icon.setImageDrawable(view.context.resources.getDrawable(iconInfo.id))
+        view.icon_name.text = iconInfo.name
     }
 
     override fun getItemCount(): Int = data.size

@@ -4,13 +4,15 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import android.widget.ImageView
 import androidx.core.graphics.toRectF
+import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.util.Util
 
-class ColorPickHintView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
+class ColorPickHintView(context: Context?, attrs: AttributeSet?) : androidx.appcompat.widget.AppCompatImageView(context!!, attrs) {
 
     var textColor: Color = Color.valueOf(255F, 255F, 255F, 255F)
-    var bgColor: Color = Color.valueOf(0F, 100F, 0F, 255F)
+    var bgColor: Color = Color.valueOf(0)
 
     fun setColor(textColor: Color, bgColor: Color) {
 
@@ -25,8 +27,8 @@ class ColorPickHintView(context: Context?, attrs: AttributeSet?) : View(context,
 
         // Farben werden initialisiert
 
-        val bgPaint = Paint().apply { color = Color.DKGRAY }
         val textPaint = Paint().apply { color = textColor.toArgb() }
+        val bgPaint = Paint().apply { color = context!!.getColor(R.color.card) }
 
         // Wichtige Werte
         val radius = height * .1F
@@ -36,7 +38,7 @@ class ColorPickHintView(context: Context?, attrs: AttributeSet?) : View(context,
         val rect = Rect(0, 0, width, height).toRectF()
         val wallPaint = Paint().apply {
             color = bgColor.toArgb()
-            alpha = 160
+            alpha = 255
         }
         canvas!!.drawRoundRect(rect, radius, radius, wallPaint)
         rect.inset(insetAmount, insetAmount)

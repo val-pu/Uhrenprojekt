@@ -10,6 +10,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import leko.valmx.uhrenprojekt.R
 import kotlin.math.roundToInt
@@ -34,7 +35,6 @@ class ProcessFeedBackView(context: Context?, attrs: AttributeSet?) :
 
             erasePaint.blendMode = BlendMode.CLEAR
 
-            startFeedBack(100000)
             background = BitmapDrawable(bitmap)
         }
 
@@ -47,6 +47,7 @@ class ProcessFeedBackView(context: Context?, attrs: AttributeSet?) :
 
         val va = ValueAnimator.ofFloat(0F, (duration / rippleDuration).toFloat())
         va.duration = duration.toLong()
+        va.interpolator = LinearInterpolator()
 
         va.addUpdateListener {
 

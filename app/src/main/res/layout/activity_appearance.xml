@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000"
+    android:background="@color/backdrop"
     tools:context=".intro.IntroActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +18,8 @@
 
         <leko.valmx.uhrenprojekt.appearance.colors.ColorPickHintView
             android:id="@+id/colorPickHintView"
-            android:layout_width="60dp"
+            android:layout_width="@dimen/icon_size"
+            android:layout_margin="@dimen/default_margin"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,12 +32,27 @@
             android:layout_marginStart="@dimen/default_margin"
             android:text="Farben"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/textSize_title"
+            app:layout_constraintStart_toEndOf="@+id/colorPickHintView"
+            app:layout_constraintTop_toTopOf="@+id/colorPickHintView"
+            tools:ignore="SpUsage" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/colorPickHintView"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="SpUsage" />
+            app:srcCompat="@drawable/ic_chevron_right" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,47 +67,41 @@
 
         <ImageView
             android:id="@+id/colorPickHintVie1"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:padding="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/default_margin"
             android:src="@drawable/ic_sun"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@+id/colorPickHintVie1"
-            app:layout_constraintEnd_toStartOf="@+id/colorPickHintVie1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/colorPickHintVie1"
-            app:srcCompat="@drawable/ic_minus" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/colorPickHintVie1"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"
-            app:srcCompat="@drawable/ic_plus"
-            app:tint="@color/white" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/default_padding"
             android:text="Helligkeit"
+            android:layout_marginStart="@dimen/default_margin"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/textSize_title"
+            app:layout_constraintStart_toEndOf="@+id/colorPickHintVie1"
+            app:layout_constraintTop_toTopOf="@+id/colorPickHintVie1" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_chevron_right" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="@+id/textView6"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -106,9 +116,9 @@
 
         <ImageView
             android:id="@+id/colorPickHintVie1w"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:padding="10dp"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_margin="@dimen/default_margin"
             android:src="@drawable/ic_baseline_auto_awesome_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -119,12 +129,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Erscheinungseffekte"
+            android:layout_marginStart="@dimen/default_margin"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/textSize_title"
+            app:layout_constraintStart_toEndOf="@+id/colorPickHintVie1w"
+            app:layout_constraintTop_toTopOf="@+id/colorPickHintVie1w" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/colorPickHintVie1w"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_chevron_right" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

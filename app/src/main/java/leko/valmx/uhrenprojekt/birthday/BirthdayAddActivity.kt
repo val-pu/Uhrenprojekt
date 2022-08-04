@@ -19,34 +19,34 @@ class BirthdayAddActivity : AppCompatActivity() {
         setContentView(R.layout.activity_birthday_add)
     }
 
-    fun addBirthdayStuff(view: View){
+    fun addBirthdayStuff(view: View) {
         val name = birthday_add_name.text.toString()
         var day = birthday_add_date_day.text.toString()
         var month = birthday_add_date_month.text.toString()
-        if(name != "" && day != "" && month != "") {
+        if (name != "" && day != "" && month != "") {
             val dayNumber = day.toInt()
             val monthNumber = month.toInt()
             val dayRange = 1..31
             val monthRange = 1..12
-            if(day.length == 1) day = "0$day"
-            if(month.length == 1) month = "0$month"
+            if (day.length == 1) day = "0$day"
+            if (month.length == 1) month = "0$month"
 
-            if(dayNumber in dayRange && monthNumber in monthRange) {
-                if(day.length > 2) day = day[day.length-2].toString() + day[day.length-1].toString()
-                if(month.length > 2) month = month[month.length-2].toString() + month[month.length-1].toString()
+            if (dayNumber in dayRange && monthNumber in monthRange) {
+                if (day.length > 2) day =
+                    day[day.length - 2].toString() + day[day.length - 1].toString()
+                if (month.length > 2) month =
+                    month[month.length - 2].toString() + month[month.length - 1].toString()
                 val date = "$day.$month"
                 var list: ArrayList<Array<String>> = getArrayList("birthdays")
                 list.add(arrayOf(name, date))
                 saveArrayList(list, "birthdays")
                 startActivity(Intent(this, BirthdayActivity::class.java))
-            }
-            else{
+            } else {
                 Toast.makeText(this, "Du Scherzkeks :)", Toast.LENGTH_SHORT).show()
                 birthday_add_date_day.setText("")
                 birthday_add_date_month.setText("")
             }
-        }
-        else{
+        } else {
             Toast.makeText(this, "Bitte fülle zunächst alle Felder aus!", Toast.LENGTH_SHORT).show()
         }
     }

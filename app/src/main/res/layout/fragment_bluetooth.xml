@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#5C5C5C"
+    android:background="@color/backdrop"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,7 +57,7 @@
         </leko.valmx.uhrenprojekt.util.ProcessFeedBackView>
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/btn_search"
             android:layout_width="0dp"
             style="@style/Button"
             android:layout_height="wrap_content"
@@ -72,7 +72,6 @@
         style="@style/Card"
         android:layout_width="match_parent"
         android:visibility="gone"
-        tools:visibility="visible"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pick_card">

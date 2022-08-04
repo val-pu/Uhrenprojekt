@@ -5,12 +5,12 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
 
-class SquareImageView(context: Context?, attrs: AttributeSet?) :
+class SquareImageViewheight(context: Context?, attrs: AttributeSet?) :
     androidx.appcompat.widget.AppCompatImageView(context!!, attrs) {
 
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, widthMeasureSpec)
+        super.onMeasure(heightMeasureSpec, heightMeasureSpec)
     }
 
 }

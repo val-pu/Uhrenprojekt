@@ -8,6 +8,7 @@ import leko.valmx.uhrenprojekt.appearance.AppearanceActivity
 import leko.valmx.uhrenprojekt.birthday.BirthdayActivity
 import leko.valmx.uhrenprojekt.calendar.CalendarActivity
 import leko.valmx.uhrenprojekt.developertools.DeveloperActivity
+import leko.valmx.uhrenprojekt.newP.CustomizerActivity
 import leko.valmx.uhrenprojekt.specials.SpecialsActivity
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initViews() {
         btn_appearance.setOnClickListener {
-            startActivity(Intent(this, AppearanceActivity::class.java))
+            startActivity(Intent(this, CustomizerActivity::class.java))
         }
 
         btn_specials.setOnClickListener {

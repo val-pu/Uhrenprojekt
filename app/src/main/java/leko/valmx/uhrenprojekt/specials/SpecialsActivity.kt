@@ -17,10 +17,14 @@ class SpecialsActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        val contentList: ArrayList<Int> = ArrayList()
-            contentList.add(R.drawable.ic_sun)
-            contentList.add(R.drawable.card)
-            contentList.add(R.drawable.ic_start)
+        val contentList: ArrayList<IconInfo> = ArrayList()
+            contentList.add(IconInfo("Herz",R.drawable.ic_heart,"heart"))
+            contentList.add(IconInfo("Smiley",R.drawable.ic_smile,"smiley"))
+            contentList.add(IconInfo("Haken",R.drawable.ic_check,"check"))
+//            contentList.add(IconInfo("Kreuz",R.drawable.ic_smile,"cross"))
+        contentList.add(IconInfo("Plus",R.drawable.ic_plus,"plus"))
+        contentList.add(IconInfo("Mond",R.drawable.ic_moon,"moon"))
+        contentList.add(IconInfo("Doppelpfeil",R.drawable.ic_chevrons_right,"arrow"))
 
 
         val gimmickAdapter = IconAdapter(contentList, applicationContext)
@@ -28,5 +32,7 @@ class SpecialsActivity : AppCompatActivity() {
         icon_recycler.layoutManager = GridLayoutManager(applicationContext,3)
 
     }
+
+    class IconInfo(val name: String, val id: Int, val cmd: String)
 
 }
