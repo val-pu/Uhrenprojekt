@@ -1,5 +1,6 @@
 package leko.valmx.uhrenprojekt.newP.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,10 +15,10 @@ import kotlinx.android.synthetic.main.item_fragment.view.*
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.newP.widgets.WidgetHelper
 
-class SavedWidgetsAdapter(val childFragmentManager: FragmentManager) :
+class SavedWidgetsAdapter(val childFragmentManager: FragmentManager, val context: Context) :
     RecyclerView.Adapter<SavedWidgetsAdapter.VH>() {
 
-    val data = WidgetHelper.getSavedWidgets()
+    var data = WidgetHelper.getSavedWidgets(context)
 
 
     class VH(item: View) : RecyclerView.ViewHolder(item) {
@@ -37,7 +38,9 @@ class SavedWidgetsAdapter(val childFragmentManager: FragmentManager) :
 
         val oldFragment: Fragment? = supportFragmentManager.findFragmentById(containerId)
         if (oldFragment != null) {
-            supportFragmentManager.beginTransaction().remove(oldFragment).commit()
+                return
+//            supportFragmentManager.beginTransaction().remove(oldFragment).commit()
+
         }
 
         val generatedId = View.generateViewId()
@@ -45,11 +48,10 @@ class SavedWidgetsAdapter(val childFragmentManager: FragmentManager) :
 
 
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(generatedId, widget).commit()
+        transaction.add(generatedId, widget).commit()
 
 
     }
 
     override fun getItemCount(): Int = data.size
-
 }

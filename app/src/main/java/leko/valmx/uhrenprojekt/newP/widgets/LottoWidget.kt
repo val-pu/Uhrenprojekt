@@ -2,9 +2,10 @@ package leko.valmx.uhrenprojekt.newP.widgets
 
 import androidx.recyclerview.widget.GridLayoutManager
 import leko.valmx.uhrenprojekt.appearance.colors.ColorPickerAdapter
+import leko.valmx.uhrenprojekt.newP.bundles.ChoiceItem
 
 class LottoWidget() : Widget() {
-    override fun getWidgetID(): Int = WidgetHelper.LOTTO_WIDGET
+    override fun getWidgetID(): String = javaClass.name
 
     override fun init() {
         title("Lotto")
@@ -19,6 +20,8 @@ class LottoWidget() : Widget() {
             "lotto",
             description = "Keine Garantie für die Aktualität der Daten"
         )
+
+
 
     }
 }

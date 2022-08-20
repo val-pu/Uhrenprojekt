@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_developer.*
+import kotlinx.android.synthetic.main.widget_item_input.*
 import leko.valmx.uhrenprojekt.R
 import java.lang.reflect.Type
 
@@ -50,6 +51,8 @@ class DeveloperActivity : AppCompatActivity() {
         if (msg == "SUCCESSFUL_EXECUTED") {
             showReply("msg successfully executed", SUCCESS)
         }
+
+
 
         //TODO handle other received messages
     }

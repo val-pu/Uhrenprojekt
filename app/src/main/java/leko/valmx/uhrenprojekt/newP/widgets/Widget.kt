@@ -9,16 +9,15 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.widget.*
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.newP.adapters.WidgetContentAdapter
-import leko.valmx.uhrenprojekt.newP.bundles.CommandBundle
-import leko.valmx.uhrenprojekt.newP.bundles.ContentBundle
-import leko.valmx.uhrenprojekt.newP.bundles.RecyclerBundle
-import leko.valmx.uhrenprojekt.newP.bundles.RedirectBundle
+import leko.valmx.uhrenprojekt.newP.bundles.*
 import java.util.*
 import kotlin.collections.LinkedHashSet
 
@@ -64,19 +63,43 @@ abstract class Widget() : Fragment(R.layout.widget) {
         content.add(RecyclerBundle(name, adapter, description, layoutManager))
     }
 
+    /**
+     * @name sollte einzigartig sein, da die gewählte Option unter diesem namen gespeichert wird.
+    * @author Val
+    * @param choices Eine Funktion wird übergeben in welcher man die Wahlmöglichkeiten definieren kann. Die Parameter werden
+    * so eigesetzt @param command + " " + param
+    * das zurückgegebene Item wird als default-option gesetzt und vorne hinzugefügt sonst wird das erste item gewählt. Ok iwie ist das unnötig, erlaubt aber mehr (Vielleicht?)
+    */
+
+    fun multipleChoice(
+        name: String = "Choice",
+        command: String,
+        choices: (it: LinkedList<ChoiceItem>) -> Unit
+    ) {
+
+        val choiceItems = LinkedList<ChoiceItem>().apply { choices(this) }
+
+        content.add(MultipleChoiceBundle(name, command, choiceItems))
+
+    }
+
+    fun input(name: String = "Input", desc: String = "Geben sie Input ein", listener: OnInputSendListener) {
+        content.add(InputBundle(title, description, listener))
+    }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
         widget_title.text = title
         widget_description.text = description
-        recycler.adapter = WidgetContentAdapter(content)
+        recycler.adapter = WidgetContentAdapter(content, parentFragmentManager!!)
 
         initCollapseFunction()
         initSaveFunction()
     }
 
     private fun initCollapseFunction() {
-
 
         widget_top_bar.setOnClickListener {
 
@@ -126,7 +149,11 @@ abstract class Widget() : Fragment(R.layout.widget) {
         savedSet!!.add(getWidgetID().toString())
 
         edit.putStringSet(WidgetHelper.SAVED_ID, savedSet)
-        edit.apply()
+
+        edit.commit()
+
+        Snackbar.make(view!!, "Test", Snackbar.LENGTH_LONG).show()
+
     }
 
     private fun markAsUnsaved() {
@@ -136,23 +163,21 @@ abstract class Widget() : Fragment(R.layout.widget) {
         savedSet!!.remove(getWidgetID().toString())
 
         edit.putStringSet(WidgetHelper.SAVED_ID, savedSet)
-        edit.apply()
+        edit.commit()
     }
 
-    private var prefs: SharedPreferences? = null
+    private val prefs: SharedPreferences?
         get() {
 
-            if (field == null) loadSharedPrefs()
-
-            return field
+            return loadSharedPrefs()
         }
 
-    private fun loadSharedPrefs() {
-        prefs = context!!.getSharedPreferences(WidgetHelper.PREF_ID, MODE_PRIVATE)
+    private fun loadSharedPrefs(): SharedPreferences? {
+         return context!!.getSharedPreferences(WidgetHelper.PREF_ID, MODE_PRIVATE)
     }
 
 
-    abstract fun getWidgetID(): Int
+    abstract fun getWidgetID(): String
 
     abstract fun init()
 

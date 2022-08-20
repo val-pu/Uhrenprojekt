@@ -27,7 +27,7 @@ class SpecialsActivity : AppCompatActivity() {
         contentList.add(IconInfo("Doppelpfeil",R.drawable.ic_chevrons_right,"arrow"))
 
 
-        val gimmickAdapter = IconAdapter(contentList, applicationContext)
+        val gimmickAdapter = IconAdapter()
         icon_recycler.adapter = gimmickAdapter
         icon_recycler.layoutManager = GridLayoutManager(applicationContext,3)
 

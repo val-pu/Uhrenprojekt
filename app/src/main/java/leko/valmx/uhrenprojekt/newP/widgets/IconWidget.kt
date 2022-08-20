@@ -1,11 +1,10 @@
 package leko.valmx.uhrenprojekt.newP.widgets
 
 import androidx.recyclerview.widget.GridLayoutManager
-import leko.valmx.uhrenprojekt.newP.widgets.WidgetHelper.ICON_WIDGET
 import leko.valmx.uhrenprojekt.specials.icons.IconAdapter
 
 class IconWidget(): Widget() {
-    override fun getWidgetID(): Int = ICON_WIDGET
+    override fun getWidgetID(): String = javaClass.name
 
     override fun init() {
         title("Icons")

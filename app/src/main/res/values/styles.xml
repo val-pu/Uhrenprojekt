@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="Button">
         <item name="android:background">@drawable/card</item>
         <item name="android:backgroundTint">@color/button</item>
@@ -9,4 +10,20 @@
         <item name="android:padding">@dimen/default_padding</item>
         <item name="android:layout_margin">@dimen/default_margin</item>
     </style>
+
+
+    <style name="Description">
+        <item name="android:textColor">@color/description</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">"Desc"</item>
+    </style>
+
+    <style name="Subtitle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/subtitle</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
 </resources>

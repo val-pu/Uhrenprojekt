@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Button"
     android:id="@+id/btn_redirect"
+    style="@style/Button"
     android:layout_width="match_parent"
 
     android:layout_height="wrap_content"
@@ -12,21 +12,19 @@
 
     <TextView
         android:id="@+id/widget_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Matrix"
         style="@style/Subtitle"
+        android:text="Farbmodus"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/btn_continue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/widget_description_redirect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Effekt"
+        android:id="@+id/description_mcho1ice"
+        android:text="Tippen, um eigene Einstellung auszuwählen"
+        app:layout_constraintEnd_toStartOf="@+id/btn_continue"
         style="@style/Description"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/widget_title"
         app:layout_constraintTop_toBottomOf="@+id/widget_title" />
 
     <ImageView

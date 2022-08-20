@@ -31,9 +31,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/widget_top_bar"
-        android:layout_margin="0dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="0dp"
         app:layout_constraintEnd_toStartOf="@+id/btn_save"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -52,22 +52,14 @@
 
         <TextView
             android:id="@+id/widget_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="@dimen/textSize_title"
-            android:textStyle="bold"
+            style="@style/Subtitle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.851"
             app:layout_constraintStart_toEndOf="@+id/btn_collapse"
-            app:layout_constraintTop_toTopOf="@+id/btn_collapse" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/widget_description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textColor="@color/backdrop"
+            style="@style/Description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_collapse"
             app:layout_constraintTop_toBottomOf="@+id/widget_title" />

@@ -5,13 +5,13 @@
     style="@style/Button"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:padding="4dp">
+    android:layout_margin="5dp">
 
     <leko.valmx.uhrenprojekt.util.SquareImageViewheight
         android:id="@+id/icon_command"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:padding="@dimen/default_padding"

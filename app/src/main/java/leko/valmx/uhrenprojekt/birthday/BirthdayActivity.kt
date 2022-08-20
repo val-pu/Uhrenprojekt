@@ -20,7 +20,7 @@ import leko.valmx.uhrenprojekt.MainActivity
 import leko.valmx.uhrenprojekt.R
 import java.lang.reflect.Type
 
-class BirthdayActivity : AppCompatActivity(), BirthdayRecyclerInterface{
+class BirthdayActivity : AppCompatActivity(), BirthdayRecyclerInterface {
 
     lateinit var birthdays: ArrayList<Array<String>>
 
@@ -34,22 +34,20 @@ class BirthdayActivity : AppCompatActivity(), BirthdayRecyclerInterface{
         startActivity(Intent(this, MainActivity::class.java))
     }
 
-    fun init(){
+    fun init() {
         val prefs = getSharedPreferences("WortUhr", MODE_PRIVATE)
         val firstExe = prefs.getBoolean("first_execution_birthdays", true)
-        if(firstExe){
+        if (firstExe) {
             birthdays = ArrayList<Array<String>>()
             saveArrayList(birthdays, "birthdays")
             prefs.edit().putBoolean("first_execution_birthdays", false).apply()
-        }
-        else{
+        } else {
             birthdays = getArrayList("birthdays")
         }
 
-        if (birthdays.size == 0){
+        if (birthdays.size == 0) {
             birthday_empty_recycler.visibility = View.VISIBLE
-        }
-        else{
+        } else {
             birthday_empty_recycler.visibility = View.INVISIBLE
         }
 
@@ -59,7 +57,7 @@ class BirthdayActivity : AppCompatActivity(), BirthdayRecyclerInterface{
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addBirthday(view: View){
+    fun addBirthday(view: View) {
         saveArrayList(birthdays, "birthdays")
         startActivity(Intent(this, BirthdayAddActivity::class.java))
     }
@@ -84,27 +82,25 @@ class BirthdayActivity : AppCompatActivity(), BirthdayRecyclerInterface{
     override fun onClick(pos: Int) {
         birthdays.removeAt(pos)
         calendar_recycler.adapter?.notifyItemRemoved(pos)
-        if (birthdays.size == 0){
+        if (birthdays.size == 0) {
             birthday_empty_recycler.visibility = View.VISIBLE
-        }
-        else{
+        } else {
             birthday_empty_recycler.visibility = View.INVISIBLE
         }
         saveArrayList(birthdays, "birthdays")
         //TODO send update to clock
     }
 
-    fun backToMainActivity(view: View){
+    fun backToMainActivity(view: View) {
         startActivity(Intent(this, MainActivity::class.java))
     }
 
-    fun changeBirthdayAlarm(view: View){
+    fun changeBirthdayAlarm(view: View) {
 
         //achte auf richtige Syncro mit der Uhr
-        if(birthday_alarm_switch.isChecked){
+        if (birthday_alarm_switch.isChecked) {
             //TODO sende 'geb' oder 'geburtstag' true
-        }
-        else{
+        } else {
             //TODO sende 'geb' oder 'geburtstag' false
         }
     }
