@@ -12,7 +12,7 @@ object Blue {
     lateinit var ble: BLE
     var connection : BluetoothConnection? = null
 
-    val debug = true
+    val debug = false
 
     fun sendCommand(command: String, view: View? = null) {
 
@@ -25,7 +25,7 @@ object Blue {
 
     fun getDeviceName(ctx: Context): String? =
         ctx.getSharedPreferences(WidgetHelper.PREF_ID, MODE_PRIVATE).getString(
-            NAME_ID, "LE-Bose QC35 II"
+            NAME_ID, "88:25:83:F2:E1:CF"
         )
 
 }

@@ -85,7 +85,7 @@ class ConnectBottomSheet : Sheet() {
 
             GlobalScope.launch {
 
-                val address = "60:AB:D2:3A:E5:27"
+                val address = "88:25:83:F2:E1:CF"
 
                 text_status.text = "Verbinde mit $address"
 
@@ -93,24 +93,23 @@ class ConnectBottomSheet : Sheet() {
 
                 val connection = Blue.connection
 
-                if (connection == null) {
+                if (!connection!!.isActive) {
                     text_status.text = "Suche fehlgeschlagen"
                     return@launch
                 }
-                text_status.text = "Gerät Gefunden - Verbunden"
+                text_status.text = "Gerät Gefunden - Verbunden ${connection.isActive}"
 
 
                 for (s in connection.readableCharacteristics) {
                     Log.i(
                         "Chars",
-                        connection.write("00000000-0000-0000-0000-000000000000", "Testing").toString()
+                        connection.write("00000000-0000-0000-0000-000000000000", "b1").toString()
                                 + connection.isActive.toString()
                     )
 
                 }
 
 
-                dismiss()
             }
         } catch (e: Exception) {
         }
