@@ -16,6 +16,7 @@ open class UhrAppActivity: AppCompatActivity() {
 
     override fun onPostResume() {
         super.onPostResume()
+        if(!Blue.debug)
         ConnectBottomSheet().show(this) {
 
 

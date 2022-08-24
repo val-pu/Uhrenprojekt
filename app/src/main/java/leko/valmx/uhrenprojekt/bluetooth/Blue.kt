@@ -12,7 +12,7 @@ object Blue {
     lateinit var ble: BLE
     var connection : BluetoothConnection? = null
 
-    val debug = false
+    val debug = true
 
     fun sendCommand(command: String, view: View? = null) {
 
