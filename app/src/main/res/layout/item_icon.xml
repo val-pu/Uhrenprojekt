@@ -6,11 +6,15 @@
     android:layout_height="wrap_content">
 
     <leko.valmx.uhrenprojekt.util.SquareImageView
+        android:id="@+id/icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_sun"
+        android:layout_margin="10dp"
         android:padding="@dimen/default_padding"
-        android:id="@+id/icon"
+        android:background="@drawable/card"
+        android:backgroundTint="@color/black"
+        android:src="@drawable/ic_sun"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,7 +26,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone" app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

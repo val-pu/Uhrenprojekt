@@ -50,6 +50,83 @@ class ColorPickerAdapter() :
                 "Rot"
             )
         )
+
+        data.add(
+            ColorItem(
+                colorValueOf(0, 255, 0),
+                colorValueOf(0, 20, 0),
+                "Rot"
+            )
+        )
+        data.add(
+            ColorItem(
+                colorValueOf(0, 255, 20),
+                colorValueOf(100, 20, 100),
+                "Rot"
+            )
+        )
+
+        data.add(
+            ColorItem(
+                colorValueOf(0, 255, 50),
+                colorValueOf(150, 100, 0),
+                "Rot"
+            )
+        )
+        data.add(
+            ColorItem(
+                colorValueOf(0, 255, 130),
+                colorValueOf(100, 20, 20),
+                "Rot"
+            )
+        )
+        data.add(
+            ColorItem(
+                colorValueOf(0, 255, 255),
+                colorValueOf(0, 20, 20),
+                "Rot"
+            )
+        )
+
+        data.add(
+            ColorItem(
+                colorValueOf(0, 0, 255),
+                colorValueOf(0, 0, 255),
+                "Rot"
+            )
+        )
+
+        data.add(
+            ColorItem(
+                colorValueOf(50, 0, 255),
+                colorValueOf(0,150, 255),
+                "Rot"
+            )
+        )
+
+        data.add(
+            ColorItem(
+                colorValueOf(130, 0, 255),
+                colorValueOf(20,100, 20),
+                "Rot"
+            )
+        )
+
+        data.add(
+            ColorItem(
+                colorValueOf(255, 0, 255),
+                colorValueOf(20,0, 20),
+                "Rot"
+            )
+        )
+
+        data.add(
+            ColorItem(
+                colorValueOf(210, 255, 255),
+                colorValueOf(20,20, 20),
+                "Rot"
+            )
+        )
     }
 
 
