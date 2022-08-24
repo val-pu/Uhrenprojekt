@@ -30,6 +30,7 @@ object WidgetHelper {
             add(NightModeWidget())
             add(GameWidget())
             add(TextWidget())
+            add(AppSettingsWidget())
 
         }
     }
