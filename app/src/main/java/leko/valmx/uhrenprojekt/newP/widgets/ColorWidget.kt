@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.maxkeppeler.sheets.color.ColorSheet
 import leko.valmx.uhrenprojekt.appearance.colors.ColorPickerAdapter
 import leko.valmx.uhrenprojekt.newP.bundles.ChoiceItem
+import leko.valmx.uhrenprojekt.newP.parents.Widget
 
 class ColorWidget : Widget() {
     override fun getWidgetID(): String = javaClass.name
@@ -15,7 +16,7 @@ class ColorWidget : Widget() {
             "Voreinstellungen",
             ColorPickerAdapter(),
             "Voreingestellte Farbthema",
-            GridLayoutManager(context, 4)
+            GridLayoutManager(view.context, 5)
         )
 
         redirect("Hintergrundfarbe", "Setze eine eigene Hintergrundfarbe") {
@@ -28,7 +29,7 @@ class ColorWidget : Widget() {
         }
         redirect("Vordergrundfarbe", "Setze eine eigene Vordergrundfarbe") {
 
-            ColorSheet().show(context!!) {
+            ColorSheet().show(context) {
                 title("Vordergrundfarbe")
                 onPositive {
 
@@ -51,6 +52,6 @@ class ColorWidget : Widget() {
         }
 
         command("Alle Farben", "showcolors", "Zeige alle verfügbaren Farben an")
-        command("Zufallsfarbe", "cc", "Wechsle die Farbe des Displays auf eine Zufallsfarbe")
+        command("Zufallsfarbe", "cc", "Wechsel die Farbe des Displays auf eine Zufallsfarbe")
     }
 }

@@ -19,7 +19,6 @@ class IntroActivity : AppIntro2() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-            initBLE() // Initiiere Bluetooth
         // Intro slides
 
         /*addSlide(
@@ -64,9 +63,5 @@ class IntroActivity : AppIntro2() {
         startActivity(Intent(this, MainActivity::class.java))
     }
 
-    fun initBLE() {
-        Blue.ble = BLE(this).apply {
 
-        }
-    }
 }

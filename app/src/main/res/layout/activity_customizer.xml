@@ -5,7 +5,7 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backdrop"
+    android:background="#FFF"
     tools:context=".newP.CustomizerActivity">
 
     <!--    <androidx.fragment.app.FragmentContainerView-->
@@ -30,6 +30,7 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:tint="@color/black"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/default_margin"
@@ -37,7 +38,7 @@
         android:layout_marginTop="200dp"
         android:clickable="true"
         android:focusable="true"
-        android:src="@drawable/ic_bookmark"
+        android:src="@drawable/ic_bookmark_saved"
         app:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

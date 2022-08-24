@@ -21,10 +21,9 @@
     <TextView
         android:id="@+id/widget_title"
         android:layout_width="wrap_content"
+        style="@style/Subtitle"
         android:layout_height="wrap_content"
         android:text="Matrix"
-        android:textSize="16sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/description"
         app:layout_constraintTop_toTopOf="parent" />
 

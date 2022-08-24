@@ -1,35 +1,20 @@
 package leko.valmx.uhrenprojekt.newP
 
-import android.animation.ValueAnimator
+import android.animation.Animator
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
-import android.view.View.GONE
-import android.view.View.VISIBLE
-import android.widget.RelativeLayout
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.animation.addListener
-import androidx.core.view.marginTop
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_DRAGGING
 import kotlinx.android.synthetic.main.activity_customizer.*
-import kotlinx.android.synthetic.main.activity_customizer.view.*
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.newP.adapters.SavedWidgetsAdapter
-import leko.valmx.uhrenprojekt.newP.widgets.Widget
-import leko.valmx.uhrenprojekt.newP.widgets.WidgetHelper
+import leko.valmx.uhrenprojekt.newP.autoconnect.UhrAppActivity
+import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
 
-class CustomizerActivity : AppCompatActivity() {
+class CustomizerActivity : UhrAppActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customizer)
         initRecycler()
-
-
-
-
     }
 
     var baseMargin = 400F
@@ -43,9 +28,11 @@ class CustomizerActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.i("WIDGETS",getSharedPreferences(WidgetHelper.PREF_ID, MODE_PRIVATE).getStringSet(
-            WidgetHelper.SAVED_ID, HashSet<String>()
-        ).toString())
+        Log.i(
+            "WIDGETS", getSharedPreferences(WidgetHelper.PREF_ID, MODE_PRIVATE).getStringSet(
+                WidgetHelper.SAVED_ID, HashSet<String>()
+            ).toString()
+        )
     }
 
     var isSaved = false
@@ -60,11 +47,52 @@ class CustomizerActivity : AppCompatActivity() {
 
 
         fab.setOnClickListener {
-            if (isSaved) {
+
+            var fromId = R.drawable.ic_bookmark
+            var toId = R.drawable.ic_bookmark_saved
+
+            if (isSaved)
+                fromId = toId
+
+
+            fab.animate().apply {
+
+                alpha(0F)
+
+
+                setListener(object : Animator.AnimatorListener {
+                    override fun onAnimationStart(animation: Animator?) {
+
+                    }
+
+                    override fun onAnimationEnd(animation: Animator?) {
+                        fab.animate().alpha(1F).start()
+
+
+                        fab.setImageDrawable(resources.getDrawable(fromId))
+
+
+                    }
+
+                    override fun onAnimationCancel(animation: Animator?) {
+                    }
+
+                    override fun onAnimationRepeat(animation: Animator?) {
+                    }
+
+                })
+
+                start()
+
+
+            }
+
+            if (!isSaved) {
                 savedWidgetsAdapter.data = WidgetHelper.getSavedWidgets()
             } else savedWidgetsAdapter.data = WidgetHelper.getSavedWidgets(this)
 
-            savedWidgetsAdapter.notifyDataSetChanged()
+
+
 
             isSaved = !isSaved
 
@@ -148,6 +176,7 @@ class CustomizerActivity : AppCompatActivity() {
                 }
             }
 
-        })*/}
+        })*/
+    }
 
 }

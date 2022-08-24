@@ -21,7 +21,6 @@ import java.util.*
 
 class WidgetContentAdapter(
     val content: LinkedList<ContentBundle>,
-    val fragmentManager: FragmentManager
 ) :
     RecyclerView.Adapter<WidgetContentAdapter.VH>() {
 

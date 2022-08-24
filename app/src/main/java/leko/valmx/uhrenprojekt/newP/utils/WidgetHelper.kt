@@ -1,8 +1,13 @@
-package leko.valmx.uhrenprojekt.newP.widgets
+package leko.valmx.uhrenprojekt.newP.utils
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.widget.Toast
+import leko.valmx.uhrenprojekt.newP.parents.Widget
+import leko.valmx.uhrenprojekt.newP.widgets.ColorWidget
+import leko.valmx.uhrenprojekt.newP.widgets.IconWidget
+import leko.valmx.uhrenprojekt.newP.widgets.LottoWidget
+import leko.valmx.uhrenprojekt.newP.widgets.TextWidget
 import java.lang.Exception
 import java.util.*
 import kotlin.collections.HashSet

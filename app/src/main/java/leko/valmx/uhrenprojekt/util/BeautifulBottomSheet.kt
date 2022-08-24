@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.annotation.LayoutRes
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -22,7 +24,9 @@ abstract class BeautifulBottomSheet : BottomSheetDialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        content.addView(layoutInflater.inflate(getLayout(),null))
+        content.addView(layoutInflater.inflate(getLayout(),null).apply {
+            layoutParams = ViewGroup.LayoutParams(MATCH_PARENT,WRAP_CONTENT)
+        })
 
         super.onViewCreated(view, savedInstanceState)
     }

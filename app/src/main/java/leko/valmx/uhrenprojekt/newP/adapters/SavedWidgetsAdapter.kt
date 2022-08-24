@@ -1,57 +1,66 @@
 package leko.valmx.uhrenprojekt.newP.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_birthday_add.view.*
-import kotlinx.android.synthetic.main.fragment_b_sheet.view.*
-import kotlinx.android.synthetic.main.item_fragment.view.*
 import leko.valmx.uhrenprojekt.R
-import leko.valmx.uhrenprojekt.newP.widgets.WidgetHelper
+import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
 
-class SavedWidgetsAdapter(val childFragmentManager: FragmentManager, val context: Context) :
+class SavedWidgetsAdapter(val fragmentManager: FragmentManager, val context: Context) :
     RecyclerView.Adapter<SavedWidgetsAdapter.VH>() {
 
     var data = WidgetHelper.getSavedWidgets(context)
 
 
+    init {
+    }
+
     class VH(item: View) : RecyclerView.ViewHolder(item) {
-        val fragmentHolder = item.findViewById<FragmentContainerView>(R.id.fragment)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val inflater = LayoutInflater.from(parent.context)
-        return VH(inflater.inflate(R.layout.item_fragment, parent, false))
+        return VH(inflater.inflate(R.layout.widget, parent, false)).apply {
+        }
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        val supportFragmentManager =
-            (holder.itemView.context as AppCompatActivity).supportFragmentManager
         val widget = data[position]
-        val containerId: Int = holder.fragmentHolder.id
 
-        val oldFragment: Fragment? = supportFragmentManager.findFragmentById(containerId)
-        if (oldFragment != null) {
-                return
-//            supportFragmentManager.beginTransaction().remove(oldFragment).commit()
+        widget.init(holder.itemView)
 
-        }
-
-        val generatedId = View.generateViewId()
-        holder.fragmentHolder.id = generatedId
-
-
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.add(generatedId, widget).commit()
+        animate(holder.itemView, position)
 
 
     }
 
-    override fun getItemCount(): Int = data.size
+
+    var lastPosition = -1
+
+    fun animate(v: View, position: Int) {
+
+        if (position > lastPosition) {
+
+            val animation = AnimationUtils.loadAnimation(v.context, android.R.anim.slide_in_left)
+
+            v.startAnimation(animation)
+
+        }
+        lastPosition = position
+
+    }
+
+    override fun getItemCount(): Int {
+        lastPosition = -1
+        return data.size
+    }
 }
+
+

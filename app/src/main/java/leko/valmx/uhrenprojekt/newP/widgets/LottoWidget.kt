@@ -1,8 +1,6 @@
 package leko.valmx.uhrenprojekt.newP.widgets
 
-import androidx.recyclerview.widget.GridLayoutManager
-import leko.valmx.uhrenprojekt.appearance.colors.ColorPickerAdapter
-import leko.valmx.uhrenprojekt.newP.bundles.ChoiceItem
+import leko.valmx.uhrenprojekt.newP.parents.Widget
 
 class LottoWidget() : Widget() {
     override fun getWidgetID(): String = javaClass.name

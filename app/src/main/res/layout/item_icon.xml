@@ -3,16 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    style="@style/Button"
     android:layout_height="wrap_content">
 
     <leko.valmx.uhrenprojekt.util.SquareImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_sun"
-
+        android:padding="@dimen/default_padding"
         android:id="@+id/icon"
-        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,6 +18,7 @@
     <TextView
         android:id="@+id/icon_name"
         android:layout_width="wrap_content"
+        style="@style/Description"
         android:layout_height="wrap_content"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,30 +1,33 @@
-package leko.valmx.uhrenprojekt.newP.widgets
+package leko.valmx.uhrenprojekt.newP.parents
 
-import android.animation.Animator
-import android.animation.ValueAnimator
+import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.widget.*
+import kotlinx.android.synthetic.main.widget.view.*
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.newP.adapters.WidgetContentAdapter
 import leko.valmx.uhrenprojekt.newP.bundles.*
+import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
 import java.util.*
 import kotlin.collections.LinkedHashSet
 
-abstract class Widget() : Fragment(R.layout.widget) {
+abstract class Widget() {
 
     private var title = "Titel"
     private var description = ""
+
+    lateinit var view: View
+
+    lateinit var context: Context
 
     var saveListener: OnSaveListener? = null
 
@@ -58,7 +61,7 @@ abstract class Widget() : Fragment(R.layout.widget) {
         name: String = "Recycler",
         adapter: RecyclerView.Adapter<out RecyclerView.ViewHolder>,
         description: String = "",
-        layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(context)
+        layoutManager: RecyclerView.LayoutManager
     ) {
         content.add(RecyclerBundle(name, adapter, description, layoutManager))
     }
@@ -88,31 +91,32 @@ abstract class Widget() : Fragment(R.layout.widget) {
     }
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    fun init(v: View) {
+        view = v
+        context = v.context
         init()
-        widget_title.text = title
-        widget_description.text = description
-        recycler.adapter = WidgetContentAdapter(content, parentFragmentManager!!)
-
+        view.widget_title.text = title
+        view.widget_description.text = description
+        view.recycler.adapter = WidgetContentAdapter(content)
         initCollapseFunction()
         initSaveFunction()
+
     }
 
     private fun initCollapseFunction() {
 
-        widget_top_bar.setOnClickListener {
+        view.widget_top_bar.setOnClickListener {
 
-            val collapse = if (btn_collapse.rotation == 0F) 1 else 0
+            val collapse = if (view.btn_collapse.rotation == 0F) 1 else 0
 
-            btn_collapse.animate().apply {
+            view.btn_collapse.animate().apply {
                 rotation(90F * collapse)
                 start()
             }
 
             if (collapse == 0) {
-                recycler.visibility = GONE
-            } else recycler.visibility = VISIBLE
+                view.recycler.visibility = GONE
+            } else view.recycler.visibility = VISIBLE
         }
     }
 
@@ -120,7 +124,7 @@ abstract class Widget() : Fragment(R.layout.widget) {
 
         updateSavedButton()
 
-        btn_save.setOnClickListener {
+        view.btn_save.setOnClickListener {
             save()
         }
     }
@@ -133,7 +137,7 @@ abstract class Widget() : Fragment(R.layout.widget) {
     }
 
     private fun updateSavedButton() {
-        btn_save.setImageDrawable(resources.getDrawable(if (isSaved()) R.drawable.ic_bookmark_saved else R.drawable.ic_bookmark))
+        view.btn_save.setImageDrawable(view.resources.getDrawable(if (isSaved()) R.drawable.ic_bookmark_saved else R.drawable.ic_bookmark))
     }
 
     fun isSaved(): Boolean {
@@ -173,7 +177,7 @@ abstract class Widget() : Fragment(R.layout.widget) {
         }
 
     private fun loadSharedPrefs(): SharedPreferences? {
-         return context!!.getSharedPreferences(WidgetHelper.PREF_ID, MODE_PRIVATE)
+         return view.context!!.getSharedPreferences(WidgetHelper.PREF_ID, MODE_PRIVATE)
     }
 
 
