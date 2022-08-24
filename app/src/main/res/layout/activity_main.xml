@@ -208,5 +208,13 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <leko.valmx.uhrenprojekt.newP.iconersteller.IconCreatorView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="207dp"
+        tools:layout_editor_absoluteY="519dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
