@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     style="@style/Button"
-    android:backgroundTint="#FDFDF4"
+    android:backgroundTint="@color/white"
+    android:id="@+id/choice_item"
     android:layout_margin="3dp"
     android:layout_height="wrap_content">
 

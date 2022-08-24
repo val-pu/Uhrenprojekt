@@ -31,12 +31,19 @@ class MultipleChoicePopUpAdapter(
 
         itemView.choice_title.text = data.name
         itemView.choice_description.text = data.description
+
+        itemView.choice_item.setOnClickListener {
+
+            listener.onSelected()
+
+        }
+
     }
 
     override fun getItemCount(): Int = dataSet.size
 
     interface OnChoiceSelectedListener {
-
+        fun onSelected()
     }
 
 }

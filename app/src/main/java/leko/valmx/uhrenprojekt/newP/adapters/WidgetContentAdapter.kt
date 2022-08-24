@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.widget.view.*
@@ -37,11 +38,12 @@ class WidgetContentAdapter(
 
         val inflater = LayoutInflater.from(parent.context)
 
-        return VH(inflater.inflate(layout, parent, false))
+        return VH(inflater.inflate(layout, parent, false)).apply { setIsRecyclable(false) }
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val data = content[position]
+        holder.setIsRecyclable(false)
 
         when (data) {
             is CommandBundle -> holder.bind(data)
@@ -82,10 +84,16 @@ class WidgetContentAdapter(
         }
 
         fun bind(redirectBundle: RecyclerBundle) {
+            // Crash fix, weil recycler im recycler im recycler doppelt initiiert wurde TODO: Lösen und nicht so fixen
+            if(itemView.recycler.adapter != null) return
+
             itemView.recycler_title.text = redirectBundle.title
             itemView.recycler_description.text = redirectBundle.description
             itemView.recycler.adapter = redirectBundle.adapter
-            itemView.recycler.layoutManager = redirectBundle.layoutManager
+
+            // TODO Custom layoutmanager erlauben
+
+            itemView.recycler.layoutManager = GridLayoutManager(itemView.context,5)
         }
 
         fun bind(multipleChoiceBundle: MultipleChoiceBundle) {

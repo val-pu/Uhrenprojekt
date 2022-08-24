@@ -7,7 +7,6 @@ import leko.valmx.uhrenprojekt.newP.bundles.ChoiceItem
 import leko.valmx.uhrenprojekt.newP.parents.Widget
 
 class ColorWidget : Widget() {
-    override fun getWidgetID(): String = javaClass.name
 
     override fun init() {
         title("Farberscheinung")

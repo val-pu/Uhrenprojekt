@@ -5,8 +5,6 @@ import leko.valmx.uhrenprojekt.newP.parents.Widget
 import leko.valmx.uhrenprojekt.specials.icons.IconAdapter
 
 class IconWidget(): Widget() {
-    override fun getWidgetID(): String = javaClass.name
-
     override fun init() {
         title("Icons")
         description("Zeige icons an")

@@ -5,7 +5,6 @@ import leko.valmx.uhrenprojekt.newP.bundles.OnInputSendListener
 import leko.valmx.uhrenprojekt.newP.parents.Widget
 
 class TextWidget() : Widget() {
-    override fun getWidgetID(): String = javaClass.name
 
     override fun init() {
         title("Text")

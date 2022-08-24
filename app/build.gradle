@@ -61,7 +61,5 @@ dependencies {
     implementation 'com.github.LeandroSQ:android-ble-made-easy:1.6.0'
     implementation 'com.maxkeppeler.sheets:core:2.2.9'
     implementation 'com.maxkeppeler.sheets:color:2.2.9'
-
-    implementation 'com.google.android.material:material:1.0.0'
     // Bibliothek für das Bluetooth Zeug -> Vereinfacht diesen Workflow extremst
 }

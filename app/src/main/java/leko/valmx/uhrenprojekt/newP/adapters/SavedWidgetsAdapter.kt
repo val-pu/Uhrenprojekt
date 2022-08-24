@@ -29,11 +29,14 @@ class SavedWidgetsAdapter(val fragmentManager: FragmentManager, val context: Con
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val inflater = LayoutInflater.from(parent.context)
         return VH(inflater.inflate(R.layout.widget, parent, false)).apply {
+            setIsRecyclable(false)
         }
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val widget = data[position]
+
+        widget
 
         widget.init(holder.itemView)
 
