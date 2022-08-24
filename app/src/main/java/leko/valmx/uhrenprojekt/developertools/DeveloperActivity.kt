@@ -58,10 +58,6 @@ class DeveloperActivity : AppCompatActivity() {
     }
 
 
-
-
-
-
     fun sendExecutionCommand(view: View) {
         val msg = developertools_field_send_msg.text.toString()
         if (msg != "") {

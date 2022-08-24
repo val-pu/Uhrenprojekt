@@ -4,6 +4,8 @@ import android.animation.Animator
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_customizer.*
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.newP.adapters.SavedWidgetsAdapter
