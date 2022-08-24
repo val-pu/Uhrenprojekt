@@ -45,7 +45,7 @@ class IntroActivity : AppIntro2() {
                 Manifest.permission.BLUETOOTH,
                 Manifest.permission.ACCESS_FINE_LOCATION
             ),
-            slideNumber = 1,
+            slideNumber = 0,
             required = true
         )
         isWizardMode = true
