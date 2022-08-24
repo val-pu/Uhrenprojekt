@@ -3,7 +3,6 @@ package leko.valmx.uhrenprojekt.newP.widgets
 import leko.valmx.uhrenprojekt.newP.parents.Widget
 
 class LottoWidget() : Widget() {
-    override fun getWidgetID(): String = javaClass.name
 
     override fun init() {
         title("Lotto")

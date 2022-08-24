@@ -4,13 +4,9 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.widget.Toast
 import leko.valmx.uhrenprojekt.newP.parents.Widget
-import leko.valmx.uhrenprojekt.newP.widgets.ColorWidget
-import leko.valmx.uhrenprojekt.newP.widgets.IconWidget
-import leko.valmx.uhrenprojekt.newP.widgets.LottoWidget
-import leko.valmx.uhrenprojekt.newP.widgets.TextWidget
-import java.lang.Exception
+import leko.valmx.uhrenprojekt.newP.widgets.*
 import java.util.*
-import kotlin.collections.HashSet
+
 
 object WidgetHelper {
 
@@ -26,10 +22,14 @@ object WidgetHelper {
 
     fun getSavedWidgets(): LinkedList<Widget> {
         return LinkedList<Widget>().apply {
-            add(LottoWidget())
+
+            add(AlarmWidget())
             add(ColorWidget())
             add(IconWidget())
+            add(LottoWidget())
+            add(NightModeWidget())
             add(TextWidget())
+
         }
     }
 
@@ -43,12 +43,13 @@ object WidgetHelper {
 
         widgetNames!!.forEach { name ->
             try {
-                Toast.makeText(ctx,name,Toast.LENGTH_SHORT).show()
-            ret.add(
+                Toast.makeText(ctx, name, Toast.LENGTH_SHORT).show()
+                ret.add(
 
-                Class.forName("$name").newInstance() as Widget
-            )
-            } catch (e: Exception) {}
+                    Class.forName("$name").newInstance() as Widget
+                )
+            } catch (e: Exception) {
+            }
 
         }
 

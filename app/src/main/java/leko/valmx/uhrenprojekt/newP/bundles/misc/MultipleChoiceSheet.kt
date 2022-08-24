@@ -32,5 +32,9 @@ class MultipleChoiceSheet(val dataSet: LinkedList<ChoiceItem>) : Sheet(),
         return this
     }
 
+    override fun onSelected() {
+        dismiss()
+    }
+
 
 }

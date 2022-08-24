@@ -29,12 +29,12 @@ class IntroActivity : AppIntro2() {
             )
         )
 */
-//        addSlide(
-//            AppIntroFragment.createInstance(
-//                title = "Perfekt!",
-//                description = "Nun muss nur noch die Uhr per Bluetooth verbunden werden...."
-//            )
-//        )
+        addSlide(
+            AppIntroFragment.createInstance(
+                title = "Perfekt!",
+                description = "Nun muss nur noch die Uhr per Bluetooth verbunden werden...."
+            )
+        )
 
         addSlide(BluetoothSearchSlide())
 
@@ -45,7 +45,7 @@ class IntroActivity : AppIntro2() {
                 Manifest.permission.BLUETOOTH,
                 Manifest.permission.ACCESS_FINE_LOCATION
             ),
-            slideNumber = 0,
+            slideNumber = 1,
             required = true
         )
         isWizardMode = true

@@ -31,7 +31,7 @@ abstract class Widget() {
 
     var saveListener: OnSaveListener? = null
 
-    private val content: LinkedList<ContentBundle> = LinkedList()
+    var content: LinkedList<ContentBundle> = LinkedList()
 
     fun title(title: String) {
         this.title = title
@@ -92,6 +92,7 @@ abstract class Widget() {
 
 
     fun init(v: View) {
+        content = LinkedList()
         view = v
         context = v.context
         init()
@@ -181,7 +182,7 @@ abstract class Widget() {
     }
 
 
-    abstract fun getWidgetID(): String
+    fun getWidgetID(): String = javaClass.name
 
     abstract fun init()
 
