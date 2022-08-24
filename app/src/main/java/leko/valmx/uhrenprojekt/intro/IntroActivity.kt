@@ -29,12 +29,12 @@ class IntroActivity : AppIntro2() {
             )
         )
 */
-        addSlide(
-            AppIntroFragment.createInstance(
-                title = "Perfekt!",
-                description = "Nun muss nur noch die Uhr per Bluetooth verbunden werden...."
-            )
-        )
+//        addSlide(
+//            AppIntroFragment.createInstance(
+//                title = "Perfekt!",
+//                description = "Nun muss nur noch die Uhr per Bluetooth verbunden werden...."
+//            )
+//        )
 
         addSlide(BluetoothSearchSlide())
 
