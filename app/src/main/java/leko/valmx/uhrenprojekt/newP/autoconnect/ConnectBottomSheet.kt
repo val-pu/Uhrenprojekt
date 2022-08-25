@@ -1,6 +1,7 @@
 package leko.valmx.uhrenprojekt.newP.autoconnect
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,7 @@ import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.intro.IntroActivity
 import leko.valmx.uhrenprojekt.newP.adapters.MultipleChoicePopUpAdapter
 import leko.valmx.uhrenprojekt.newP.bundles.misc.MultipleChoiceSheet
+import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
 
 class ConnectBottomSheet : Sheet() {
 
@@ -30,10 +32,13 @@ class ConnectBottomSheet : Sheet() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if(Blue.debug) {
+        if (Blue.debug) {
             dismiss()
             return
         }
+
+        if (Blue.connection != null && Blue.connection!!.isActive) dismiss()
+
 
         feedBack.startFeedBack(100000)
         startSearch()
@@ -44,11 +49,11 @@ class ConnectBottomSheet : Sheet() {
     fun show(
         ctx: Context,
         width: Int? = null,
-        func: ConnectBottomSheet.() -> Unit
+        func: ConnectBottomSheet.() -> Unit = {}
     ): ConnectBottomSheet {
         this.windowContext = ctx
         this.width = width
-
+        UhrAppActivity.isSheetDisplayed = true
         positiveListener = {
             dismiss()
             ConnectBottomSheet().show(ctx, width, func)
@@ -57,13 +62,16 @@ class ConnectBottomSheet : Sheet() {
 
         onNegative("Verbinde mit anderem Gerät") {
 
+
+
+            ctx.getSharedPreferences(WidgetHelper.PREF_ID,MODE_PRIVATE).edit().putString(Blue.NAME_ID,"").apply()
+
             startActivity(Intent(ctx, IntroActivity::class.java))
 
 
         }
 
 //        displayNegativeButton(false)
-
 
 
         title("Autoverbindung")
@@ -85,7 +93,7 @@ class ConnectBottomSheet : Sheet() {
 
             GlobalScope.launch {
 
-                val address = "88:25:83:F2:E1:CF"
+                val address = Blue.getDeviceName(requireContext())
 
                 text_status.text = "Verbinde mit $address"
 
@@ -99,16 +107,12 @@ class ConnectBottomSheet : Sheet() {
                 }
                 text_status.text = "Gerät Gefunden - Verbunden ${connection.isActive}"
 
-
-                for (s in connection.readableCharacteristics) {
-                    Log.i(
-                        "Chars",
-                        connection.write("00000000-0000-0000-0000-000000000000", "b1").toString()
-                                + connection.isActive.toString()
-                    )
-
+                Blue.connection!!.onDisconnect = {
+                    ConnectBottomSheet().show(requireContext()) {}
                 }
+                UhrAppActivity.isSheetDisplayed = false
 
+                dismiss()
 
             }
         } catch (e: Exception) {

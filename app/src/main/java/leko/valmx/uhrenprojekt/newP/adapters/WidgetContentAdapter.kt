@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.widget_item_recycler.view.recycler
 import kotlinx.android.synthetic.main.widget_item_redirect.view.*
 import kotlinx.android.synthetic.main.widget_item_redirect.view.btn_redirect
 import leko.valmx.uhrenprojekt.R
+import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.newP.bundles.*
 import leko.valmx.uhrenprojekt.newP.bundles.misc.MultipleChoiceSheet
 import java.util.*
@@ -75,6 +76,9 @@ class WidgetContentAdapter(
         fun bind(commandBundle: CommandBundle) {
             itemView.widget_title.text = commandBundle.name
             itemView.description.text = commandBundle.desc
+            itemView.setOnClickListener {
+                Blue.sendCommand(commandBundle.command,itemView)
+            }
         }
 
         fun bind(redirectBundle: RedirectBundle) {
@@ -99,7 +103,7 @@ class WidgetContentAdapter(
         fun bind(multipleChoiceBundle: MultipleChoiceBundle) {
             itemView.widget_title.text = multipleChoiceBundle.title
             itemView.setOnClickListener {
-                MultipleChoiceSheet(multipleChoiceBundle.choices).show(itemView.context) {
+                MultipleChoiceSheet(multipleChoiceBundle.choices,multipleChoiceBundle.command).show(itemView.context) {
                     title("Wähle eine Option")
                 }
             }

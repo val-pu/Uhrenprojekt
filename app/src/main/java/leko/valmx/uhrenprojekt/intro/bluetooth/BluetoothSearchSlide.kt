@@ -1,5 +1,6 @@
 package leko.valmx.uhrenprojekt.intro.bluetooth
 
+import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
+import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
 import quevedo.soares.leandro.blemadeeasy.models.BLEDevice
 import java.util.*
 
@@ -51,16 +53,28 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fra
         connect.setOnClickListener {
             GlobalScope.launch {
                 Log.i("Connecting","Started Connecting to $selectedDevice")
-                val connection = Blue.ble.connect(selectedDevice!!)?.let {
-                    it.write("00000000-0000-0000-0000-000000000000", "Testing")
-                    Log.i("Connecting","$it")
-                }
+                val connection =  Blue.ble.scanFor(
+                    // You only need to supply one of these, no need for all of them!
+                    macAddress = selectedDevice!!.macAddress,
+                )
+
+                Blue.connection = connection
+
+
                 if (connection != null) {
+                    //Log.i("Konnte Schreiben",connection.write("0000FFE1-0000-1000-8000-00805F9B34FB","matrix").toString())
                     connect.post {
                         card_found_device.visibility = GONE
                         pick_card.visibility = GONE
                         card_success.visibility = VISIBLE
                     }
+
+                    val sharedPreferences =
+                        requireActivity().getSharedPreferences(WidgetHelper.PREF_ID,MODE_PRIVATE)
+
+                    sharedPreferences.edit().putString(Blue.NAME_ID,selectedDevice!!.macAddress).apply()
+
+
                 }
 
             }

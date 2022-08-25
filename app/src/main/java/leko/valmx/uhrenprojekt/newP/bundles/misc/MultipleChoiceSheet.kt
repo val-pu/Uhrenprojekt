@@ -8,12 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.maxkeppeler.sheets.core.Sheet
 import kotlinx.android.synthetic.main.widget_subitem_sheet_multiple_choice.*
 import leko.valmx.uhrenprojekt.R
+import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.newP.adapters.MultipleChoicePopUpAdapter
 import leko.valmx.uhrenprojekt.newP.bundles.ChoiceItem
 import leko.valmx.uhrenprojekt.newP.bundles.MultipleChoiceBundle
 import java.util.*
 
-class MultipleChoiceSheet(val dataSet: LinkedList<ChoiceItem>) : Sheet(),
+class MultipleChoiceSheet(val dataSet: LinkedList<ChoiceItem>, val cmd: String) : Sheet(),
     MultipleChoicePopUpAdapter.OnChoiceSelectedListener {
     override fun onCreateLayoutView(): View { return LayoutInflater.from(activity).inflate( R.layout.widget_subitem_sheet_multiple_choice, null) }
 
@@ -32,7 +33,10 @@ class MultipleChoiceSheet(val dataSet: LinkedList<ChoiceItem>) : Sheet(),
         return this
     }
 
-    override fun onSelected() {
+    override fun onSelected(item: ChoiceItem) {
+
+        Blue.sendCommand(cmd + item.parameter)
+
         dismiss()
     }
 

@@ -34,7 +34,7 @@ class MultipleChoicePopUpAdapter(
 
         itemView.choice_item.setOnClickListener {
 
-            listener.onSelected()
+            listener.onSelected(data)
 
         }
 
@@ -43,7 +43,7 @@ class MultipleChoicePopUpAdapter(
     override fun getItemCount(): Int = dataSet.size
 
     interface OnChoiceSelectedListener {
-        fun onSelected()
+        fun onSelected(item: ChoiceItem)
     }
 
 }

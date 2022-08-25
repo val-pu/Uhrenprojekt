@@ -1,13 +1,17 @@
 package leko.valmx.uhrenprojekt.newP.widgets
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import androidx.recyclerview.widget.GridLayoutManager
 import com.maxkeppeler.sheets.color.ColorSheet
 import leko.valmx.uhrenprojekt.appearance.colors.ColorPickerAdapter
+import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.newP.bundles.ChoiceItem
 import leko.valmx.uhrenprojekt.newP.parents.Widget
 
 class ColorWidget : Widget() {
 
+    @SuppressLint("NewApi")
     override fun init() {
         title("Farberscheinung")
         description("Ändere das Thema der Uhr")
@@ -22,6 +26,8 @@ class ColorWidget : Widget() {
             ColorSheet().show(context!!) {
                 title("Hintergrundfarbe")
                 onPositive {
+                    val color = Color.valueOf(it)
+                    Blue.sendCommand("setbg ${(color.red()*255).toInt()},${(color.green()*255).toInt()},${(color.blue()*255).toInt()}")
 
                 }
             }
@@ -30,8 +36,10 @@ class ColorWidget : Widget() {
 
             ColorSheet().show(context) {
                 title("Vordergrundfarbe")
+                disableAlpha()
                 onPositive {
-
+                    val color = Color.valueOf(it)
+                    Blue.sendCommand("setdp ${(color.red()*255).toInt()},${(color.green()*255).toInt()},${(color.blue()*255).toInt()}")
                 }
             }
 
@@ -52,5 +60,7 @@ class ColorWidget : Widget() {
 
         command("Alle Farben", "showcolors", "Zeige alle verfügbaren Farben an")
         command("Zufallsfarbe", "cc", "Wechsel die Farbe des Displays auf eine Zufallsfarbe")
+        command("Hintergrund", "bg", "Schaltet den Hintergund An/Aus")
+        command("Smoothmode", "sm", "Schaltet den Hintergund An/Aus")
     }
 }

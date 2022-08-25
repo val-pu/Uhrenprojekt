@@ -12,6 +12,7 @@ import leko.valmx.uhrenprojekt.MainActivity
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.intro.bluetooth.BluetoothSearchSlide
+import leko.valmx.uhrenprojekt.newP.CustomizerActivity
 import quevedo.soares.leandro.blemadeeasy.BLE
 
 class IntroActivity : AppIntro2() {
@@ -19,9 +20,22 @@ class IntroActivity : AppIntro2() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Intro slides
 
-        /*addSlide(
+
+        val deviceName = Blue.getDeviceName(this)
+
+
+
+
+        // Intro slides
+/*
+        addSlide(
+            AppIntroFragment.createInstance(
+                title = "Perfekt!",
+                description = "Nun muss nur noch die Uhr per Bluetooth verbunden werden...."
+            )
+        )
+        addSlide(
             AppIntroFragment.createInstance(
                 title = "Willkommen!",
                 titleColorRes = R.color.black,
@@ -29,13 +43,7 @@ class IntroActivity : AppIntro2() {
             )
         )
 */
-        addSlide(
-            AppIntroFragment.createInstance(
-                title = "Perfekt!",
-                description = "Nun muss nur noch die Uhr per Bluetooth verbunden werden...."
-            )
-        )
-
+        Blue.ble = BLE(this)
         addSlide(BluetoothSearchSlide())
 
         // Nach dem ersten Slide wird gefragt, ob man Bluetooth & Standortinfos verwenden darf
@@ -49,7 +57,12 @@ class IntroActivity : AppIntro2() {
             required = true
         )
         isWizardMode = true
+        if (deviceName != "") {
 
+            startActivity(Intent(this, CustomizerActivity::class.java))
+
+            return
+        }
     }
 
     override fun onSkipPressed(currentFragment: Fragment?) {

@@ -22,26 +22,28 @@
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-                app:contentScrim="@color/white"
+                android:backgroundTint="@color/white"
                 app:collapsedTitleTextColor="@color/black"
+                app:contentScrim="@color/white"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                app:statusBarScrim="#FFF"
                 app:toolbarId="@id/toolbar">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_android"
                     android:backgroundTint="@color/white"
-                    android:scaleType="centerCrop"
                     android:fitsSystemWindows="true"
-                    app:layout_collapseMode="parallax"/>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_android"
+                    app:layout_collapseMode="parallax" />
 
                 <androidx.appcompat.widget.Toolbar
-                    app:title="Einstellungen"
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    app:layout_collapseMode="pin" />
+                    app:layout_collapseMode="pin"
+                    app:title="Einstellungen" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
