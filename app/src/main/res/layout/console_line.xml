@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/console_line"
         android:layout_width="400dp"
-        android:layout_height="25dp"
+        android:layout_height="wrap_content"
         android:text="test"
         android:gravity="center_vertical"
         android:textSize="15sp"

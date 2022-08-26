@@ -105,7 +105,7 @@ class ConnectBottomSheet : Sheet() {
                     text_status.text = "Suche fehlgeschlagen"
                     return@launch
                 }
-                text_status.text = "Gerät Gefunden - Verbunden ${connection.isActive}"
+                if(text_status != null) text_status.text = "Gerät Gefunden - Verbunden ${connection.isActive}"
 
                 Blue.connection!!.onDisconnect = {
                     ConnectBottomSheet().show(requireContext()) {}

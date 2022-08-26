@@ -11,7 +11,6 @@ import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.newP.adapters.MultipleChoicePopUpAdapter
 import leko.valmx.uhrenprojekt.newP.bundles.ChoiceItem
-import leko.valmx.uhrenprojekt.newP.bundles.MultipleChoiceBundle
 import java.util.*
 
 class MultipleChoiceSheet(val dataSet: LinkedList<ChoiceItem>, val cmd: String) : Sheet(),

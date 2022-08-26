@@ -1,18 +1,15 @@
 package leko.valmx.uhrenprojekt.specials.icons
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_icon.view.*
-import kotlinx.android.synthetic.main.widget_item_command.view.*
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.specials.SpecialsActivity
 import java.util.*
-import kotlin.collections.ArrayList
 
 class IconAdapter() : RecyclerView.Adapter<IconAdapter.VH>() {
 

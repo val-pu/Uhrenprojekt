@@ -2,31 +2,51 @@ package leko.valmx.uhrenprojekt.developertools
 
 import android.annotation.SuppressLint
 import android.content.SharedPreferences
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_developer.*
-import kotlinx.android.synthetic.main.widget_item_input.*
 import leko.valmx.uhrenprojekt.R
+import leko.valmx.uhrenprojekt.bluetooth.Blue
+import leko.valmx.uhrenprojekt.newP.CustomizerActivity
+import leko.valmx.uhrenprojekt.newP.autoconnect.UhrAppActivity
+import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
 import java.lang.reflect.Type
 
-class DeveloperActivity : AppCompatActivity() {
-
-    private val ERROR: String = "ERROR"
-    private val SUCCESS: String = "SUCCESS"
-    private val INFORMATION: String = "INFO"
+class DeveloperActivity : UhrAppActivity(), ReplyCallInterface{
 
     lateinit var console: ArrayList<Array<String>>
+    val ERROR: String = "ERROR"
+    val SUCCESS: String = "SUCCESS"
+    val INFORMATION: String = "INFO"
+    val CONNECTION_INFO: String = "CONNECTION_INFO"
+
+    companion object{
+        var isActive = false
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_developer)
+        isActive = true
+
+        developertools_connection_btn.setOnClickListener {
+            val name_id: String = "NameID: " + Blue.NAME_ID
+            val charac: String = "Characteristics: 0000FFE1-0000-1000-8000-00805F9B34FB"
+            val macadress: String = "MAC-Address: " + getSharedPreferences(WidgetHelper.PREF_ID, MODE_PRIVATE).getString(
+                Blue.NAME_ID, ""
+            ).toString()
+            val connected: String = "Connnected: " + Blue.connection!!.isActive.toString()
+            val verbouse: String = "Verbouse: " + Blue.connection!!.verbose.toString()
+            val rsii: String = "rsii: " + Blue.connection!!.rsii.toString()
+
+            val finalInfo: String = "\n$name_id\n$macadress\n$connected\n" + charac + "\n$verbouse\n$rsii"
+            showReply(finalInfo, CONNECTION_INFO)
+        }
 
         val prefs = getSharedPreferences("Wort-Uhr", MODE_PRIVATE)
         val firstOpen = prefs.getBoolean("developertools_first_open", true)
@@ -44,7 +64,7 @@ class DeveloperActivity : AppCompatActivity() {
     }
 
     fun sendMessage(msg: String) {
-        //TODO send message 'msg' to clock
+        Blue.sendCommand(msg, getWindow().getDecorView().getRootView())
     }
 
     fun receiveMessage(msg: String) {
@@ -57,8 +77,14 @@ class DeveloperActivity : AppCompatActivity() {
         //TODO handle other received messages
     }
 
+    override fun onBackPressed() {
+        isActive = false
+        super.onBackPressed()
+    }
+
 
     fun sendExecutionCommand(view: View) {
+        Blue.initRelyInterface(this)
         val msg = developertools_field_send_msg.text.toString()
         if (msg != "") {
             showReply("send message: \'$msg\'", SUCCESS)
@@ -70,13 +96,16 @@ class DeveloperActivity : AppCompatActivity() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun showReply(pMsg: String, type: String) {
+    fun showReply(pMsg: String, type: String, show: Boolean = false) {
         var msg = pMsg
         if (type == INFORMATION) {
-            msg = "INFO: $msg"
+            msg = "$INFORMATION: $msg"
         }
         if (type == ERROR) {
-            msg = "ERROR: $msg"
+            msg = "$ERROR: $msg"
+        }
+        if(type == SUCCESS && show){
+            msg = "$SUCCESS: $msg"
         }
         console.add(arrayOf(msg, type))
         console_recycler.adapter?.notifyDataSetChanged()
@@ -106,5 +135,16 @@ class DeveloperActivity : AppCompatActivity() {
         val json: String? = prefs.getString(key, null)
         val type: Type = object : TypeToken<ArrayList<Array<String>>>() {}.getType()
         return gson.fromJson(json, type)
+    }
+
+
+
+    override fun callReply(success: Int) {
+        if(success == 1){
+            showReply("send successfully", SUCCESS, true)
+        }else{
+            showReply("sending failed.\n" +
+                    "No Connection established", ERROR)
+        }
     }
 }

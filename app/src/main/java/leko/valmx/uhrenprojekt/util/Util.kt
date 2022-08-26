@@ -35,5 +35,4 @@ object Util {
 
         canvas.drawText(text, xPos, yPos, textPaint)
     }
-
 }

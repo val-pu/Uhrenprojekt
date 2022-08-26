@@ -3,11 +3,9 @@ package leko.valmx.uhrenprojekt.newP.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.widget.view.*
 import kotlinx.android.synthetic.main.widget_item_command.view.description
 import kotlinx.android.synthetic.main.widget_item_command.view.widget_title
 import kotlinx.android.synthetic.main.widget_item_input.view.*

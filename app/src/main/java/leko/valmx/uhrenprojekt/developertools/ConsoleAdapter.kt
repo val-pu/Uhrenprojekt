@@ -21,8 +21,11 @@ class ConsoleAdapter(val consoleContent: ArrayList<Array<String>>):
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val content = consoleContent[position][0]
+        var content = consoleContent[position][0]
         val type = consoleContent[position][1]
+        if(type == "CONNECTION_INFO"){
+            content = "--------" + content + "\n--------"
+        }
         holder.itemView.console_line.text = content
         if(type == "SUCCESS"){
             holder.itemView.console_line.setTextColor(Color.WHITE)
@@ -33,6 +36,8 @@ class ConsoleAdapter(val consoleContent: ArrayList<Array<String>>):
         if(type == "ERROR"){
             holder.itemView.console_line.setTextColor(Color.RED)
         }
+        if(type == "CONNECTION_INFO")
+            holder.itemView.console_line.setTextColor(Color.argb(255, 255,165,0))
     }
 
     override fun getItemCount(): Int = consoleContent.size
