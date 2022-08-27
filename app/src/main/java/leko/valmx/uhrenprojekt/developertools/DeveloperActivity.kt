@@ -11,7 +11,6 @@ import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_developer.*
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
-import leko.valmx.uhrenprojekt.newP.CustomizerActivity
 import leko.valmx.uhrenprojekt.newP.autoconnect.UhrAppActivity
 import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
 import java.lang.reflect.Type
