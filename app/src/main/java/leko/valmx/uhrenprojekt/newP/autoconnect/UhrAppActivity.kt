@@ -2,10 +2,7 @@ package leko.valmx.uhrenprojekt.newP.autoconnect
 
 import androidx.appcompat.app.AppCompatActivity
 import leko.valmx.uhrenprojekt.bluetooth.Blue
-import leko.valmx.uhrenprojekt.newP.CustomizerActivity
-import leko.valmx.uhrenprojekt.newP.widgets.ConnectionInterface
 import quevedo.soares.leandro.blemadeeasy.BLE
-import java.util.logging.Handler
 
 open class UhrAppActivity : AppCompatActivity(), Runnable {
 

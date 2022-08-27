@@ -15,7 +15,7 @@ import leko.valmx.uhrenprojekt.newP.autoconnect.UhrAppActivity
 import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
 import java.lang.reflect.Type
 
-class DeveloperActivity : UhrAppActivity(), ReplyCallInterface{
+class DeveloperActivity : UhrAppActivity(), SendingSuccessInterface{
 
     lateinit var console: ArrayList<Array<String>>
     val ERROR: String = "ERROR"

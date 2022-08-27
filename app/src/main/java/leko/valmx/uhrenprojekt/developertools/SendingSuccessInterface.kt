@@ -1,5 +1,5 @@
 package leko.valmx.uhrenprojekt.developertools
 
-interface ReplyCallInterface {
+interface SendingSuccessInterface {
     fun callReply(success: Int)
 }

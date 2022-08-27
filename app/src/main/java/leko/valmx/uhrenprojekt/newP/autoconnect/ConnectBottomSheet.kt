@@ -3,28 +3,20 @@ package leko.valmx.uhrenprojekt.newP.autoconnect
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.maxkeppeler.sheets.core.Sheet
 import kotlinx.android.synthetic.main.sheet_bluetooth_autoconnect.*
-import kotlinx.android.synthetic.main.widget_subitem_sheet_multiple_choice.*
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.intro.IntroActivity
 import leko.valmx.uhrenprojekt.newP.CustomizerActivity
-import leko.valmx.uhrenprojekt.newP.adapters.MultipleChoicePopUpAdapter
-import leko.valmx.uhrenprojekt.newP.bundles.misc.MultipleChoiceSheet
 import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
-import leko.valmx.uhrenprojekt.newP.widgets.ConnectionInterface
 
 class ConnectBottomSheet : Sheet() {
 
@@ -137,6 +129,7 @@ class ConnectBottomSheet : Sheet() {
                     }
                     UhrAppActivity.isSheetDisplayed = false
 
+                    Blue.isConnected = true
                     CustomizerActivity.connectionEstablished()
 
                     dismiss()

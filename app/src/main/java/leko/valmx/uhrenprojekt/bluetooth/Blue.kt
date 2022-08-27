@@ -3,25 +3,24 @@ package leko.valmx.uhrenprojekt.bluetooth
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.view.View
-import com.google.android.material.snackbar.Snackbar
-import leko.valmx.uhrenprojekt.bluetooth.Blue.callReply
 import leko.valmx.uhrenprojekt.developertools.DeveloperActivity
-import leko.valmx.uhrenprojekt.developertools.ReplyCallInterface
+import leko.valmx.uhrenprojekt.developertools.SendingSuccessInterface
 import leko.valmx.uhrenprojekt.newP.autoconnect.ConnectBottomSheet
 import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
 import quevedo.soares.leandro.blemadeeasy.BLE
 import quevedo.soares.leandro.blemadeeasy.BluetoothConnection
 
-object Blue: ReplyCallInterface{
+object Blue: SendingSuccessInterface{
     lateinit var ble: BLE
     var connection : BluetoothConnection? = null
 
-    var reply: ReplyCallInterface = this as ReplyCallInterface
+
+    var successInterface: SendingSuccessInterface = this as SendingSuccessInterface
 
     val debug = false
     var success: Int = 0
 
-    var isConnected = false
+    @Volatile var isConnected = false
 
     fun sendCommand(command: String, view: View? = null) {
 
@@ -30,7 +29,7 @@ object Blue: ReplyCallInterface{
         view?.apply {
             if(!write && !DeveloperActivity.isActive) ConnectBottomSheet().show(view.context) { }
             if(write) success = 1 else success = -1
-            reply.callReply(success)
+            successInterface.callReply(success)
         }
 
 
@@ -43,8 +42,8 @@ object Blue: ReplyCallInterface{
             NAME_ID, ""
         )
 
-    fun initRelyInterface(replyInterface: ReplyCallInterface){
-        reply = replyInterface
+    fun initRelyInterface(replyInterface: SendingSuccessInterface){
+        successInterface = replyInterface
     }
 
     override fun callReply(success: Int) {
