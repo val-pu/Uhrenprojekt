@@ -1,7 +1,5 @@
 package leko.valmx.uhrenprojekt.newP.widgets
 
-import leko.valmx.uhrenprojekt.bluetooth.Blue
-import leko.valmx.uhrenprojekt.bluetooth.BlueAdapter
 import leko.valmx.uhrenprojekt.newP.bundles.ChoiceItem
 import leko.valmx.uhrenprojekt.newP.bundles.OnInputSendListener
 import leko.valmx.uhrenprojekt.newP.parents.Widget
@@ -23,7 +21,7 @@ class TextWidget() : Widget() {
 
         input("Sofortausgabe", "Gibt den nachfolgenden Text sofort aus", object : OnInputSendListener {
             override fun onInput(text: String) {
-                BlueAdapter.sendCommand(" $text")
+
             }
 
         })

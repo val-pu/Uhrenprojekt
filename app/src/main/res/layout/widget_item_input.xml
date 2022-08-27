@@ -60,6 +60,7 @@
             android:layout_margin="4dp"
             android:layout_height="wrap_content"
             android:hint="Eingabe"
+            android:textColor="@color/black"
             android:textColorHint="#000"/>
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

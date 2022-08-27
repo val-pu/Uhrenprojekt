@@ -5,8 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
+import android.view.View.*
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.github.appintro.SlidePolicy
@@ -16,6 +15,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
+import leko.valmx.uhrenprojekt.newP.utils.LoadingDialog
 import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
 import quevedo.soares.leandro.blemadeeasy.models.BLEDevice
 import java.util.*
@@ -26,6 +26,8 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fra
 
     override fun onUserIllegallyRequestedNextPage() {}
 
+    var container: ViewGroup? = null
+
     private var devices = LinkedList<BLEDevice>()
 
     override fun onCreateView(
@@ -33,6 +35,7 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fra
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        this.container = container
         return inflater.inflate(R.layout.fragment_bluetooth, container, false)
     }
 

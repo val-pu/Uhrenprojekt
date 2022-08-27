@@ -6,12 +6,16 @@
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_android.xml" value="0.1" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_ble.xml" value="0.1" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/ic_bluetooth.xml" value="0.1" />
+        <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/word_clock.xml" value="0.1" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_birthday.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_customizer.xml" value="0.22" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/activity_developer.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/birthday_row_content.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/console_line.xml" value="0.18645833333333334" />
+        <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/fragment_bluetooth.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/games_row.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/item_bluetooth_device.xml" value="0.18645833333333334" />
+        <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/item_fragment.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/item_icon.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/loading_dialog.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/sheet_bluetooth_autoconnect.xml" value="0.18645833333333334" />
@@ -20,6 +24,7 @@
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/widget_item_multiple_choice.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/widget_item_recycler.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/layout/widget_item_redirect.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Lenna/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable-v24/ic_bookmark_saved.xml" value="0.374" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.395" />
         <entry key="..\:/Users/valpu/AndroidStudioProjects/Uhrenprojekt/app/src/main/res/drawable/card.xml" value="0.399" />
