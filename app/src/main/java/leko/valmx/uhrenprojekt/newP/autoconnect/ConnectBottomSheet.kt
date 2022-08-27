@@ -1,7 +1,9 @@
 package leko.valmx.uhrenprojekt.newP.autoconnect
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -13,15 +15,33 @@ import kotlinx.android.synthetic.main.sheet_bluetooth_autoconnect.*
 import kotlinx.android.synthetic.main.widget_subitem_sheet_multiple_choice.*
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.intro.IntroActivity
+import leko.valmx.uhrenprojekt.newP.CustomizerActivity
 import leko.valmx.uhrenprojekt.newP.adapters.MultipleChoicePopUpAdapter
 import leko.valmx.uhrenprojekt.newP.bundles.misc.MultipleChoiceSheet
 import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
+import leko.valmx.uhrenprojekt.newP.widgets.ConnectionInterface
 
 class ConnectBottomSheet : Sheet() {
+
+    companion object{
+        var  connectBottomSheet: ConnectBottomSheet? = null
+
+        fun getInstance(): ConnectBottomSheet{
+            if(connectBottomSheet == null){
+                connectBottomSheet = ConnectBottomSheet()
+            }
+            return connectBottomSheet!!
+        }
+
+        fun undo(){
+            connectBottomSheet = null
+        }
+    }
 
 
     override fun onCreateLayoutView(): View {
@@ -32,6 +52,9 @@ class ConnectBottomSheet : Sheet() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        getDialog()!!.setCanceledOnTouchOutside(false);
+        setCancelable(false)
+
         if (Blue.debug) {
             dismiss()
             return
@@ -40,7 +63,7 @@ class ConnectBottomSheet : Sheet() {
         if (Blue.connection != null && Blue.connection!!.isActive) dismiss()
 
 
-        feedBack.startFeedBack(100000)
+        feedBack.startFeedBack(Integer.MAX_VALUE)
         startSearch()
 
 
@@ -56,7 +79,7 @@ class ConnectBottomSheet : Sheet() {
         UhrAppActivity.isSheetDisplayed = true
         positiveListener = {
             dismiss()
-            ConnectBottomSheet().show(ctx, width, func)
+            getInstance().show(ctx, width, func)
         }
         positiveText = "Suche Wiederholen"
 
@@ -79,47 +102,51 @@ class ConnectBottomSheet : Sheet() {
 
         func(this)
 
-
-        if (!Blue.debug)
-            isCancelable = false
         this.show()
         return this
     }
 
+    @SuppressLint("MissingPermission")
     @OptIn(DelicateCoroutinesApi::class)
     fun startSearch() {
         val ble = Blue.ble
         try {
 
             GlobalScope.launch {
+                val devices = ble.scan(duration = 20_000)
+                try {
+                    val address = Blue.getDeviceName(requireContext())
 
-                val address = Blue.getDeviceName(requireContext())
 
-                text_status.text = "Verbinde mit $address"
+                    text_status.text = "Verbinde mit $address"
 
-                Blue.connection = ble.scanFor(macAddress = address)
+                    Blue.connection = ble.scanFor(macAddress = address)
 
-                val connection = Blue.connection
+                    val connection = Blue.connection
 
-                if (!connection!!.isActive) {
-                    text_status.text = "Suche fehlgeschlagen"
-                    return@launch
+                    Blue.isConnected = true
+
+                    if (!connection!!.isActive) {
+                        text_status.text = "Suche fehlgeschlagen"
+                        return@launch
+                    }
+                    if(text_status != null) text_status.text = "Gerät Gefunden - Verbunden ${connection.isActive}"
+
+                    Blue.connection!!.onDisconnect = {
+                        ConnectBottomSheet.getInstance().show(requireContext()) {}
+                    }
+                    UhrAppActivity.isSheetDisplayed = false
+
+                    CustomizerActivity.connectionEstablished()
+
+                    dismiss()
+                }catch(e2: IllegalStateException){
+                    dismiss()
                 }
-                if(text_status != null) text_status.text = "Gerät Gefunden - Verbunden ${connection.isActive}"
-
-                Blue.connection!!.onDisconnect = {
-                    ConnectBottomSheet().show(requireContext()) {}
-                }
-                UhrAppActivity.isSheetDisplayed = false
-
-                dismiss()
-
             }
         } catch (e: Exception) {
         }
 
 
     }
-
-
 }

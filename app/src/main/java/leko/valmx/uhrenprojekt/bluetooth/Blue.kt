@@ -21,6 +21,8 @@ object Blue: ReplyCallInterface{
     val debug = false
     var success: Int = 0
 
+    var isConnected = false
+
     fun sendCommand(command: String, view: View? = null) {
 
         val write = connection?.write("0000FFE1-0000-1000-8000-00805F9B34FB", command)!!
@@ -41,8 +43,8 @@ object Blue: ReplyCallInterface{
             NAME_ID, ""
         )
 
-    fun initRelyInterface(i: ReplyCallInterface){
-        reply = i
+    fun initRelyInterface(replyInterface: ReplyCallInterface){
+        reply = replyInterface
     }
 
     override fun callReply(success: Int) {

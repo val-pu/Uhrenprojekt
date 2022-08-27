@@ -64,17 +64,12 @@ class DeveloperActivity : UhrAppActivity(), ReplyCallInterface{
     }
 
     fun sendMessage(msg: String) {
-        Blue.sendCommand(msg, getWindow().getDecorView().getRootView())
-    }
-
-    fun receiveMessage(msg: String) {
-        if (msg == "SUCCESSFUL_EXECUTED") {
-            showReply("msg successfully executed", SUCCESS)
+        try {
+            Blue.sendCommand(msg, getWindow().getDecorView().getRootView())
+        }catch(e: Exception){
+            showReply("sending failed.\n" +
+                    e.toString(), ERROR)
         }
-
-
-
-        //TODO handle other received messages
     }
 
     override fun onBackPressed() {
