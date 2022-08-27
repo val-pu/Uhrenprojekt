@@ -45,7 +45,7 @@ object WidgetHelper {
 
         widgetNames!!.forEach { name ->
             try {
-                Toast.makeText(ctx, name, Toast.LENGTH_SHORT).show()
+                //Toast.makeText(ctx, name, Toast.LENGTH_SHORT).show()
                 ret.add(
 
                     Class.forName("$name").newInstance() as Widget

@@ -157,7 +157,7 @@ abstract class Widget() {
 
         edit.commit()
 
-        Snackbar.make(view!!, "Test", Snackbar.LENGTH_LONG).show()
+        //Snackbar.make(view!!, "Test", Snackbar.LENGTH_LONG).show()
 
     }
 
