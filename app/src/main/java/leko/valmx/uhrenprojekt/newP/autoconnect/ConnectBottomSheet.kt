@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import com.maxkeppeler.sheets.core.Sheet
@@ -17,6 +18,8 @@ import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.intro.IntroActivity
 import leko.valmx.uhrenprojekt.newP.CustomizerActivity
 import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
+import leko.valmx.uhrenprojekt.popup.InputBottomSheet
+import java.util.*
 
 class ConnectBottomSheet : Sheet() {
 

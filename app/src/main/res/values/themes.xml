@@ -14,6 +14,8 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="sheetsTitleColor">#000</item>
+        <item name="sheetsBackgroundColor">#FFF</item>
+        <item name="sheetsButtonColor">#000</item>
 
 
     </style>

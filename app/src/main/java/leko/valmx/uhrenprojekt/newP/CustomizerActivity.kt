@@ -122,6 +122,23 @@ class CustomizerActivity : UhrAppActivity(){
             }
         }
 
+        btn_restart.setOnClickListener{
+            if(!Blue.isConnected){
+                ConnectBottomSheet.getInstance().show(this){}
+                android.os.Handler().postDelayed(this, 20_000)
+
+            }else{
+                Blue.sendCommand("reset")
+                Blue.isConnected = false
+                ConnectBottomSheet.undo()
+                Blue.connection = null
+                ble.setBackgroundTintList(ColorStateList.valueOf(Color
+                    .parseColor("#FFFFFF")));
+                ConnectBottomSheet.getInstance().show(this){}
+                android.os.Handler().postDelayed(this, 20_000)
+            }
+        }
+
     }
 
     companion object{
