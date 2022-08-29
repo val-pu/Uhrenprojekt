@@ -1,10 +1,11 @@
 package leko.valmx.uhrenprojekt.newP.autoconnect
 
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import quevedo.soares.leandro.blemadeeasy.BLE
 
-open class UhrAppActivity : AppCompatActivity(), Runnable {
+open class UhrAppActivity : AppCompatActivity(), Runnable{
 
     init {
         isSheetDisplayed = false

@@ -19,11 +19,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/textInputLayout123"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/default_margin"
         android:elevation="3dp"
+        android:hint=""
         app:boxBackgroundColor="#FFF"
         app:boxCornerRadiusBottomEnd="@dimen/default_margin"
         app:boxCornerRadiusBottomStart="@dimen/default_margin"
@@ -40,7 +41,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:background="@drawable/inputtext_line"
-            android:hint="hh:mm"
             android:textColor="@color/black"
             android:textColorHint="#000" />
 

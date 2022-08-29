@@ -11,13 +11,14 @@ class NightModeWidget : Widget(), InvalidInputInterface{
         title("Nachtmodus")
 
         redirect("Beginn", "Setze den Beginn des Nachtmodus") {
-            InputBottomSheet("Nachtmodus - Beginn","Wann soll der Nachtmodus einsetzen?" ,"seton", this).show(this.context)
+            InputBottomSheet("Nachtmodus - Beginn","Wann soll der Nachtmodus einsetzen?" ,"hh:mm","seton", this).show(this.context)
         }
 
         redirect("Ende", "Setze das Ende des Nachtmodus") {
             InputBottomSheet(
                 "Nachtmodus - Ende",
                 "Wann soll der Nachtmodus enden?",
+                "hh:mm",
                 "setof",
                 this
             ).show(this.context)
@@ -26,7 +27,7 @@ class NightModeWidget : Widget(), InvalidInputInterface{
         redirect("Helligkeit im Nachtmodus", "Setze die Helligkeit der Uhr im Nachtmodus") {
             InputBottomSheet(
                 "Nachtmodus - Helligkeit", "Wie hoch soll die Helligkeit des Nachtmodus werden" +
-                        "? (0 - 255)", "setnb", this
+                        "? (0 - 255)", "hh:mm","setnb", this
             ).show(this.context)
         }
 

@@ -37,17 +37,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Uhrenprojekt">
         <activity
-            android:name=".nightmode.NightmodeActivity"
-            android:screenOrientation="portrait"
+            android:name=".game.SinkShipActivity"
             android:exported="false" />
+        <activity
+            android:name=".nightmode.NightmodeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".newP.CustomizerActivity"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_customizer" >
-
-
-        </activity>
+            android:label="@string/title_activity_customizer"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".developertools.DeveloperActivity"
             android:exported="false"
@@ -55,38 +55,36 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".alarm.AlarmActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".calendar.CalendarActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".birthday.BirthdayActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".birthday.BirthdayAddActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".specials.SpecialsActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".appearance.AppearanceActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".intro.IntroActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -13,6 +13,7 @@ import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.intro.bluetooth.BluetoothSearchSlide
 import leko.valmx.uhrenprojekt.newP.CustomizerActivity
+import leko.valmx.uhrenprojekt.popup.LoadingDialog
 import quevedo.soares.leandro.blemadeeasy.BLE
 
 class IntroActivity : AppIntro2() {
@@ -72,7 +73,7 @@ class IntroActivity : AppIntro2() {
 
     override fun onDonePressed(currentFragment: Fragment?) {
         super.onDonePressed(currentFragment)
-
+        LoadingDialog(this).start(2000)
         startActivity(Intent(this, MainActivity::class.java))
     }
 

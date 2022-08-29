@@ -35,7 +35,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textInputLayout"
-        app:srcCompat="@drawable/ic_chevron_right" />
+        app:srcCompat="@drawable/ic_chevron_right"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"

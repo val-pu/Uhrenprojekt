@@ -14,6 +14,7 @@ import leko.valmx.uhrenprojekt.newP.adapters.SavedWidgetsAdapter
 import leko.valmx.uhrenprojekt.newP.autoconnect.ConnectBottomSheet
 import leko.valmx.uhrenprojekt.newP.autoconnect.UhrAppActivity
 import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
+import leko.valmx.uhrenprojekt.popup.LoadingDialog
 
 class CustomizerActivity : UhrAppActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -148,4 +149,6 @@ class CustomizerActivity : UhrAppActivity(){
                 .parseColor("#2979FF")));
         }
     }
+
+
 }
