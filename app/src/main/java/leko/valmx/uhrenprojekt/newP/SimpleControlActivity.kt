@@ -1,19 +1,25 @@
 package leko.valmx.uhrenprojekt.newP
 
 import android.animation.Animator
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_customizer.*
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
+import leko.valmx.uhrenprojekt.developertools.DeveloperActivity
+import leko.valmx.uhrenprojekt.developertools.SendingSuccessInterface
 import leko.valmx.uhrenprojekt.newP.adapters.SavedWidgetsAdapter
 import leko.valmx.uhrenprojekt.newP.autoconnect.ConnectBottomSheet
 import leko.valmx.uhrenprojekt.newP.autoconnect.UhrAppActivity
 import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
-import leko.valmx.uhrenprojekt.popup.LoadingDialog
+
 
 class SimpleControlActivity : UhrAppActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -148,5 +154,39 @@ class SimpleControlActivity : UhrAppActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        finishAffinity()
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        getMenuInflater().inflate(R.menu.bottom_nav_menu, menu);
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.getItemId()) {
+            R.id.desgn_change -> {
+                //TODO handle theme-change
+                true
+            }
+            R.id.developertools_appear_btn -> {
+                val i = Intent(this, DeveloperActivity::class.java)
+                this.startActivity(i)
+                true
+            }
+            R.id.licenses -> {
+                //TODO handle license-appear
+                val i = Intent(this, DeveloperActivity::class.java)
+                this.startActivity(i)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun callReply(success: Int) {
+        if(success == -1){
+            Toast.makeText(this, "Connection could not be established", Toast.LENGTH_SHORT).show()
+        }
+    }
 }

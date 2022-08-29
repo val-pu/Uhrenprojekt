@@ -13,9 +13,10 @@ import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.newP.autoconnect.UhrAppActivity
 import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
+import leko.valmx.uhrenprojekt.util.SavedDataManager
 import java.lang.reflect.Type
 
-class DeveloperActivity : UhrAppActivity(), SendingSuccessInterface{
+class DeveloperActivity : UhrAppActivity(){
 
     lateinit var console: ArrayList<Array<String>>
     val ERROR: String = "ERROR"
@@ -32,6 +33,8 @@ class DeveloperActivity : UhrAppActivity(), SendingSuccessInterface{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_developer)
         isActive = true
+
+        //Blue.initRelyInterface(this)
 
         developertools_connection_btn.setOnClickListener {
             val name_id: String = "NameID: " + Blue.NAME_ID
@@ -52,10 +55,10 @@ class DeveloperActivity : UhrAppActivity(), SendingSuccessInterface{
 
         if (firstOpen) {
             console = ArrayList<Array<String>>()
-            saveArrayList(console, "console")
+            SavedDataManager.saveArrayList(console, "console", this)
             prefs.edit().putBoolean("developertools_first_open", false).apply()
         } else {
-            console = getArrayList("console")
+            console = SavedDataManager.getArrayList("console", this)
         }
         console_recycler.adapter = ConsoleAdapter(console)
         console_recycler.layoutManager = LinearLayoutManager(this)
@@ -66,8 +69,7 @@ class DeveloperActivity : UhrAppActivity(), SendingSuccessInterface{
         try {
             Blue.sendCommand(msg, getWindow().getDecorView().getRootView())
         }catch(e: Exception){
-            showReply("sending failed.\n" +
-                    e.toString(), ERROR)
+            callReply(-1)
         }
     }
 
@@ -78,7 +80,7 @@ class DeveloperActivity : UhrAppActivity(), SendingSuccessInterface{
 
 
     fun sendExecutionCommand(view: View) {
-        Blue.initRelyInterface(this)
+
         val msg = developertools_field_send_msg.text.toString()
         if (msg != "") {
             showReply("send message: \'$msg\'", SUCCESS)
@@ -103,7 +105,7 @@ class DeveloperActivity : UhrAppActivity(), SendingSuccessInterface{
         }
         console.add(arrayOf(msg, type))
         console_recycler.adapter?.notifyDataSetChanged()
-        saveArrayList(console, "console")
+        SavedDataManager.saveArrayList(console, "console", this)
         console_recycler.smoothScrollToPosition(console.size - 1)
     }
 
@@ -111,27 +113,8 @@ class DeveloperActivity : UhrAppActivity(), SendingSuccessInterface{
     fun clearConsole(view: View) {
         console.clear()
         console_recycler.adapter?.notifyDataSetChanged()
-        saveArrayList(console, "console")
+        SavedDataManager.saveArrayList(console, "console", this)
     }
-
-    fun saveArrayList(list: java.util.ArrayList<Array<String>>?, key: String?) {
-        val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val editor: SharedPreferences.Editor = prefs.edit()
-        val gson = Gson()
-        val json: String = gson.toJson(list)
-        editor.putString(key, json)
-        editor.apply()
-    }
-
-    fun getArrayList(key: String?): ArrayList<Array<String>> {
-        val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val gson = Gson()
-        val json: String? = prefs.getString(key, null)
-        val type: Type = object : TypeToken<ArrayList<Array<String>>>() {}.getType()
-        return gson.fromJson(json, type)
-    }
-
-
 
     override fun callReply(success: Int) {
         if(success == 1){

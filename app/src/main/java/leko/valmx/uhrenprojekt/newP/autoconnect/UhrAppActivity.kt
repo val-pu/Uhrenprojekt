@@ -3,20 +3,20 @@ package leko.valmx.uhrenprojekt.newP.autoconnect
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import leko.valmx.uhrenprojekt.bluetooth.Blue
+import leko.valmx.uhrenprojekt.developertools.SendingSuccessInterface
 import quevedo.soares.leandro.blemadeeasy.BLE
 
-open class UhrAppActivity : AppCompatActivity(), Runnable{
+open class UhrAppActivity : AppCompatActivity(), Runnable, SendingSuccessInterface {
 
     init {
         isSheetDisplayed = false
     }
 
     override fun onStart() {
+        Blue.initRelyInterface(this)
         initBLE()
         super.onStart()
         android.os.Handler().postDelayed(this,20_000)
-
-
     }
 
     override fun onPostResume() {
@@ -46,5 +46,9 @@ open class UhrAppActivity : AppCompatActivity(), Runnable{
     companion object{
         var isSheetDisplayed = false
 
+    }
+
+    override fun callReply(success: Int) {
+        TODO("Not yet implemented")
     }
 }

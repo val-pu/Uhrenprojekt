@@ -42,8 +42,6 @@
             android:label="@string/title_activity_customizer"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
-
-
         </activity>
         <activity
             android:name=".game.SinkShipActivity"
@@ -55,6 +53,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".intro.IntroActivity"
+
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

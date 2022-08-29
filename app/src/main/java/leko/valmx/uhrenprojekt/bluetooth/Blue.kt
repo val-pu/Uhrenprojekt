@@ -7,6 +7,7 @@ import leko.valmx.uhrenprojekt.developertools.DeveloperActivity
 import leko.valmx.uhrenprojekt.developertools.SendingSuccessInterface
 import leko.valmx.uhrenprojekt.newP.autoconnect.ConnectBottomSheet
 import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
+import leko.valmx.uhrenprojekt.util.SavedDataManager
 import quevedo.soares.leandro.blemadeeasy.BLE
 import quevedo.soares.leandro.blemadeeasy.BluetoothConnection
 
