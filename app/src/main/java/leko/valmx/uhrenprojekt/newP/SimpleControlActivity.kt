@@ -4,7 +4,6 @@ import android.animation.Animator
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_customizer.*
@@ -16,26 +15,17 @@ import leko.valmx.uhrenprojekt.newP.autoconnect.UhrAppActivity
 import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
 import leko.valmx.uhrenprojekt.popup.LoadingDialog
 
-class CustomizerActivity : UhrAppActivity(){
+class SimpleControlActivity : UhrAppActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customizer)
         setSupportActionBar(toolbar)
-        initRecycler()
-    }
-
-    var baseMargin = 400F
-
-    override fun onPostCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onPostCreate(savedInstanceState, persistentState)
-
-        baseMargin = (recycler.x)
-
+        init()
     }
 
     override fun onStart() {
         super.onStart()
-        CustomizerActivity.ble = ble
+        SimpleControlActivity.ble = ble
         Log.i(
             "WIDGETS", getSharedPreferences(WidgetHelper.PREF_ID, MODE_PRIVATE).getStringSet(
                 WidgetHelper.SAVED_ID, HashSet<String>()
@@ -45,7 +35,7 @@ class CustomizerActivity : UhrAppActivity(){
 
     var isSaved = false
 
-    private fun initRecycler() {
+    private fun init() {
         val savedWidgetsAdapter = SavedWidgetsAdapter(supportFragmentManager, this)
 
         recycler.adapter = savedWidgetsAdapter
@@ -110,16 +100,20 @@ class CustomizerActivity : UhrAppActivity(){
 
 
         ble.setOnClickListener {
-            if(!Blue.isConnected){
-                ConnectBottomSheet.getInstance().show(this){}
+            if (!Blue.isConnected) {
+                ConnectBottomSheet.getInstance().show(this) {}
                 android.os.Handler().postDelayed(this, 20_000)
 
-            }else{
+            } else {
                 Blue.isConnected = false
                 ConnectBottomSheet.undo()
                 Blue.connection = null
-                ble.setBackgroundTintList(ColorStateList.valueOf(Color
-                    .parseColor("#FFFFFF")));
+                ble.setBackgroundTintList(
+                    ColorStateList.valueOf(
+                        Color
+                            .parseColor("#FFFFFF")
+                    )
+                );
             }
         }
 
@@ -142,11 +136,15 @@ class CustomizerActivity : UhrAppActivity(){
 
     }
 
-    companion object{
+    companion object {
         var ble: FloatingActionButton? = null
-        fun connectionEstablished(){
-            ble!!.setBackgroundTintList(ColorStateList.valueOf(Color
-                .parseColor("#2979FF")));
+        fun connectionEstablished() {
+            ble!!.setBackgroundTintList(
+                ColorStateList.valueOf(
+                    Color
+                        .parseColor("#2979FF")
+                )
+            );
         }
     }
 

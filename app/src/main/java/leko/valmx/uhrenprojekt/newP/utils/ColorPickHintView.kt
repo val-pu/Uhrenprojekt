@@ -1,10 +1,8 @@
-package leko.valmx.uhrenprojekt.appearance.colors
+package leko.valmx.uhrenprojekt.newP.utils
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.view.View
-import android.widget.ImageView
 import androidx.core.graphics.toRectF
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.util.Util

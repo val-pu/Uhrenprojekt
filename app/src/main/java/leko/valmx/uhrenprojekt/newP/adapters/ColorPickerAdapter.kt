@@ -1,4 +1,4 @@
-package leko.valmx.uhrenprojekt.appearance.colors
+package leko.valmx.uhrenprojekt.newP.adapters
 
 import android.graphics.Color
 import android.view.LayoutInflater

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.console_line.view.*
 import leko.valmx.uhrenprojekt.R
-import leko.valmx.uhrenprojekt.birthday.BirthdayAdapter
 
 class ConsoleAdapter(val consoleContent: ArrayList<Array<String>>):
     RecyclerView.Adapter<ConsoleAdapter.ViewHolder>(){

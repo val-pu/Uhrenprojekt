@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.intro.IntroActivity
-import leko.valmx.uhrenprojekt.newP.CustomizerActivity
+import leko.valmx.uhrenprojekt.newP.SimpleControlActivity
 import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
 import java.util.*
 
@@ -131,7 +131,7 @@ class ConnectBottomSheet : Sheet() {
                     UhrAppActivity.isSheetDisplayed = false
 
                     Blue.isConnected = true
-                    CustomizerActivity.connectionEstablished()
+                    SimpleControlActivity.connectionEstablished()
 
                     dismiss()
                 }catch(e2: IllegalStateException){

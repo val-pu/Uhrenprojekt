@@ -1,10 +1,7 @@
 package leko.valmx.uhrenprojekt.bluetooth
 
-import android.app.Service
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
-import android.content.Intent
-import android.os.IBinder
 import android.view.View
 import leko.valmx.uhrenprojekt.developertools.DeveloperActivity
 import leko.valmx.uhrenprojekt.developertools.SendingSuccessInterface
@@ -12,15 +9,13 @@ import leko.valmx.uhrenprojekt.newP.autoconnect.ConnectBottomSheet
 import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
 import quevedo.soares.leandro.blemadeeasy.BLE
 import quevedo.soares.leandro.blemadeeasy.BluetoothConnection
-import java.util.logging.Handler
-import java.util.logging.LogRecord
 
-object Blue{
+object Blue: SendingSuccessInterface{
     lateinit var ble: BLE
     var connection : BluetoothConnection? = null
 
 
-    var successInterface: SendingSuccessInterface? = null
+    var successInterface: SendingSuccessInterface = this as SendingSuccessInterface
 
     val debug = false
     var success: Int = 0
@@ -34,7 +29,7 @@ object Blue{
         view?.apply {
             if(!write && !DeveloperActivity.isActive) ConnectBottomSheet().show(view.context) { }
             if(write) success = 1 else success = -1
-            successInterface?.callReply(success)
+            successInterface.callReply(success)
         }
 
 
@@ -50,4 +45,8 @@ object Blue{
     fun initRelyInterface(replyInterface: SendingSuccessInterface){
         successInterface = replyInterface
     }
+
+    override fun callReply(success: Int) {
+    }
+
 }

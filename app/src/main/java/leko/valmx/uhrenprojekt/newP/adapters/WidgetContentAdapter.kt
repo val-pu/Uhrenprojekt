@@ -86,14 +86,12 @@ class WidgetContentAdapter(
         }
 
         fun bind(redirectBundle: RecyclerBundle) {
-            // Crash fix, weil recycler im recycler im recycler doppelt initiiert wurde TODO: Lösen und nicht so fixen
             if(itemView.recycler.adapter != null) return
 
             itemView.recycler_title.text = redirectBundle.title
             itemView.recycler_description.text = redirectBundle.description
             itemView.recycler.adapter = redirectBundle.adapter
 
-            // TODO Custom layoutmanager erlauben
 
             itemView.recycler.layoutManager = GridLayoutManager(itemView.context,5)
         }

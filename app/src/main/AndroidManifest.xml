@@ -8,7 +8,7 @@
         android:maxSdkVersion="30" />
     <uses-permission
         android:name="android.permission.BLUETOOTH_ADMIN"
-        android:maxSdkVersion="30" /> <!-- These 2 bellow, only if you are targeting Android 12+ -->
+        android:maxSdkVersion="30" />
     <uses-permission
         android:name="android.permission.BLUETOOTH_CONNECT"
         tools:targetApi="s" />
@@ -16,7 +16,7 @@
         android:name="android.permission.BLUETOOTH_SCAN"
         android:usesPermissionFlags="neverForLocation"
         tools:targetApi="s" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- These 2 bellow, only if you are targeting Android 10+ -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
@@ -37,50 +37,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Uhrenprojekt">
         <activity
-            android:name=".game.SinkShipActivity"
-            android:exported="false" />
-        <activity
-            android:name=".nightmode.NightmodeActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".newP.CustomizerActivity"
+            android:name=".newP.SimpleControlActivity"
             android:exported="true"
             android:label="@string/title_activity_customizer"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
+
+
+        </activity>
+        <activity
+            android:name=".game.SinkShipActivity"
+            android:exported="false" />
         <activity
             android:name=".developertools.DeveloperActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".alarm.AlarmActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".calendar.CalendarActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".birthday.BirthdayActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".birthday.BirthdayAddActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".specials.SpecialsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".appearance.AppearanceActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".intro.IntroActivity"
             android:exported="true"

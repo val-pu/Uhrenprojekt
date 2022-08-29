@@ -5,14 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.github.appintro.AppIntro2
-import com.github.appintro.AppIntroFragment
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import leko.valmx.uhrenprojekt.MainActivity
-import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.intro.bluetooth.BluetoothSearchSlide
-import leko.valmx.uhrenprojekt.newP.CustomizerActivity
+import leko.valmx.uhrenprojekt.newP.SimpleControlActivity
 import leko.valmx.uhrenprojekt.popup.LoadingDialog
 import quevedo.soares.leandro.blemadeeasy.BLE
 
@@ -60,7 +55,7 @@ class IntroActivity : AppIntro2() {
         isWizardMode = true
         if (deviceName != "") {
 
-            startActivity(Intent(this, CustomizerActivity::class.java))
+            startActivity(Intent(this, SimpleControlActivity::class.java))
 
             return
         }
@@ -68,13 +63,13 @@ class IntroActivity : AppIntro2() {
 
     override fun onSkipPressed(currentFragment: Fragment?) {
         super.onSkipPressed(currentFragment)
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, SimpleControlActivity::class.java))
     }
 
     override fun onDonePressed(currentFragment: Fragment?) {
         super.onDonePressed(currentFragment)
         LoadingDialog(this).start(2000)
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, SimpleControlActivity::class.java))
     }
 
 

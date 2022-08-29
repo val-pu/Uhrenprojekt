@@ -1,4 +1,4 @@
-package leko.valmx.uhrenprojekt.specials.icons
+package leko.valmx.uhrenprojekt.newP.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -8,22 +8,21 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_icon.view.*
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
-import leko.valmx.uhrenprojekt.specials.SpecialsActivity
 import java.util.*
 
 class IconAdapter() : RecyclerView.Adapter<IconAdapter.VH>() {
 
-    val data = LinkedList<SpecialsActivity.IconInfo>()
+    val data = LinkedList<IconInfo>()
 
     init {
-        val contentList: LinkedList<SpecialsActivity.IconInfo> = LinkedList()
-        contentList.add(SpecialsActivity.IconInfo("Herz", R.drawable.ic_heart, "heart"))
-        contentList.add(SpecialsActivity.IconInfo("Smiley", R.drawable.ic_smile, "smiley"))
-        contentList.add(SpecialsActivity.IconInfo("Haken", R.drawable.ic_check, "check"))
-        contentList.add(SpecialsActivity.IconInfo("Kreuz", R.drawable.ic_smile, "cross"))
-        contentList.add(SpecialsActivity.IconInfo("Plus", R.drawable.ic_plus, "plus"))
-        contentList.add(SpecialsActivity.IconInfo("Mond", R.drawable.ic_moon, "moon"))
-        contentList.add(SpecialsActivity.IconInfo("Doppelpfeil", R.drawable.ic_chevrons_right, "arrow"))
+        val contentList: LinkedList<IconInfo> = LinkedList()
+        contentList.add(IconInfo(R.drawable.ic_heart, "heart"))
+        contentList.add(IconInfo(R.drawable.ic_smile, "smiley"))
+        contentList.add(IconInfo(R.drawable.ic_check, "check"))
+        contentList.add(IconInfo(R.drawable.ic_smile, "cross"))
+        contentList.add(IconInfo(R.drawable.ic_plus, "plus"))
+        contentList.add(IconInfo(R.drawable.ic_moon, "moon"))
+        contentList.add(IconInfo(R.drawable.ic_chevrons_right, "arrow"))
         data.addAll(contentList)
 
 
@@ -42,13 +41,16 @@ class IconAdapter() : RecyclerView.Adapter<IconAdapter.VH>() {
         val iconInfo = data[position]
         val view = holder.itemView
         view.icon.setImageDrawable(view.context.resources.getDrawable(iconInfo.id))
-        view.icon_name.text = iconInfo.name
 
         view.setOnClickListener {
-            Blue.sendCommand("${iconInfo.cmd}",view)
+            Blue.sendCommand("${iconInfo.cmd}", view)
         }
 
     }
 
     override fun getItemCount(): Int = data.size
+
+
 }
+
+class IconInfo(val id: Int, val cmd: String)

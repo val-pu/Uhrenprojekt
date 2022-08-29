@@ -36,8 +36,6 @@ class SavedWidgetsAdapter(val fragmentManager: FragmentManager, val context: Con
     override fun onBindViewHolder(holder: VH, position: Int) {
         val widget = data[position]
 
-        widget
-
         widget.init(holder.itemView)
 
         animate(holder.itemView, position)

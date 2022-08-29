@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import androidx.recyclerview.widget.GridLayoutManager
 import com.maxkeppeler.sheets.color.ColorSheet
-import leko.valmx.uhrenprojekt.appearance.colors.ColorPickerAdapter
+import leko.valmx.uhrenprojekt.newP.adapters.ColorPickerAdapter
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.newP.bundles.ChoiceItem
 import leko.valmx.uhrenprojekt.newP.parents.Widget
