@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import com.github.appintro.AppIntro2
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.intro.bluetooth.BluetoothSearchSlide
-import leko.valmx.uhrenprojekt.newP.SimpleControlActivity
+import leko.valmx.uhrenprojekt.SimpleControlActivity
 import leko.valmx.uhrenprojekt.popup.LoadingDialog
 import quevedo.soares.leandro.blemadeeasy.BLE
 

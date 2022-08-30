@@ -3,11 +3,10 @@ package leko.valmx.uhrenprojekt.bluetooth
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.view.View
-import leko.valmx.uhrenprojekt.developertools.DeveloperActivity
-import leko.valmx.uhrenprojekt.developertools.SendingSuccessInterface
-import leko.valmx.uhrenprojekt.newP.autoconnect.ConnectBottomSheet
-import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
-import leko.valmx.uhrenprojekt.util.SavedDataManager
+import leko.valmx.uhrenprojekt.etc.developertools.DeveloperActivity
+import leko.valmx.uhrenprojekt.etc.developertools.SendingSuccessInterface
+import leko.valmx.uhrenprojekt.autoconnect.ConnectBottomSheet
+import leko.valmx.uhrenprojekt.utils.WidgetHelper
 import quevedo.soares.leandro.blemadeeasy.BLE
 import quevedo.soares.leandro.blemadeeasy.BluetoothConnection
 

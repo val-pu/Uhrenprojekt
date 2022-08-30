@@ -15,7 +15,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
-import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
+import leko.valmx.uhrenprojekt.utils.WidgetHelper
 import quevedo.soares.leandro.blemadeeasy.models.BLEDevice
 import java.util.*
 

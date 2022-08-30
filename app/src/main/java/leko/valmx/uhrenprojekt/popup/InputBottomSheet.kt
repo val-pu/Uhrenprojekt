@@ -1,22 +1,13 @@
 package leko.valmx.uhrenprojekt.popup
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.TextView
 import com.maxkeppeler.sheets.core.Sheet
-import kotlinx.android.synthetic.main.activity_nightmode.*
 import kotlinx.android.synthetic.main.sheet_input_layout.*
 import leko.valmx.uhrenprojekt.R
-import leko.valmx.uhrenprojekt.bluetooth.Blue
-import leko.valmx.uhrenprojekt.intro.IntroActivity
-import leko.valmx.uhrenprojekt.newP.autoconnect.ConnectBottomSheet
-import leko.valmx.uhrenprojekt.newP.autoconnect.UhrAppActivity
-import leko.valmx.uhrenprojekt.newP.utils.WidgetHelper
 import leko.valmx.uhrenprojekt.util.Check
-import org.w3c.dom.Text
 
 class InputBottomSheet(private val header: String,
                        private val description: String,

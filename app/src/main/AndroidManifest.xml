@@ -37,17 +37,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Uhrenprojekt">
         <activity
-            android:name=".newP.SimpleControlActivity"
+            android:name="leko.valmx.uhrenprojekt.SimpleControlActivity"
             android:exported="true"
             android:label="@string/title_activity_customizer"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
         </activity>
         <activity
-            android:name=".game.SinkShipActivity"
+            android:name="leko.valmx.uhrenprojekt.etc.game.SinkShipActivity"
             android:exported="false" />
         <activity
-            android:name=".developertools.DeveloperActivity"
+            android:name="leko.valmx.uhrenprojekt.etc.developertools.DeveloperActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
