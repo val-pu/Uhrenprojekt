@@ -29,12 +29,11 @@ class SimpleControlActivity : UhrAppActivity() {
 
     override fun onStart() {
         super.onStart()
-        Companion.ble = ble
-        Log.i(
-            "WIDGETS", getSharedPreferences(WidgetHelper.PREF_ID, MODE_PRIVATE).getStringSet(
-                WidgetHelper.SAVED_ID, HashSet<String>()
-            ).toString()
-        )
+//        Log.i(
+//            "WIDGETS", getSharedPreferences(WidgetHelper.PREF_ID, MODE_PRIVATE).getStringSet(
+//                WidgetHelper.SAVED_ID, HashSet<String>()
+//            ).toString()
+//        )
     }
 
     var isSaved = false
@@ -103,40 +102,40 @@ class SimpleControlActivity : UhrAppActivity() {
         }
 
 
-        ble.setOnClickListener {
-            if (!Blue.isConnected) {
-                ConnectBottomSheet.getInstance().show(this) {}
-                android.os.Handler().postDelayed(this, 20_000)
-
-            } else {
-                Blue.isConnected = false
-                ConnectBottomSheet.undo()
-                Blue.connection = null
-                ble.setBackgroundTintList(
-                    ColorStateList.valueOf(
-                        Color
-                            .parseColor("#FFFFFF")
-                    )
-                );
-            }
-        }
-
-        btn_restart.setOnClickListener{
-            if(!Blue.isConnected){
-                ConnectBottomSheet.getInstance().show(this){}
-                android.os.Handler().postDelayed(this, 20_000)
-
-            }else{
-                Blue.sendCommand("reset")
-                Blue.isConnected = false
-                ConnectBottomSheet.undo()
-                Blue.connection = null
-                ble.setBackgroundTintList(ColorStateList.valueOf(Color
-                    .parseColor("#FFFFFF")));
-                ConnectBottomSheet.getInstance().show(this){}
-                android.os.Handler().postDelayed(this, 20_000)
-            }
-        }
+//        ble.setOnClickListener {
+//            if (!Blue.isConnected) {
+//                ConnectBottomSheet.getInstance().show(this) {}
+//                android.os.Handler().postDelayed(this, 20_000)
+//
+//            } else {
+//                Blue.isConnected = false
+//                ConnectBottomSheet.undo()
+//                Blue.connection = null
+//                ble.setBackgroundTintList(
+//                    ColorStateList.valueOf(
+//                        Color
+//                            .parseColor("#FFFFFF")
+//                    )
+//                );
+//            }
+//        }
+//
+//        btn_restart.setOnClickListener{
+//            if(!Blue.isConnected){
+//                ConnectBottomSheet.getInstance().show(this){}
+//                android.os.Handler().postDelayed(this, 20_000)
+//
+//            }else{
+//                Blue.sendCommand("reset")
+//                Blue.isConnected = false
+//                ConnectBottomSheet.undo()
+//                Blue.connection = null
+//                ble.setBackgroundTintList(ColorStateList.valueOf(Color
+//                    .parseColor("#FFFFFF")));
+//                ConnectBottomSheet.getInstance().show(this){}
+//                android.os.Handler().postDelayed(this, 20_000)
+//            }
+//        }
 
     }
 
@@ -182,9 +181,9 @@ class SimpleControlActivity : UhrAppActivity() {
         }
     }
 
-    override fun callReply(success: Int) {
-        if(success == -1){
-            Toast.makeText(this, "Connection could not be established", Toast.LENGTH_SHORT).show()
-        }
-    }
+//    override fun callReply(success: Int) {
+//        if(success == -1){
+//            Toast.makeText(this, "Connection could not be established", Toast.LENGTH_SHORT).show()
+//        }
+//    }
 }

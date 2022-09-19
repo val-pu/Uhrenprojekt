@@ -1,64 +1,42 @@
 package leko.valmx.uhrenprojekt.intro
 
 import android.Manifest
+import android.Manifest.permission.BLUETOOTH
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.github.appintro.AppIntro2
+import com.permissionx.guolindev.PermissionX
+import kotlinx.coroutines.DelicateCoroutinesApi
+import leko.valmx.uhrenprojekt.SimpleControlActivity
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.intro.bluetooth.BluetoothSearchSlide
-import leko.valmx.uhrenprojekt.SimpleControlActivity
-import leko.valmx.uhrenprojekt.popup.LoadingDialog
-import quevedo.soares.leandro.blemadeeasy.BLE
+import leko.valmx.uhrenprojekt.intro.permissions.PermissionSlide
 
 class IntroActivity : AppIntro2() {
 
-
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
 
         val deviceName = Blue.getDeviceName(this)
 
-
-
-
-        // Intro slides
-/*
-        addSlide(
-            AppIntroFragment.createInstance(
-                title = "Perfekt!",
-                description = "Nun muss nur noch die Uhr per Bluetooth verbunden werden...."
-            )
-        )
-        addSlide(
-            AppIntroFragment.createInstance(
-                title = "Willkommen!",
-                titleColorRes = R.color.black,
-                description = "Erstmal braucht die App ein paar Berechtigungen, um gut zu funktionieren."
-            )
-        )
-*/
-        Blue.ble = BLE(this)
+        addSlide(PermissionSlide(this))
         addSlide(BluetoothSearchSlide())
 
-        // Nach dem ersten Slide wird gefragt, ob man Bluetooth & Standortinfos verwenden darf
+        isImmersive = true
+        showStatusBar(false)
+        isIndicatorEnabled = false
 
-        askForPermissions(
-            permissions = arrayOf(
-                Manifest.permission.BLUETOOTH,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ),
-            slideNumber = 1,
-            required = true
-        )
-        isWizardMode = true
-        if (deviceName != "") {
 
-            startActivity(Intent(this, SimpleControlActivity::class.java))
-
-            return
-        }
+//        if (deviceName != "") {
+//            startActivity(Intent(this, SimpleControlActivity::class.java))
+//            return
+//        }
     }
 
     override fun onSkipPressed(currentFragment: Fragment?) {
@@ -68,9 +46,19 @@ class IntroActivity : AppIntro2() {
 
     override fun onDonePressed(currentFragment: Fragment?) {
         super.onDonePressed(currentFragment)
-        LoadingDialog(this).start(2000)
         startActivity(Intent(this, SimpleControlActivity::class.java))
     }
 
+    val PERMISSION_RQ_CODE = 101111
 
+    @RequiresApi(Build.VERSION_CODES.S)
+    fun requestPermissions() {
+        onNextSlide()
+        val perms =
+            arrayOf<String>(Manifest.permission.BLUETOOTH, Manifest.permission.BLUETOOTH_SCAN,Manifest.permission.BLUETOOTH_PRIVILEGED, Manifest.permission.BLUETOOTH_CONNECT, Manifest.permission.BLUETOOTH_ADMIN, Manifest.permission.ACCESS_FINE_LOCATION)
+        PermissionX.init(this).permissions(*perms).request { allGranted, grantedList, deniedList ->
+
+        }
+
+    }
 }

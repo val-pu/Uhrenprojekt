@@ -64,7 +64,6 @@ class DeveloperActivity : UhrAppActivity(){
         try {
             Blue.sendCommand(msg, window.decorView.rootView)
         }catch(e: Exception){
-            callReply(-1)
         }
     }
 
@@ -111,12 +110,4 @@ class DeveloperActivity : UhrAppActivity(){
         SavedDataManager.saveArrayList(console, "console", this)
     }
 
-    override fun callReply(success: Int) {
-        if(success == 1){
-            showReply("send successfully", SUCCESS, true)
-        }else{
-            showReply("sending failed.\n" +
-                    "No Connection established", ERROR)
-        }
-    }
 }

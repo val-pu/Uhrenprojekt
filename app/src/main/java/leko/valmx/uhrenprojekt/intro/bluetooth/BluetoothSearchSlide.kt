@@ -1,5 +1,6 @@
 package leko.valmx.uhrenprojekt.intro.bluetooth
 
+import android.annotation.SuppressLint
 import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import android.util.Log
@@ -16,12 +17,15 @@ import kotlinx.coroutines.launch
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.utils.WidgetHelper
+import quevedo.soares.leandro.blemadeeasy.BLE
 import quevedo.soares.leandro.blemadeeasy.models.BLEDevice
 import java.util.*
 
 @DelicateCoroutinesApi
 class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fragment(),
     SlidePolicy {
+
+    lateinit var ble: BLE
 
     override fun onUserIllegallyRequestedNextPage() {}
 
@@ -47,6 +51,8 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fra
             BlueToothPickSheet(devices).show(parentFragmentManager, "")
         }
 
+        ble = BLE(this)
+
         initViews()
 
     }
@@ -55,16 +61,14 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fra
         connect.setOnClickListener {
             GlobalScope.launch {
                 Log.i("Connecting","Started Connecting to $selectedDevice")
-                val connection =  Blue.ble.scanFor(
-                    // You only need to supply one of these, no need for all of them!
+                val connection =  ble.scanFor(
                     macAddress = selectedDevice!!.macAddress,
                 )
 
-                Blue.connection = connection
 
 
                 if (connection != null) {
-                    //Log.i("Konnte Schreiben",connection.write("0000FFE1-0000-1000-8000-00805F9B34FB","matrix").toString())
+                    Log.i("Konnte Schreiben",connection.write("0000FFE1-0000-1000-8000-00805F9B34FB","matrix").toString())
                     connect.post {
                         card_found_device.visibility = GONE
                         pick_card.visibility = GONE
@@ -95,13 +99,14 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fra
      */
 
     private val possibleClockNames =
-        arrayListOf("HMSoft", "MLT-BT05", "BT05", "[TV] Samsung 5 Series (40)","[TV] Samsung Q60 Series (43)")
+        arrayListOf("HMSoft", "MLT-BT05", "BT05")
 
     private val searchDuration = 30000
 
+    @SuppressLint("MissingPermission")
     private fun scanForDevices() {
         devices.clear()
-        Blue.ble.scanAsync(
+        ble.scanAsync(
             duration = searchDuration.toLong(),
             onDiscover = { device ->
                 Log.i(tag, "Found ${device.name} + ${device.device.bluetoothClass}")

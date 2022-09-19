@@ -12,6 +12,9 @@
     <color name="feedback">#5F5F5F</color>
     <color name="button">#393939</color>
     <color name="backdrop">#5C5C5C</color>
-    <color name="card">#222121</color>
+    <color name="card">#EDEDED</color>
     <color name="description">#959595</color>
+    <color name="titelview_obfuscated">#41BEBEBE</color>
+    <color name="titelview_title">#FFF</color>
+    <color name="titelview_back">#262626</color>
 </resources>

@@ -3,11 +3,10 @@
 
     <style name="Button">
         <item name="android:background">@drawable/card</item>
-        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:backgroundTint">#FFF</item>
         <item name="elevation">3dp</item>
-        <item name="android:outlineProvider">bounds</item>
+        <item name="android:outlineProvider">background</item>
         <item name="android:gravity">center</item>
-        <item name="android:foreground">?selectableItemBackground</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:padding">@dimen/default_padding</item>
         <item name="android:layout_margin">@dimen/default_margin</item>

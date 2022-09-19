@@ -1,12 +1,16 @@
 package leko.valmx.uhrenprojekt.autoconnect
 
 import android.annotation.SuppressLint
+import android.bluetooth.BluetoothDevice
+import android.bluetooth.le.ScanSettings
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import com.google.android.material.snackbar.Snackbar
 import com.maxkeppeler.sheets.core.Sheet
 import kotlinx.android.synthetic.main.sheet_bluetooth_autoconnect.*
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -18,20 +22,22 @@ import leko.valmx.uhrenprojekt.intro.IntroActivity
 import leko.valmx.uhrenprojekt.SimpleControlActivity
 import leko.valmx.uhrenprojekt.parents.UhrAppActivity
 import leko.valmx.uhrenprojekt.utils.WidgetHelper
+import quevedo.soares.leandro.blemadeeasy.BLE
+import quevedo.soares.leandro.blemadeeasy.models.BLEDevice
 
-class ConnectBottomSheet : Sheet() {
+class ConnectBottomSheet(val activity: UhrAppActivity) : Sheet() {
 
-    companion object{
-        var  connectBottomSheet: ConnectBottomSheet? = null
+    companion object {
+        var connectBottomSheet: ConnectBottomSheet? = null
 
-        fun getInstance(): ConnectBottomSheet{
-            if(connectBottomSheet == null){
-                connectBottomSheet = ConnectBottomSheet()
+        fun getInstance(activity: UhrAppActivity): ConnectBottomSheet {
+            if (connectBottomSheet == null) {
+                connectBottomSheet = ConnectBottomSheet(activity)
             }
             return connectBottomSheet!!
         }
 
-        fun undo(){
+        fun undo() {
             connectBottomSheet = null
         }
     }
@@ -69,18 +75,17 @@ class ConnectBottomSheet : Sheet() {
     ): ConnectBottomSheet {
         this.windowContext = ctx
         this.width = width
-        UhrAppActivity.isSheetDisplayed = true
+//        UhrAppActivity.isSheetDisplayed = true
         positiveListener = {
             dismiss()
-            getInstance().show(ctx, width, func)
+            getInstance(activity).show(ctx, width, func)
         }
         positiveText = "Suche Wiederholen"
 
         onNegative("Verbinde mit anderem Gerät") {
 
-
-
-            ctx.getSharedPreferences(WidgetHelper.PREF_ID,MODE_PRIVATE).edit().putString(Blue.NAME_ID,"").apply()
+            ctx.getSharedPreferences(WidgetHelper.PREF_ID, MODE_PRIVATE).edit()
+                .putString(Blue.NAME_ID, "").apply()
 
             startActivity(Intent(ctx, IntroActivity::class.java))
 
@@ -102,39 +107,32 @@ class ConnectBottomSheet : Sheet() {
     @SuppressLint("MissingPermission")
     @OptIn(DelicateCoroutinesApi::class)
     fun startSearch() {
-        val ble = Blue.ble
+        val ble = activity.ble
         try {
 
             GlobalScope.launch {
-                val devices = ble.scan(duration = 20_000)
                 try {
                     val address = Blue.getDeviceName(requireContext())
 
 
                     text_status.text = "Verbinde mit $address"
+                    Log.i("Bluetooth","Starte Verbindungsprozess...")
+                    UhrAppActivity.connection = ble.scanFor(macAddress = address, settings = ScanSettings.Builder().setMatchMode(ScanSettings.MATCH_MODE_AGGRESSIVE).build())
+                    Log.i("Bluetooth","Beende Verbindungsprozess...")
 
-                    Blue.connection = ble.scanFor(macAddress = address)
+                    val connection = UhrAppActivity.connection
 
-                    val connection = Blue.connection
-
-                    Blue.isConnected = true
 
                     if (!connection!!.isActive) {
                         text_status.text = "Suche fehlgeschlagen"
                         return@launch
                     }
-                    if(text_status != null) text_status.text = "Gerät Gefunden - Verbunden ${connection.isActive}"
-
-                    Blue.connection!!.onDisconnect = {
-                        ConnectBottomSheet.getInstance().show(requireContext()) {}
-                    }
-                    UhrAppActivity.isSheetDisplayed = false
-
-                    Blue.isConnected = true
-                    SimpleControlActivity.connectionEstablished()
+                    if (text_status != null) text_status.text =
+                        "Gerät Gefunden - Verbunden ${connection.isActive}"
+                    connection?.write("0000FFE1-0000-1000-8000-00805F9B34FB", "matrix")!!
 
                     dismiss()
-                }catch(e2: IllegalStateException){
+                } catch (e2: IllegalStateException) {
                     dismiss()
                 }
             }

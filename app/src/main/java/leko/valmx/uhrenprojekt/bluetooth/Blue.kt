@@ -26,11 +26,6 @@ object Blue: SendingSuccessInterface{
 
         val write = connection?.write("0000FFE1-0000-1000-8000-00805F9B34FB", command)!!
 
-        view?.apply {
-            if(!write && !DeveloperActivity.isActive) ConnectBottomSheet().show(view.context) { }
-            if(write) success = 1 else success = -1
-            successInterface.callReply(success)
-        }
 
 
     }

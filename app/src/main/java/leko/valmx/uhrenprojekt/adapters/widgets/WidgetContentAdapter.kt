@@ -17,6 +17,7 @@ import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.bundles.*
 import leko.valmx.uhrenprojekt.bundles.misc.MultipleChoiceSheet
+import leko.valmx.uhrenprojekt.parents.UhrAppActivity
 import java.util.*
 
 class WidgetContentAdapter(
@@ -75,7 +76,7 @@ class WidgetContentAdapter(
             itemView.widget_title.text = commandBundle.name
             itemView.description.text = commandBundle.desc
             itemView.setOnClickListener {
-                Blue.sendCommand(commandBundle.command,itemView)
+                UhrAppActivity.send(commandBundle.command)
             }
         }
 
