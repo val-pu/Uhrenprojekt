@@ -11,6 +11,7 @@ import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.adapters.MultipleChoicePopUpAdapter
 import leko.valmx.uhrenprojekt.bundles.ChoiceItem
+import leko.valmx.uhrenprojekt.parents.UhrAppActivity
 import java.util.*
 
 class MultipleChoiceSheet(val dataSet: LinkedList<ChoiceItem>, val cmd: String) : Sheet(),
@@ -33,8 +34,8 @@ class MultipleChoiceSheet(val dataSet: LinkedList<ChoiceItem>, val cmd: String) 
     }
 
     override fun onSelected(item: ChoiceItem) {
+        UhrAppActivity.send(UhrAppActivity.Command(cmd + item.parameter))
 
-        Blue.sendCommand(cmd + item.parameter)
 
         dismiss()
     }

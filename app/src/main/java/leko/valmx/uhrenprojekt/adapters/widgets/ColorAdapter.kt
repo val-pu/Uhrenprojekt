@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_color.view.*
 import leko.valmx.uhrenprojekt.R
+import leko.valmx.uhrenprojekt.parents.UhrAppActivity
 import java.util.*
 
 class ColorAdapter() :
@@ -138,6 +139,16 @@ class ColorAdapter() :
     override fun onBindViewHolder(holder: VH, position: Int) {
         val dataSet = data[position]
         holder.itemView.preview.setColor(dataSet.textColor, dataSet.bgColor)
+        holder.itemView.setOnClickListener {
+
+            val bg = dataSet.bgColor
+            val az = dataSet.textColor
+
+            UhrAppActivity.send(UhrAppActivity.Command("setdp ${(bg.red()*255).toInt()},${(bg.green()*255).toInt()},${(bg.blue()*255).toInt()}"))
+            UhrAppActivity.send(UhrAppActivity.Command("setbg ${(az.red()*255).toInt()},${(az.green()*255).toInt()},${(az.blue()*255).toInt()}"))
+        }
+
+
     }
 
     override fun getItemCount(): Int = data.size

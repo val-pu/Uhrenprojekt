@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "leko.valmx.uhrenprojekt"
-        minSdk 23
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -51,6 +51,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.1'
+    implementation 'com.github.Muki1992:MaterialLoadingButton:1.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.1'
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
     testImplementation 'junit:junit:4.13.2'

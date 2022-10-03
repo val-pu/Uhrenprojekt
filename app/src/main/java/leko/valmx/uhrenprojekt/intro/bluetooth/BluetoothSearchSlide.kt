@@ -68,7 +68,6 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fra
 
 
                 if (connection != null) {
-                    Log.i("Konnte Schreiben",connection.write("0000FFE1-0000-1000-8000-00805F9B34FB","matrix").toString())
                     connect.post {
                         card_found_device.visibility = GONE
                         pick_card.visibility = GONE

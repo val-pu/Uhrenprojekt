@@ -28,7 +28,7 @@ object WidgetHelper {
             add(LottoWidget())
             add(NightModeWidget())
             add(TextWidget())
-            add(GameWidget())
+//            add(GameWidget())
 
         }
     }

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_icon.view.*
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
+import leko.valmx.uhrenprojekt.parents.UhrAppActivity
 import java.util.*
 
 class IconAdapter() : RecyclerView.Adapter<IconAdapter.VH>() {
@@ -43,7 +44,7 @@ class IconAdapter() : RecyclerView.Adapter<IconAdapter.VH>() {
         view.icon.setImageDrawable(view.context.resources.getDrawable(iconInfo.id))
 
         view.setOnClickListener {
-            Blue.sendCommand("${iconInfo.cmd}", view)
+            UhrAppActivity.send(UhrAppActivity.Command("${iconInfo.cmd}"))
         }
 
     }

@@ -54,10 +54,10 @@ class InputBottomSheet(private val header: String,
                 if(command.equals("setal")){
                     question = "Alarm auf diese Uhrzeit setzen?"
                     val sp = input.split(":")
-                    val hh = sp.get(0)
-                    val mm = sp.get(1)
+                    val hh = sp[0]
+                    val mm = sp[1]
                     var ss: String? = null
-                    if(sp.size == 3) ss = sp.get(2)
+                    if(sp.size == 3) ss = sp[2]
                     var res = ""
                     if(ss == null){
                         res = "$hh:$mm Uhr"

@@ -7,7 +7,7 @@
 
     <leko.valmx.uhrenprojekt.util.ProcessFeedBackView
         android:id="@+id/feedBack"
-        android:layout_width="231dp"
+        android:layout_width="131dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="90dp"
         android:layout_marginVertical="@dimen/default_margin"
@@ -20,7 +20,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         style="@style/Button"
-        android:layout_width="391dp"
+        android:layout_width="291dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@+id/uhrTitelView2"
         app:layout_constraintStart_toStartOf="@+id/uhrTitelView2"
@@ -29,6 +29,7 @@
         <TextView
             android:id="@+id/textView18"
             style="@style/Card"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="3dp"

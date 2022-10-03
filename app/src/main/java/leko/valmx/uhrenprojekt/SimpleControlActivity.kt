@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.animation.LinearInterpolator
 import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_customizer.*
@@ -19,7 +20,7 @@ import leko.valmx.uhrenprojekt.etc.developertools.DeveloperActivity
 import leko.valmx.uhrenprojekt.utils.WidgetHelper
 
 
-class SimpleControlActivity : UhrAppActivity() {
+class SimpleControlActivity : UhrAppActivity(), UhrAppActivity.OnCommandListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customizer)
@@ -181,9 +182,34 @@ class SimpleControlActivity : UhrAppActivity() {
         }
     }
 
-//    override fun callReply(success: Int) {
-//        if(success == -1){
-//            Toast.makeText(this, "Connection could not be established", Toast.LENGTH_SHORT).show()
-//        }
-//    }
+    override fun onCommandSizeUpdated(newSize: Int) {
+        running_processes_text.text = newSize.toString()
+    }
+
+    override fun onExecutionFinish() {
+        process_layout.animate().alpha(0F)
+
+    }
+
+    override fun onExecutionStart() {
+        process_layout.animate().alpha(1F)
+        rotateRunningBtn()
+    }
+
+    override fun onDisconnect() {
+
+    }
+
+    private fun rotateRunningBtn() {
+        btn_running_processes.animate().apply {
+            rotationBy(30F)
+            setInterpolator(LinearInterpolator())
+            withEndAction {
+                if(currentlyExecuted != null)
+                    rotateRunningBtn()
+            }
+            start()
+        }
+    }
+
 }

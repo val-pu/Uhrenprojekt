@@ -76,7 +76,7 @@ class WidgetContentAdapter(
             itemView.widget_title.text = commandBundle.name
             itemView.description.text = commandBundle.desc
             itemView.setOnClickListener {
-                UhrAppActivity.send(commandBundle.command)
+                UhrAppActivity.send(UhrAppActivity.Command(commandBundle.command))
             }
         }
 

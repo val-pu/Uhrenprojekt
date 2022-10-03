@@ -129,7 +129,6 @@ class ConnectBottomSheet(val activity: UhrAppActivity) : Sheet() {
                     }
                     if (text_status != null) text_status.text =
                         "Gerät Gefunden - Verbunden ${connection.isActive}"
-                    connection?.write("0000FFE1-0000-1000-8000-00805F9B34FB", "matrix")!!
 
                     dismiss()
                 } catch (e2: IllegalStateException) {
