@@ -1,4 +1,4 @@
-package leko.valmx.uhrenprojekt.intro.views
+package leko.valmx.uhrenprojekt.intro.title
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -18,6 +18,9 @@ class GridManager(val v: UhrTitelView) {
 
     fun init() {
 
+
+
+
         padding = (v.width * .02F).roundToInt()
 
         step = (v.width - 2 * padding) / charsPerLine
@@ -30,7 +33,7 @@ class GridManager(val v: UhrTitelView) {
         v.background = BitmapDrawable(bm)
         v.c = Canvas(bm!!)
 
-        radius = v.c.height*.1F
+        radius = v.c.height*.05F
 
     }
 

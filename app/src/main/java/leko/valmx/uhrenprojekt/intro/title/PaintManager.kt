@@ -1,4 +1,4 @@
-package leko.valmx.uhrenprojekt.intro.views
+package leko.valmx.uhrenprojekt.intro.title
 
 import android.graphics.Color
 import android.graphics.Paint

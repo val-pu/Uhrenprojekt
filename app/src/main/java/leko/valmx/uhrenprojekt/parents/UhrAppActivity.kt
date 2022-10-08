@@ -95,14 +95,14 @@ open class UhrAppActivity : AppCompatActivity(), Runnable {
 
             if (connection == null || !connection!!.isActive)
 
-                ConnectBottomSheet.getInstance(this@UhrAppActivity).show(this@UhrAppActivity) { }
+                ConnectBottomSheet(this@UhrAppActivity).show(this@UhrAppActivity)
 
         }
     }
 
     override fun run() {
         if (Blue.connection != null && !Blue.connection!!.isActive) {
-            ConnectBottomSheet.getInstance(this).show(this) {}
+            ConnectBottomSheet(this).show(this) {}
         }
 
         android.os.Handler().postDelayed(this, 20_000)

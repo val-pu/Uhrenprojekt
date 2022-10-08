@@ -1,10 +1,9 @@
-package leko.valmx.uhrenprojekt.intro.views
+package leko.valmx.uhrenprojekt.intro.title
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
-import androidx.appcompat.widget.AppCompatImageView
 import leko.valmx.uhrenprojekt.R
 
 class UhrTitelView(context: Context?, attrs: AttributeSet?) :
@@ -41,6 +40,11 @@ class UhrTitelView(context: Context?, attrs: AttributeSet?) :
         }
 
     }
+
+    fun getLengthOfLongestText(): Int {
+        return 0
+    }
+
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
 

@@ -35,8 +35,6 @@ class MultipleChoiceSheet(val dataSet: LinkedList<ChoiceItem>, val cmd: String) 
 
     override fun onSelected(item: ChoiceItem) {
         UhrAppActivity.send(UhrAppActivity.Command(cmd + item.parameter))
-
-
         dismiss()
     }
 

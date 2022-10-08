@@ -27,21 +27,7 @@ import quevedo.soares.leandro.blemadeeasy.models.BLEDevice
 
 class ConnectBottomSheet(val activity: UhrAppActivity) : Sheet() {
 
-    companion object {
-        var connectBottomSheet: ConnectBottomSheet? = null
-
-        fun getInstance(activity: UhrAppActivity): ConnectBottomSheet {
-            if (connectBottomSheet == null) {
-                connectBottomSheet = ConnectBottomSheet(activity)
-            }
-            return connectBottomSheet!!
-        }
-
-        fun undo() {
-            connectBottomSheet = null
-        }
-    }
-
+    private val searchTimeout = 30000L
 
     override fun onCreateLayoutView(): View {
         return LayoutInflater.from(activity).inflate(R.layout.sheet_bluetooth_autoconnect, null)
@@ -51,91 +37,92 @@ class ConnectBottomSheet(val activity: UhrAppActivity) : Sheet() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getDialog()!!.setCanceledOnTouchOutside(false);
-        setCancelable(false)
+        dialog!!.setCanceledOnTouchOutside(false);
+        isCancelable = false
 
         if (Blue.debug) {
             dismiss()
             return
         }
 
-        if (Blue.connection != null && Blue.connection!!.isActive) dismiss()
-
+        if (UhrAppActivity.connection != null && UhrAppActivity.connection!!.isActive) {
+            dismiss()
+            return
+        }
 
         feedBack.startFeedBack(Integer.MAX_VALUE)
+
         startSearch()
-
-
     }
 
     fun show(
         ctx: Context,
         width: Int? = null,
-        func: ConnectBottomSheet.() -> Unit = {},
-    ): ConnectBottomSheet {
+    ) {
         this.windowContext = ctx
         this.width = width
-//        UhrAppActivity.isSheetDisplayed = true
+        title(getString(R.string.blue_autoconnect_sheet_title))
+
+        // Rufe das Sheet noch ein mal auf, falls die Suche neugestartet werden soll
+
+        positiveText = getString(R.string.blue_autoconnect_retry)
         positiveListener = {
             dismiss()
-            getInstance(activity).show(ctx, width, func)
+            ConnectBottomSheet(activity).show(ctx, width)
         }
-        positiveText = "Suche Wiederholen"
 
-        onNegative("Verbinde mit anderem Gerät") {
+        // Lösche gespeicherte MAC-Adresse, falls der User sich mit einer anderen Uhr verbinden will und sende ihn/ sie zurück ins Intro
+        // TODO füge kurze Abfrage ein, ob der User sich nicht verclickt hat
 
+        onNegative(getString(R.string.blue_autoconnect_connect_to_other)) {
             ctx.getSharedPreferences(WidgetHelper.PREF_ID, MODE_PRIVATE).edit()
                 .putString(Blue.NAME_ID, "").apply()
-
             startActivity(Intent(ctx, IntroActivity::class.java))
-
-
         }
 
-//        displayNegativeButton(false)
-
-
-        title("Autoverbindung")
-
-
-        func(this)
-
         this.show()
-        return this
+
     }
 
-    @SuppressLint("MissingPermission")
+    /**
+     * Suche/ Verbinde nach der Uhr und handle feedback
+     */
+
+    @SuppressLint("MissingPermission", "SetTextI18n")
     @OptIn(DelicateCoroutinesApi::class)
     fun startSearch() {
+
         val ble = activity.ble
         try {
 
             GlobalScope.launch {
-                try {
-                    val address = Blue.getDeviceName(requireContext())
 
+                val address = Blue.getDeviceName(requireContext())
 
-                    text_status.text = "Verbinde mit $address"
-                    Log.i("Bluetooth","Starte Verbindungsprozess...")
-                    UhrAppActivity.connection = ble.scanFor(macAddress = address, settings = ScanSettings.Builder().setMatchMode(ScanSettings.MATCH_MODE_AGGRESSIVE).build())
-                    Log.i("Bluetooth","Beende Verbindungsprozess...")
+                text_status.text =
+                    getString(R.string.blue_autoconnect_feedback_connecting_to) + address
 
-                    val connection = UhrAppActivity.connection
+                Log.i("Bluetooth", "Starte Verbindungsprozess...")
 
+                UhrAppActivity.connection = ble.scanFor(
+                    macAddress = address,
+                    timeout = searchTimeout,
+                    settings = ScanSettings.Builder().setMatchMode(ScanSettings.MATCH_MODE_AGGRESSIVE).build()
+                )
 
-                    if (!connection!!.isActive) {
-                        text_status.text = "Suche fehlgeschlagen"
-                        return@launch
-                    }
-                    if (text_status != null) text_status.text =
-                        "Gerät Gefunden - Verbunden ${connection.isActive}"
+                Log.i("Bluetooth", "Beende Verbindungsprozess... mit Verbindung: ${UhrAppActivity.connection}")
 
-                    dismiss()
-                } catch (e2: IllegalStateException) {
-                    dismiss()
+                val connection = UhrAppActivity.connection
+
+                if (!connection!!.isActive) {
+                    text_status.text = getString(R.string.blue_autoconnnect_feedback_fail)
+                    return@launch
                 }
+
+                dismiss()
+
             }
-        } catch (e: Exception) {
+        } catch (_: Exception) {
         }
 
 

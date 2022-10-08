@@ -1,4 +1,21 @@
 <resources>
     <string name="app_name">Wort-Uhr Companion</string>
     <string name="title_activity_customizer">CustomizerActivity</string>
+    <string name="blue_search_found_device">\" gefunden!\"</string>
+    <string name="blue_search_start">Suche starten</string>
+    <string name="blue_search_tooltip_all_devices">Tippe, um Suchergebnisse anzuzeigen</string>
+    <string name="blue_search_tooltip_search_title">Suche nach der Wort-Uhr</string>
+    <string name="blue_search_connect">Verbinden</string>
+    <string name="blue_search_title_success">Verbindung erfolgreich!</string>
+    <string name="blue_search_title">STELLE DIE VERBINDUNG HER</string>
+    <string name="blue_search_connect_connecting">Verbinde...</string>
+    <string name="blue_search_started">Suche...</string>
+    <string name="blue_search_tooltip_feedback">Die Uhr sollte einen grünen Haken anzeigen!</string>
+    <string name="blue_autoconnect_title">VERBINDE MIT DER UHR</string>
+    <string name="blue_autoconnect_status">Status:</string>
+    <string name="blue_autoconnect_connect_to_other">Verbinde mit anderem Gerät</string>
+    <string name="blue_autoconnect_retry">Suche Wiederholen</string>
+    <string name="blue_autoconnect_sheet_title">Autoverbindung</string>
+    <string name="blue_autoconnect_feedback_connecting_to">Verbinde mit</string>
+    <string name="blue_autoconnnect_feedback_fail">Suche fehlgeschlagen</string>
 </resources>

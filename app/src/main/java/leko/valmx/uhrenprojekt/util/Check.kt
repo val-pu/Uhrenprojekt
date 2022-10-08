@@ -1,7 +1,5 @@
 package leko.valmx.uhrenprojekt.util
 
-import leko.valmx.uhrenprojekt.popup.CorrectionBottomSheet
-
 object Check {
     fun validInput(input: String, correctionTyoe: String): Boolean
     {

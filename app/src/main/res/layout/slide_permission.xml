@@ -73,7 +73,7 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <leko.valmx.uhrenprojekt.intro.views.UhrTitelView
+    <leko.valmx.uhrenprojekt.intro.title.UhrTitelView
         android:id="@+id/uhrTitelView"
         android:layout_margin="@dimen/default_margin"
         android:layout_width="match_parent"

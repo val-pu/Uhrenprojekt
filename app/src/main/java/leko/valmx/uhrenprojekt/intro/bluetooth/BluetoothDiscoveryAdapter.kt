@@ -1,5 +1,6 @@
 package leko.valmx.uhrenprojekt.intro.bluetooth
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ class BluetoothDiscoveryAdapter(val inflater: LayoutInflater, val devices: Linke
 
 
     class VH(item: View) : RecyclerView.ViewHolder(item) {
+        @SuppressLint("MissingPermission") // Richtig, da nötige Berechtigungen durch die vorherige Slide garantiert sind.
         @OptIn(DelicateCoroutinesApi::class)
         fun bind(device: BLEDevice) {
             itemView.name.text = device.device.name

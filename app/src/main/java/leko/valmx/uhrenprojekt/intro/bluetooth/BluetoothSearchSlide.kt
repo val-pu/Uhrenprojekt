@@ -10,7 +10,7 @@ import android.view.View.*
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.github.appintro.SlidePolicy
-import kotlinx.android.synthetic.main.fragment_bluetooth.*
+import kotlinx.android.synthetic.main.fragment_bluetooth_search.*
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -39,7 +39,7 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fra
         savedInstanceState: Bundle?
     ): View? {
         this.container = container
-        return inflater.inflate(R.layout.fragment_bluetooth, container, false)
+        return inflater.inflate(R.layout.fragment_bluetooth_search, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,13 +59,12 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fra
 
     fun initViews() {
         connect.setOnClickListener {
+            connect.text = getString(R.string.blue_search_connect_connecting)
             GlobalScope.launch {
-                Log.i("Connecting","Started Connecting to $selectedDevice")
-                val connection =  ble.scanFor(
+                Log.i("Connecting", "Started Connecting to $selectedDevice")
+                val connection = ble.scanFor(
                     macAddress = selectedDevice!!.macAddress,
                 )
-
-
 
                 if (connection != null) {
                     connect.post {
@@ -75,9 +74,10 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fra
                     }
 
                     val sharedPreferences =
-                        requireActivity().getSharedPreferences(WidgetHelper.PREF_ID,MODE_PRIVATE)
+                        requireActivity().getSharedPreferences(WidgetHelper.PREF_ID, MODE_PRIVATE)
 
-                    sharedPreferences.edit().putString(Blue.NAME_ID,selectedDevice!!.macAddress).apply()
+                    sharedPreferences.edit().putString(Blue.NAME_ID, selectedDevice!!.macAddress)
+                        .apply()
 
 
                 }
@@ -89,16 +89,12 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fra
         btn_search.setOnClickListener {
             scanForDevices()
             feedbackView.startFeedBack(searchDuration)
+            btn_search.text = getString(R.string.blue_search_started)
         }
     }
 
 
-    /**
-    Sucht nach neuen Geräten & published diese im Recyclerview
-     */
-
-    private val possibleClockNames =
-        arrayListOf("HMSoft", "MLT-BT05", "BT05")
+    private val possibleClockNames = arrayListOf("HMSoft", "MLT-BT05", "BT05")
 
     private val searchDuration = 30000
 
@@ -109,8 +105,6 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fra
             duration = searchDuration.toLong(),
             onDiscover = { device ->
                 Log.i(tag, "Found ${device.name} + ${device.device.bluetoothClass}")
-
-//                if (device.name == "") return@scanAsync
 
                 if (possibleClockNames.contains(device.name)) selectDevice(device)
                 devices.add(device)
@@ -125,7 +119,10 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fra
 
     fun selectDevice(device: BLEDevice) {
         selectedDevice = device
-        device_name.text = "${device.name} gefunden"
+        device_name.text = buildString {
+            append(device.name)
+            append(getString(R.string.blue_search_found_device))
+        }
 
         if (card_found_device.visibility == GONE) {
             card_found_device.alpha = 0F
