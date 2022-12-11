@@ -1,4 +1,4 @@
-package leko.valmx.uhrenprojekt.parents
+package leko.valmx.uhrenprojekt.widgets
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
@@ -10,12 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.widget.view.*
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.adapters.widgets.WidgetContentAdapter
-import leko.valmx.uhrenprojekt.bundles.*
-import leko.valmx.uhrenprojekt.utils.WidgetHelper
+import leko.valmx.uhrenprojekt.data.DataTBN
+import leko.valmx.uhrenprojekt.parents.UhrAppActivity
+import leko.valmx.uhrenprojekt.widgets.bundles.*
 import java.util.*
 import kotlin.collections.LinkedHashSet
 
 abstract class Widget() {
+
+    lateinit var data: DataTBN
 
     private var title = "Titel"
     private var description = ""
@@ -31,6 +34,11 @@ abstract class Widget() {
     fun title(title: String) {
         this.title = title
     }
+
+    fun executeCommand(command: String, desc: String = "No description given.") {
+        UhrAppActivity.send(UhrAppActivity.Command(command, desc))
+    }
+
 
     fun description(description: String) {
         this.description = description
@@ -63,11 +71,11 @@ abstract class Widget() {
 
     /**
      * @name sollte einzigartig sein, da die gewählte Option unter diesem namen gespeichert wird.
-    * @author Val
-    * @param choices Eine Funktion wird übergeben in welcher man die Wahlmöglichkeiten definieren kann. Die Parameter werden
-    * so eigesetzt @param command + " " + param
-    * das zurückgegebene Item wird als default-option gesetzt und vorne hinzugefügt sonst wird das erste item gewählt. Ok iwie ist das unnötig, erlaubt aber mehr (Vielleicht?)
-    */
+     * @author Val
+     * @param choices Eine Funktion wird übergeben in welcher man die Wahlmöglichkeiten definieren kann. Die Parameter werden
+     * so eigesetzt @param command + " " + param
+     * das zurückgegebene Item wird als default-option gesetzt und vorne hinzugefügt sonst wird das erste item gewählt. Ok iwie ist das unnötig, erlaubt aber mehr (Vielleicht?)
+     */
 
     fun multipleChoice(
         name: String = "Choice",
@@ -81,23 +89,41 @@ abstract class Widget() {
 
     }
 
-    fun input(name: String = "Input", desc: String = "Geben sie Input ein", listener: OnInputSendListener) {
+    fun input(
+        name: String = "Input",
+        desc: String = "Geben sie Input ein",
+        listener: OnInputSendListener
+    ) {
         content.add(InputBundle(title, description, listener))
     }
 
+    fun custom(layout: Int, logic: View.() -> Unit) {
+        content.add(CustomBundle(layout, logic))
+    }
+
+    fun toggle(
+        title: String,
+        description: String,
+        condition: () -> Boolean,
+        onToggle: Boolean.() -> Unit
+    ) {
+        content.add(ToggleBundle(title, description, condition, onToggle))
+    }
 
     fun init(v: View) {
         content = LinkedList()
         view = v
         context = v.context
+        data = DataTBN(context)
+
         init()
         view.widget_title.text = title
         view.widget_description.text = description
         view.recycler.adapter = WidgetContentAdapter(content)
         initCollapseFunction()
         initSaveFunction()
-
     }
+
 
     private fun initCollapseFunction() {
 
@@ -163,7 +189,7 @@ abstract class Widget() {
         savedSet!!.remove(getWidgetID().toString())
 
         edit.putStringSet(WidgetHelper.SAVED_ID, savedSet)
-        edit.commit()
+        edit.apply()
     }
 
     private val prefs: SharedPreferences?
@@ -173,7 +199,7 @@ abstract class Widget() {
         }
 
     private fun loadSharedPrefs(): SharedPreferences? {
-         return view.context!!.getSharedPreferences(WidgetHelper.PREF_ID, MODE_PRIVATE)
+        return view.context!!.getSharedPreferences(WidgetHelper.PREF_ID, MODE_PRIVATE)
     }
 
 

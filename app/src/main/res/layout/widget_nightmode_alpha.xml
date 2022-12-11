@@ -2,40 +2,38 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Button"
-    android:id="@+id/btn_redirect"
-    android:backgroundTint="@color/white"
     android:layout_width="match_parent"
-
-    android:layout_height="wrap_content"
+    style="@style/Card"
     android:layout_margin="5dp"
-    android:padding="@dimen/default_padding">
+    android:backgroundTint="@color/white"
+    android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/widget_title"
+        android:id="@+id/textView13"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Matrix"
         style="@style/Subtitle"
+        android:layout_height="wrap_content"
+        android:text="Helligkeit im Nachtmodus"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/widget_description_toggle"
-        android:layout_width="wrap_content"
+    <SeekBar
+        android:id="@+id/seekbar_nightmode"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Effekt"
-        style="@style/Description"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/widget_title" />
-
-    <ImageView
-        android:id="@+id/btn_continue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="@dimen/default_margin"
+        android:indeterminate="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_chevron_right" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <TextView
+        android:id="@+id/nighmode_alpha_percentage"
+        style="@style/Description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="50%"
+        app:layout_constraintBottom_toBottomOf="@+id/textView13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

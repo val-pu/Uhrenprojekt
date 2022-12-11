@@ -1,4 +1,4 @@
-package leko.valmx.uhrenprojekt.bundles.misc
+package leko.valmx.uhrenprojekt.widgets.bundles.misc
 
 import android.content.Context
 import android.os.Bundle
@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.widget_subitem_sheet_multiple_choice.*
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.adapters.MultipleChoicePopUpAdapter
-import leko.valmx.uhrenprojekt.bundles.ChoiceItem
+import leko.valmx.uhrenprojekt.widgets.bundles.ChoiceItem
 import leko.valmx.uhrenprojekt.parents.UhrAppActivity
 import java.util.*
 

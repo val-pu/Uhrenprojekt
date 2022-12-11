@@ -1,7 +1,6 @@
-package leko.valmx.uhrenprojekt.autoconnect
+package leko.valmx.uhrenprojekt.bluetooth.autoconnect
 
 import android.annotation.SuppressLint
-import android.bluetooth.BluetoothDevice
 import android.bluetooth.le.ScanSettings
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
@@ -10,7 +9,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import com.google.android.material.snackbar.Snackbar
 import com.maxkeppeler.sheets.core.Sheet
 import kotlinx.android.synthetic.main.sheet_bluetooth_autoconnect.*
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -19,11 +17,8 @@ import kotlinx.coroutines.launch
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.intro.IntroActivity
-import leko.valmx.uhrenprojekt.SimpleControlActivity
 import leko.valmx.uhrenprojekt.parents.UhrAppActivity
-import leko.valmx.uhrenprojekt.utils.WidgetHelper
-import quevedo.soares.leandro.blemadeeasy.BLE
-import quevedo.soares.leandro.blemadeeasy.models.BLEDevice
+import leko.valmx.uhrenprojekt.widgets.WidgetHelper
 
 class ConnectBottomSheet(val activity: UhrAppActivity) : Sheet() {
 
@@ -61,6 +56,9 @@ class ConnectBottomSheet(val activity: UhrAppActivity) : Sheet() {
     ) {
         this.windowContext = ctx
         this.width = width
+        return
+
+
         title(getString(R.string.blue_autoconnect_sheet_title))
 
         // Rufe das Sheet noch ein mal auf, falls die Suche neugestartet werden soll

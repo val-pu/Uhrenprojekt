@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:background="#FFF">
 
     <ScrollView
@@ -64,9 +65,10 @@
                     android:id="@+id/btn_search"
                     style="@style/Button"
                     android:layout_width="0dp"
+                    android:backgroundTint="@color/titelview_back"
+
                     android:layout_height="wrap_content"
                     android:text="@string/blue_search_start"
-                    android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/feedbackView" />
@@ -108,7 +110,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/blue_search_connect"
-                    android:textColor="@color/black"
+                    android:backgroundTint="@color/titelview_back"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView8" />
@@ -155,6 +158,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/textView14"
                     app:layout_constraintStart_toStartOf="@+id/textView14"
                     app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <leko.valmx.uhrenprojekt.intro.title.UhrTitelView
@@ -168,5 +172,29 @@
                 tools:layout_editor_absoluteX="133dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_debug"
+        android:text="DEBUG: OHNE GERÄT (CLICKEN)"
+        app:layout_constraintBottom_toTopOf="@+id/btn_success" />
+
+    <TextView
+        android:id="@+id/btn_success"
+        android:visibility="gone"
+        style="@style/Button"
+        android:elevation="10dp"
+        tools:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:backgroundTint="@color/titelview_back"
+        android:foreground="?selectableItemBackground"
+        android:text="Setup fertigstellen"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="10dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

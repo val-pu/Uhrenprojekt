@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.widget_subitem_multiple_choice.view.*
 import leko.valmx.uhrenprojekt.R
-import leko.valmx.uhrenprojekt.bundles.ChoiceItem
+import leko.valmx.uhrenprojekt.widgets.bundles.ChoiceItem
 import java.util.*
 
 class MultipleChoicePopUpAdapter(

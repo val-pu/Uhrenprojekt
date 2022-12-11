@@ -1,7 +1,6 @@
 package leko.valmx.uhrenprojekt.widgets
 
 import androidx.recyclerview.widget.GridLayoutManager
-import leko.valmx.uhrenprojekt.parents.Widget
 import leko.valmx.uhrenprojekt.adapters.widgets.IconAdapter
 
 class IconWidget(): Widget() {

@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_color.view.*
 import leko.valmx.uhrenprojekt.R
+import leko.valmx.uhrenprojekt.data.DataTBN
 import leko.valmx.uhrenprojekt.parents.UhrAppActivity
 import java.util.*
 
-class ColorAdapter() :
+class ColorAdapter(val updateFunction: () -> Unit) :
     RecyclerView.Adapter<ColorAdapter.VH>() {
 
     private val data = LinkedList<ColorItem>()
@@ -100,7 +101,7 @@ class ColorAdapter() :
         data.add(
             ColorItem(
                 colorValueOf(50, 0, 255),
-                colorValueOf(0,150, 255),
+                colorValueOf(0, 150, 255),
                 "Rot"
             )
         )
@@ -108,7 +109,7 @@ class ColorAdapter() :
         data.add(
             ColorItem(
                 colorValueOf(130, 0, 255),
-                colorValueOf(20,100, 20),
+                colorValueOf(20, 100, 20),
                 "Rot"
             )
         )
@@ -116,7 +117,7 @@ class ColorAdapter() :
         data.add(
             ColorItem(
                 colorValueOf(255, 0, 255),
-                colorValueOf(20,0, 20),
+                colorValueOf(20, 0, 20),
                 "Rot"
             )
         )
@@ -124,7 +125,7 @@ class ColorAdapter() :
         data.add(
             ColorItem(
                 colorValueOf(210, 255, 255),
-                colorValueOf(20,20, 20),
+                colorValueOf(20, 20, 20),
                 "Rot"
             )
         )
@@ -143,9 +144,15 @@ class ColorAdapter() :
 
             val bg = dataSet.bgColor
             val az = dataSet.textColor
+            UhrAppActivity.send(UhrAppActivity.Command("setdp ${(bg.red() * 255).toInt()},${(bg.green() * 255).toInt()},${(bg.blue() * 255).toInt()}"))
+            UhrAppActivity.send(UhrAppActivity.Command("setbg ${(az.red() * 255).toInt()},${(az.green() * 255).toInt()},${(az.blue() * 255).toInt()}"))
 
-            UhrAppActivity.send(UhrAppActivity.Command("setdp ${(bg.red()*255).toInt()},${(bg.green()*255).toInt()},${(bg.blue()*255).toInt()}"))
-            UhrAppActivity.send(UhrAppActivity.Command("setbg ${(az.red()*255).toInt()},${(az.green()*255).toInt()},${(az.blue()*255).toInt()}"))
+            val data = DataTBN(holder.itemView.context)
+
+            data.backColor = bg.toArgb()
+            data.frontColor = az.toArgb()
+
+            updateFunction()
         }
 
 
@@ -154,9 +161,9 @@ class ColorAdapter() :
     override fun getItemCount(): Int = data.size
 
     class ColorItem(val textColor: Color, val bgColor: Color, val name: String)
-    
+
     private fun colorValueOf(r: Int, g: Int, b: Int): Color {
-        return Color.valueOf(r/255F,g/255F,b/255F,1F)
+        return Color.valueOf(r / 255F, g / 255F, b / 255F, 1F)
     }
 
 

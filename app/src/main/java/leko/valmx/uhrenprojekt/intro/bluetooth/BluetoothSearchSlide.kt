@@ -16,18 +16,18 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.bluetooth.Blue
-import leko.valmx.uhrenprojekt.utils.WidgetHelper
+import leko.valmx.uhrenprojekt.intro.IntroActivity
+import leko.valmx.uhrenprojekt.parents.UhrAppActivity
+import leko.valmx.uhrenprojekt.widgets.WidgetHelper
 import quevedo.soares.leandro.blemadeeasy.BLE
 import quevedo.soares.leandro.blemadeeasy.models.BLEDevice
 import java.util.*
 
 @DelicateCoroutinesApi
-class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fragment(),
-    SlidePolicy {
+class BluetoothSearchSlide(val intro: IntroActivity) : Fragment() {
 
     lateinit var ble: BLE
 
-    override fun onUserIllegallyRequestedNextPage() {}
 
     var container: ViewGroup? = null
 
@@ -71,8 +71,16 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fra
                         card_found_device.visibility = GONE
                         pick_card.visibility = GONE
                         card_success.visibility = VISIBLE
+                        btn_success.visibility = VISIBLE
+
+
                     }
 
+                    UhrAppActivity.connection = connection
+                    UhrAppActivity.connection?.write(
+                        "0000FFE1-0000-1000-8000-00805F9B34FB",
+                        "check"
+                    )
                     val sharedPreferences =
                         requireActivity().getSharedPreferences(WidgetHelper.PREF_ID, MODE_PRIVATE)
 
@@ -85,6 +93,12 @@ class BluetoothSearchSlide(override var isPolicyRespected: Boolean = true) : Fra
             }
 
         }
+
+        btn_success.setOnClickListener {
+            intro.nextSlide()
+        }
+
+        btn_debug.setOnClickListener { btn_success.callOnClick() }
 
         btn_search.setOnClickListener {
             scanForDevices()

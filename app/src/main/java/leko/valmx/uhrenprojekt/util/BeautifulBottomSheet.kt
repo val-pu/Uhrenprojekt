@@ -15,6 +15,8 @@ import leko.valmx.uhrenprojekt.R
 abstract class BeautifulBottomSheet : BottomSheetDialogFragment() {
 
 
+    // TODO Klasse löschen
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

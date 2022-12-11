@@ -8,7 +8,7 @@ import android.view.animation.AnimationUtils
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import leko.valmx.uhrenprojekt.R
-import leko.valmx.uhrenprojekt.utils.WidgetHelper
+import leko.valmx.uhrenprojekt.widgets.WidgetHelper
 
 class SavedWidgetsAdapter(val fragmentManager: FragmentManager, val context: Context) :
     RecyclerView.Adapter<SavedWidgetsAdapter.VH>() {

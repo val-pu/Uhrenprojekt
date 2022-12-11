@@ -1,9 +1,8 @@
-package leko.valmx.uhrenprojekt.utils
+package leko.valmx.uhrenprojekt.widgets
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
-import leko.valmx.uhrenprojekt.parents.Widget
-import leko.valmx.uhrenprojekt.widgets.*
+import android.util.Log
 import java.util.*
 
 
@@ -26,6 +25,7 @@ object WidgetHelper {
             add(ColorWidget())
             add(IconWidget())
             add(LottoWidget())
+            add(ToggleWidget())
             add(NightModeWidget())
             add(TextWidget())
 //            add(GameWidget())
@@ -36,7 +36,7 @@ object WidgetHelper {
     fun getSavedWidgets(ctx: Context): LinkedList<Widget> {
 
         val widgetNames = ctx.getSharedPreferences(PREF_ID, MODE_PRIVATE).getStringSet(
-            SAVED_ID, HashSet<String>()
+            SAVED_ID, HashSet()
         )
 
         val ret = LinkedList<Widget>()
@@ -49,6 +49,8 @@ object WidgetHelper {
                     Class.forName("$name").newInstance() as Widget
                 )
             } catch (e: Exception) {
+
+                Log.i("ERR + $name",e.toString())
             }
 
         }

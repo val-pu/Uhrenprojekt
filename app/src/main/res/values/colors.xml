@@ -17,4 +17,6 @@
     <color name="titelview_obfuscated">#41BEBEBE</color>
     <color name="titelview_title">#FFF</color>
     <color name="titelview_back">#262626</color>
+    <color name="default_front_clock">#1E88E5</color>
+    <color name="default_back_clock">#A02219</color>
 </resources>

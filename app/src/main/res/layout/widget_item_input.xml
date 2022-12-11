@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/btn_redirect"
+    android:backgroundTint="@color/white"
     style="@style/Button"
     android:layout_width="match_parent"
 

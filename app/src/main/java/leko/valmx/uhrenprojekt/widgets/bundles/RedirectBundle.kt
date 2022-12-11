@@ -1,4 +1,4 @@
-package leko.valmx.uhrenprojekt.bundles
+package leko.valmx.uhrenprojekt.widgets.bundles
 
 import android.view.View
 

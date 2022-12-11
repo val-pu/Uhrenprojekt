@@ -2,7 +2,7 @@ package leko.valmx.uhrenprojekt.parents
 
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import leko.valmx.uhrenprojekt.autoconnect.ConnectBottomSheet
+import leko.valmx.uhrenprojekt.bluetooth.autoconnect.ConnectBottomSheet
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import quevedo.soares.leandro.blemadeeasy.BLE
 import quevedo.soares.leandro.blemadeeasy.BluetoothConnection
@@ -50,6 +50,7 @@ open class UhrAppActivity : AppCompatActivity(), Runnable {
                 "0000FFE1-0000-1000-8000-00805F9B34FB",
                 currentlyExecuted?.cmd ?: "euro"
             )
+            if (onCmd!= null)
 
             Handler().postDelayed(this, 10000)
         }
@@ -95,17 +96,17 @@ open class UhrAppActivity : AppCompatActivity(), Runnable {
 
             if (connection == null || !connection!!.isActive)
 
-                ConnectBottomSheet(this@UhrAppActivity).show(this@UhrAppActivity)
+                ConnectBottomSheet(this@UhrAppActivity).show(this@UhrAppActivity,100)
 
         }
     }
 
     override fun run() {
         if (Blue.connection != null && !Blue.connection!!.isActive) {
-            ConnectBottomSheet(this).show(this) {}
+            ConnectBottomSheet(this).show(this,null)
         }
 
-        android.os.Handler().postDelayed(this, 20_000)
+        android.os.Handler().postDelayed(this, 20000)
 
     }
 

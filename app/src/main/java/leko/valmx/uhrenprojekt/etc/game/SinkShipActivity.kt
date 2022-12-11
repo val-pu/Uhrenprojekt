@@ -4,11 +4,10 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_sink_ship.*
 import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.parents.UhrAppActivity
-import leko.valmx.uhrenprojekt.popup.LoadingDialog
 
 class SinkShipActivity : UhrAppActivity() {
 
-    val loadingDialog: LoadingDialog = LoadingDialog(this)
+//    val loadingDialog: LoadingDialog = LoadingDialog(this)
     companion object {
         var tries: Int = 0
     }
@@ -16,7 +15,6 @@ class SinkShipActivity : UhrAppActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sink_ship)
-        loadingDialog.start(2000)
 
         Matrix.init()
 

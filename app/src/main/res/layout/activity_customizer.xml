@@ -17,8 +17,8 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/ActionbarLight"
-            android:fitsSystemWindows="true">
+            android:fitsSystemWindows="true"
+            android:theme="@style/ActionbarLight">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
@@ -45,16 +45,19 @@
                     android:layout_height="?attr/actionBarSize"
                     android:theme="@style/ActionbarDark"
                     app:layout_collapseMode="pin"
-                    app:title="Einstellungen"/>
+                    app:title="Einstellungen" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler"
@@ -66,7 +69,9 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -75,18 +80,18 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:orientation="vertical"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:alpha="0"
                 android:id="@+id/process_layout"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:alpha="0">
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/btn_running_processes"
@@ -111,9 +116,9 @@
                     android:background="@drawable/circle"
                     android:backgroundTint="#FF6700"
                     android:elevation="10dp"
-                    android:textColor="@color/white"
                     android:gravity="center|center_vertical"
                     android:text="2"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

@@ -1,7 +1,5 @@
 package leko.valmx.uhrenprojekt.widgets
 
-import leko.valmx.uhrenprojekt.parents.Widget
-
 class LottoWidget() : Widget() {
 
     override fun init() {

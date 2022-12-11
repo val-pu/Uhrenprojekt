@@ -1,11 +1,10 @@
-package leko.valmx.uhrenprojekt.utils
+package leko.valmx.uhrenprojekt.util
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import androidx.core.graphics.toRectF
 import leko.valmx.uhrenprojekt.R
-import leko.valmx.uhrenprojekt.util.Util
 
 class ColorPickHintView(context: Context?, attrs: AttributeSet?) : androidx.appcompat.widget.AppCompatImageView(context!!, attrs) {
 

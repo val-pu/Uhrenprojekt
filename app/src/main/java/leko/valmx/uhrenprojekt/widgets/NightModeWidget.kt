@@ -1,54 +1,83 @@
 package leko.valmx.uhrenprojekt.widgets
 
-import android.widget.Toast
 import com.maxkeppeler.sheets.time.TimeFormat
 import com.maxkeppeler.sheets.time.TimeSheet
-import leko.valmx.uhrenprojekt.bluetooth.Blue
-import leko.valmx.uhrenprojekt.parents.Widget
-import leko.valmx.uhrenprojekt.popup.InvalidInputInterface
+import kotlinx.android.synthetic.main.widget_nightmode.view.*
+import leko.valmx.uhrenprojekt.R
 
 class NightModeWidget : Widget() {
     override fun init() {
         title("Nachtmodus")
+        description("Ein praktischer Modus, um im gleichen Raum schlafen zu können")
 
-        redirect("Beginn", "Setze den Beginn des Nachtmodus") {
-            TimeSheet().show(context) {
-                format(TimeFormat.HH_MM)
+        custom(R.layout.widget_nightmode) {
 
-                title("Start Um:")
-                onPositive {
-                    val hh = it / (1000 * 60)
-                    val mm = (it % (1000 * 60)) / (1000)
-                    Blue.sendCommand("seton $hh:$mm")
+
+            fun update() {
+                nightmode_end.text = beautifyTime(data.nightModeEnd)
+                nightmode_start.text = beautifyTime(data.nighModeStart)
+
+                val currentDayMins =
+                    System.currentTimeMillis() % (1000L * 60 * 60 * 24) / (1000 * 60)
+
+                val start = data.nighModeStart
+                val end = data.nightModeEnd
+
+
+            }
+
+            update()
+
+            body.setOnClickListener {
+                showSheet(
+                    R.string.nightmode_title_on,
+                    R.string.nightmode_description_on,
+                    data.nighModeStart
+                ) { newStartTime ->
+                    run {
+
+                        showSheet(
+                            R.string.nightmode_title_off,
+                            R.string.nightmode_description_off,
+                            data.nightModeEnd
+                        ) { newEndTime ->
+                            data.nightModeEnd = newEndTime
+                            data.nighModeStart = newStartTime
+
+                            update()
+                        }
+                    }
+                }
+
+            }
+
+        }
+    }
+
+    private fun beautifyTime(time: Long): String {
+        "${time / (60 * 60)}:${time % (60*60)/60}".apply {
+            split(":").apply {
+                if (this[1].length == 1) {
+                    return this[0] + ":0" + this[1].last()
                 }
             }
+
+            return this
         }
+    }
 
-        redirect("Ende", "Setze das Ende des Nachtmodus") {
-            TimeSheet().show(context) {
-                format(TimeFormat.HH_MM)
 
-                title("Ende Um:")
-                onPositive {
-                    val hh = it / (1000 * 60)
-                    val mm = (it % (1000 * 60)) / (1000)
-                    Blue.sendCommand("setoff $hh:$mm")
-                }
-            }
+    fun showSheet(title: Int, description: Int, time: Long, onPos: (Long) -> Unit) {
+        TimeSheet().show(context) {
+
+            title(title)
+//            description(resources.getString(description))
+            format(TimeFormat.HH_MM)
+            maxTime(60 * 60 * 24)
+            currentTime(time)
+            onPositive("Weiter") { onPos(it) }
+            onNegative("Abbrechen")
         }
-
-        //TODO Helligkeitspopup hinzufügen
-
-/*        redirect("Helligkeit im Nachtmodus", "Setze die Helligkeit der Uhr im Nachtmodus") {
-            InputBottomSheet(
-                "Nachtmodus - Helligkeit", "Wie hoch soll die Helligkeit des Nachtmodus werden" +
-                        "? (0 - 255)", "hh:mm", "setnb", this
-            ).show(this.context)
-
-
-
-        }*/
-
     }
 
 

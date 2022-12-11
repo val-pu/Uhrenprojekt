@@ -3,37 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Button"
-    android:backgroundTint="@color/white"
+    android:id="@+id/btn_redirect"
+    android:backgroundTint="#FFF5F5"
     android:layout_width="match_parent"
+
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    android:padding="0dp">
+    android:padding="@dimen/default_padding">
 
     <TextView
-        android:id="@+id/recycler_title"
+        android:id="@+id/widget_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/default_padding"
-        android:paddingTop="@dimen/default_padding"
         android:text="Matrix"
         style="@style/Subtitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/recycler_description"
+        android:id="@+id/widget_description_toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/default_padding"
         android:text="Effekt"
-        android:textColor="#959595"
+        style="@style/Description"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_title" />
+        app:layout_constraintTop_toBottomOf="@+id/widget_title" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/toggle_tooltip"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_description" />
+        android:text="AN"
+        style="@style/Subtitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,7 @@ import leko.valmx.uhrenprojekt.R
 import leko.valmx.uhrenprojekt.parents.UhrAppActivity
 import leko.valmx.uhrenprojekt.bluetooth.Blue
 import leko.valmx.uhrenprojekt.util.SavedDataManager
-import leko.valmx.uhrenprojekt.utils.WidgetHelper
+import leko.valmx.uhrenprojekt.widgets.WidgetHelper
 
 class DeveloperActivity : UhrAppActivity(){
 

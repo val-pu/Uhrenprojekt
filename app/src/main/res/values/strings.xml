@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Wort-Uhr Companion</string>
     <string name="title_activity_customizer">CustomizerActivity</string>
-    <string name="blue_search_found_device">\" gefunden!\"</string>
+    <string name="blue_search_found_device"> gefunden!</string>
     <string name="blue_search_start">Suche starten</string>
     <string name="blue_search_tooltip_all_devices">Tippe, um Suchergebnisse anzuzeigen</string>
     <string name="blue_search_tooltip_search_title">Suche nach der Wort-Uhr</string>
@@ -18,4 +18,11 @@
     <string name="blue_autoconnect_sheet_title">Autoverbindung</string>
     <string name="blue_autoconnect_feedback_connecting_to">Verbinde mit</string>
     <string name="blue_autoconnnect_feedback_fail">Suche fehlgeschlagen</string>
+    <string name="on">AN</string>
+    <string name="off">AUS</string>
+    <string name="nightmode_title_on">Start</string>
+    <string name="nightmode_description_on">Wann soll der Nachtmodus automatisch einsetzten?</string>
+    <string name="nightmode_title_off">Ende</string>
+    <string name="nightmode_description_off">Wann soll der Nachtmodus automatisch enden?</string>
+    <string name="perms_fail">Bitte versuchen sie es erneut!</string>
 </resources>

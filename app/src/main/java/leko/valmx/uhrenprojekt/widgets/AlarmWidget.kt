@@ -1,9 +1,5 @@
 package leko.valmx.uhrenprojekt.widgets
 
-import android.widget.Toast
-import leko.valmx.uhrenprojekt.parents.Widget
-import leko.valmx.uhrenprojekt.popup.InvalidInputInterface
-
 class AlarmWidget: Widget() {
     override fun init() {
         title("Alarm")
