@@ -16,14 +16,6 @@ class NightModeWidget : Widget() {
             fun update() {
                 nightmode_end.text = beautifyTime(data.nightModeEnd)
                 nightmode_start.text = beautifyTime(data.nighModeStart)
-
-                val currentDayMins =
-                    System.currentTimeMillis() % (1000L * 60 * 60 * 24) / (1000 * 60)
-
-                val start = data.nighModeStart
-                val end = data.nightModeEnd
-
-
             }
 
             update()
@@ -67,11 +59,9 @@ class NightModeWidget : Widget() {
     }
 
 
-    fun showSheet(title: Int, description: Int, time: Long, onPos: (Long) -> Unit) {
+    private fun showSheet(title: Int, description: Int, time: Long, onPos: (Long) -> Unit) {
         TimeSheet().show(context) {
-
             title(title)
-//            description(resources.getString(description))
             format(TimeFormat.HH_MM)
             maxTime(60 * 60 * 24)
             currentTime(time)

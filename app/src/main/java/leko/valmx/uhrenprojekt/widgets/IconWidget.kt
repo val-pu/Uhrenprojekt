@@ -7,8 +7,6 @@ class IconWidget(): Widget() {
     override fun init() {
         title("Icons")
         description("Zeige icons an")
-
         recycler("Verfügbare Icons", IconAdapter(),"JA",GridLayoutManager(context,5))
-//        command()
     }
 }

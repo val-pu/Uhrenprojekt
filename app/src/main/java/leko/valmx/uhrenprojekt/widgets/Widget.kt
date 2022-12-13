@@ -1,5 +1,6 @@
 package leko.valmx.uhrenprojekt.widgets
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
@@ -152,12 +153,13 @@ abstract class Widget() {
     }
 
 
-    fun save() {
+    private fun save() {
         if (isSaved()) markAsUnsaved()
         else markAsSaved()
         updateSavedButton()
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun updateSavedButton() {
         view.btn_save.setImageDrawable(view.resources.getDrawable(if (isSaved()) R.drawable.ic_bookmark_saved else R.drawable.ic_bookmark))
     }
@@ -203,7 +205,7 @@ abstract class Widget() {
     }
 
 
-    fun getWidgetID(): String = javaClass.name
+    private fun getWidgetID(): String = javaClass.name
 
     abstract fun init()
 

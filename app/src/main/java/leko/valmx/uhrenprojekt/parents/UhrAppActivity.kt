@@ -13,7 +13,6 @@ open class UhrAppActivity : AppCompatActivity(), Runnable {
 
     companion object : Runnable {
         var connection: BluetoothConnection? = null
-        var isSheetDisplayed = false
 
         var executionThreadRunning = false
         var currentlyExecuted: Command? = null
@@ -25,7 +24,6 @@ open class UhrAppActivity : AppCompatActivity(), Runnable {
         fun send(cmd: Command) {
 
             scheduledCommands.add(cmd)
-
 
             if (executionThreadRunning) return
 
@@ -50,9 +48,8 @@ open class UhrAppActivity : AppCompatActivity(), Runnable {
                 "0000FFE1-0000-1000-8000-00805F9B34FB",
                 currentlyExecuted?.cmd ?: "euro"
             )
-            if (onCmd!= null)
-
-            Handler().postDelayed(this, 10000)
+            if (onCmd != null)
+                Handler().postDelayed(this, 10000)
         }
 
     }
@@ -73,16 +70,12 @@ open class UhrAppActivity : AppCompatActivity(), Runnable {
 
     lateinit var ble: BLE
 
-    init {
-        isSheetDisplayed = false
-    }
-
     override fun onStart() {
         initBLE()
         super.onStart()
         android.os.Handler().postDelayed(this, 20_000)
 
-        if(this is OnCommandListener) onCmd = this
+        if (this is OnCommandListener) onCmd = this
 
     }
 
@@ -91,19 +84,19 @@ open class UhrAppActivity : AppCompatActivity(), Runnable {
 
     }
 
-    fun initBLE() {
+    private fun initBLE() {
         ble = BLE(this).apply {
 
             if (connection == null || !connection!!.isActive)
 
-                ConnectBottomSheet(this@UhrAppActivity).show(this@UhrAppActivity,100)
+                ConnectBottomSheet(this@UhrAppActivity).show(this@UhrAppActivity, 100)
 
         }
     }
 
     override fun run() {
         if (Blue.connection != null && !Blue.connection!!.isActive) {
-            ConnectBottomSheet(this).show(this,null)
+            ConnectBottomSheet(this).show(this, null)
         }
 
         android.os.Handler().postDelayed(this, 20000)
